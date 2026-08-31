@@ -1,11 +1,11 @@
 /* =====================================================
-   RUSSIEN @ 18
+   RUSSIEN'S 18TH BIRTHDAY INVITATION
    MAIN JAVASCRIPT
 ===================================================== */
 
 
 /* =====================================================
-   ELEMENTS
+   OPENING ENVELOPE
 ===================================================== */
 
 const openingScreen =
@@ -20,101 +20,67 @@ const envelopeButton =
 const backgroundMusic =
     document.getElementById("backgroundMusic");
 
-const revealItems =
-    document.querySelectorAll(".reveal");
-
-const specialItems =
-    document.querySelectorAll(".special-item");
-
-const heroBackground =
-    document.querySelector(".hero-background");
-
-
 let invitationOpened = false;
 
 
-/* =====================================================
-   OPEN INVITATION
-===================================================== */
+/*
+   Open the invitation
+*/
 
 function openInvitation() {
 
-    if (invitationOpened) {
-        return;
-    }
+    // Prevent opening multiple times
+    if (invitationOpened) return;
 
     invitationOpened = true;
 
-
-    /*
-        Start the envelope animation.
-    */
-
+    // Add envelope opening animation
     envelopeButton.classList.add("open");
 
 
     /*
-        Wait until the physical envelope
-        animation has progressed.
+       Wait for envelope animation
+       before revealing the website.
     */
 
     setTimeout(() => {
 
-        /*
-            Hide opening screen.
-        */
-
+        // Hide opening screen
         openingScreen.classList.add("hidden");
 
-
-        /*
-            Reveal main invitation.
-        */
-
+        // Show main invitation
         mainInvitation.classList.add("visible");
 
-
-        /*
-            Allow scrolling.
-        */
-
+        // Allow scrolling
         document.body.classList.remove("locked");
 
 
         /*
-            Start music after user interaction.
+           Start music after user interaction.
 
-            The click/tap on the envelope counts as
-            user interaction, making audio playback
-            much more likely to work on mobile/iPad.
+           IMPORTANT:
+           Browsers allow audio playback more easily
+           because the guest clicked the envelope.
         */
 
         if (backgroundMusic) {
 
             backgroundMusic.volume = 0.45;
 
-            const musicPromise =
-                backgroundMusic.play();
-
-            if (musicPromise !== undefined) {
-
-                musicPromise.catch(() => {
+            backgroundMusic.play()
+                .catch(error => {
 
                     console.log(
-                        "Audio playback was blocked by the browser."
+                        "Music could not autoplay:",
+                        error
                     );
 
                 });
 
-            }
-
         }
 
 
-        /*
-            Trigger visible animations.
-        */
-
+        // Activate elements currently visible
         revealOnScroll();
 
     }, 1500);
@@ -122,9 +88,9 @@ function openInvitation() {
 }
 
 
-/* =====================================================
-   ENVELOPE CLICK
-===================================================== */
+/*
+   CLICK EVENT
+*/
 
 envelopeButton.addEventListener(
     "click",
@@ -132,9 +98,11 @@ envelopeButton.addEventListener(
 );
 
 
-/* =====================================================
+/*
    KEYBOARD ACCESSIBILITY
-===================================================== */
+
+   Enter or Space can also open the envelope.
+*/
 
 envelopeButton.addEventListener(
     "keydown",
@@ -155,17 +123,15 @@ envelopeButton.addEventListener(
 );
 
 
+
 /* =====================================================
    COUNTDOWN
 ===================================================== */
 
 
 /*
-    Event:
-    September 26, 2026
-    4:00 PM
-
-    The browser uses the visitor's local timezone.
+   September 26, 2026
+   4:00 PM
 */
 
 const eventDate =
@@ -177,24 +143,29 @@ const eventDate =
 function updateCountdown() {
 
     const now =
-        Date.now();
+        new Date().getTime();
 
     const difference =
         eventDate - now;
 
 
     /*
-        Event already happened.
+       If the event has already happened
     */
 
     if (difference <= 0) {
 
-        setCountdown(
-            "00",
-            "00",
-            "00",
-            "00"
-        );
+        document.getElementById("days").textContent =
+            "00";
+
+        document.getElementById("hours").textContent =
+            "00";
+
+        document.getElementById("minutes").textContent =
+            "00";
+
+        document.getElementById("seconds").textContent =
+            "00";
 
         return;
 
@@ -210,87 +181,57 @@ function updateCountdown() {
 
     const hours =
         Math.floor(
-            (
-                difference %
-                (1000 * 60 * 60 * 24)
-            ) /
-            (1000 * 60 * 60)
+            (difference %
+                (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
         );
 
 
     const minutes =
         Math.floor(
-            (
-                difference %
-                (1000 * 60 * 60)
-            ) /
-            (1000 * 60)
+            (difference %
+                (1000 * 60 * 60)) /
+                (1000 * 60)
         );
 
 
     const seconds =
         Math.floor(
-            (
-                difference %
-                (1000 * 60)
-            ) /
-            1000
+            (difference %
+                (1000 * 60)) /
+                1000
         );
 
 
-    setCountdown(
-        pad(days),
-        pad(hours),
-        pad(minutes),
-        pad(seconds)
-    );
-
-}
-
-
-/*
-    Put countdown values into HTML.
-*/
-
-function setCountdown(
-    days,
-    hours,
-    minutes,
-    seconds
-) {
+    /*
+       Update HTML
+    */
 
     document.getElementById("days").textContent =
-        days;
+        String(days).padStart(2, "0");
 
     document.getElementById("hours").textContent =
-        hours;
+        String(hours).padStart(2, "0");
 
     document.getElementById("minutes").textContent =
-        minutes;
+        String(minutes).padStart(2, "0");
 
     document.getElementById("seconds").textContent =
-        seconds;
+        String(seconds).padStart(2, "0");
 
 }
 
 
 /*
-    Add leading zero.
-*/
-
-function pad(number) {
-
-    return String(number)
-        .padStart(2, "0");
-
-}
-
-
-/*
-    Start countdown.
+   Run immediately
 */
 
 updateCountdown();
+
+
+/*
+   Update every second
+*/
 
 setInterval(
     updateCountdown,
@@ -298,9 +239,20 @@ setInterval(
 );
 
 
+
 /* =====================================================
    SCROLL REVEAL
 ===================================================== */
+
+
+/*
+   IMPORTANT:
+   This has a different name from the function below.
+*/
+
+const revealItems =
+    document.querySelectorAll(".reveal");
+
 
 function revealOnScroll() {
 
@@ -330,6 +282,10 @@ function revealOnScroll() {
 }
 
 
+/*
+   Run when scrolling
+*/
+
 window.addEventListener(
     "scroll",
     revealOnScroll,
@@ -339,184 +295,38 @@ window.addEventListener(
 );
 
 
-/* =====================================================
-   INTERSECTION OBSERVER
-===================================================== */
-
-
-/*
-    IntersectionObserver makes the animations
-    smoother and more efficient on mobile/iPad.
-*/
-
-if ("IntersectionObserver" in window) {
-
-    const observer =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(
-                    entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target.classList.add(
-                                "active"
-                            );
-
-                            observer.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-
-    revealItems.forEach(
-        element => {
-
-            observer.observe(element);
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   18 SPECIALS
-===================================================== */
-
-
-/*
-    Every section works independently.
-
-    Tap:
-        closed → open
-
-    Tap again:
-        open → closed
-*/
-
-specialItems.forEach(
-    item => {
-
-        const button =
-            item.querySelector(
-                ".special-header"
-            );
-
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const isOpen =
-                    item.classList.contains(
-                        "open"
-                    );
-
-
-                /*
-                    Close this section if already open.
-                */
-
-                if (isOpen) {
-
-                    item.classList.remove(
-                        "open"
-                    );
-
-                    button.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    return;
-                }
-
-
-                /*
-                    Open section.
-                */
-
-                item.classList.add(
-                    "open"
-                );
-
-                button.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-            }
-        );
-
-    }
-);
-
 
 /* =====================================================
    HERO PARALLAX
 ===================================================== */
 
+const heroBackground =
+    document.querySelector(".hero-background");
 
-/*
-    Desktop gets a subtle parallax effect.
-
-    Mobile/iPad gets a lighter effect to avoid
-    performance issues.
-*/
 
 window.addEventListener(
     "scroll",
     () => {
 
-        if (!heroBackground) {
-            return;
-        }
-
-
-        const scrollY =
-            window.scrollY;
+        if (!heroBackground) return;
 
 
         /*
-            Disable strong parallax on small screens.
+           Only use parallax on larger screens.
+           This keeps mobile smooth.
         */
 
-        if (
-            window.innerWidth <= 600
-        ) {
+        if (window.innerWidth > 700) {
+
+            const scrollY =
+                window.scrollY;
+
 
             heroBackground.style.transform =
-                "scale(1.03)";
-
-            return;
+                `scale(1.05)
+                 translateY(${scrollY * 0.12}px)`;
 
         }
-
-
-        /*
-            Desktop / iPad.
-        */
-
-        const movement =
-            scrollY * 0.08;
-
-
-        heroBackground.style.transform =
-            `scale(1.06) translateY(${movement}px)`;
 
     },
     {
@@ -525,68 +335,36 @@ window.addEventListener(
 );
 
 
+
 /* =====================================================
-   TOUCH SAFETY
+   INITIAL PAGE STATE
 ===================================================== */
 
 
 /*
-    Prevent accidental double-tap zoom on
-    important interactive controls.
+   Prevent scrolling while envelope is closed.
 */
 
-document.querySelectorAll(
-    "button, .map-button"
-).forEach(
-    element => {
+document.body.classList.add("locked");
 
-        element.addEventListener(
-            "touchend",
-            function() {
-
-                this.style.touchAction =
-                    "manipulation";
-
-            },
-            {
-                passive: true
-            }
-        );
-
-    }
-);
 
 
 /* =====================================================
-   INITIAL STATE
+   REDUCED MOTION ACCESSIBILITY
 ===================================================== */
 
-
-/*
-    Keep the page locked until envelope opens.
-*/
-
-document.body.classList.add(
-    "locked"
-);
-
-
-/*
-    Make elements already visible appear.
-*/
-
-if (
+const prefersReducedMotion =
     window.matchMedia(
         "(prefers-reduced-motion: reduce)"
-    ).matches
-) {
+    ).matches;
+
+
+if (prefersReducedMotion) {
 
     revealItems.forEach(
         element => {
 
-            element.classList.add(
-                "active"
-            );
+            element.classList.add("active");
 
         }
     );
