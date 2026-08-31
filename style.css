@@ -1,2116 +1,773 @@
-/* =====================================================
-   ROOT
-===================================================== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
-:root {
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+                   viewport-fit=cover">
 
-    --pink-light: #fbe8ef;
-    --pink: #e9a9bd;
-    --pink-dark: #a85d78;
+    <meta name="theme-color" content="#f8dce8">
 
-    --purple-light: #eee5f3;
-    --purple: #b59ac5;
-    --purple-dark: #76566f;
+    <meta name="description"
+          content="You are invited to celebrate Russien's 18th Birthday.">
 
-    --pearl: #fffdfb;
-    --cream: #fff8f8;
+    <title>Russien's 18th Birthday | You Are Invited</title>
 
-    --text: #553f4c;
-    --text-light: #8c7180;
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    --border: rgba(118, 86, 111, 0.20);
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap"
+          rel="stylesheet">
 
-    --script:
-        "Great Vibes",
-        cursive;
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    --serif:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
+<body>
 
-    --sans:
-        "DM Sans",
-        Arial,
-        sans-serif;
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
 
-    --transition:
-        cubic-bezier(.22, .61, .36, 1);
+<div id="openingScreen" class="opening-screen">
 
-}
+    <div class="opening-glow"></div>
 
+    <div class="opening-particles"></div>
 
-/* =====================================================
-   RESET
-===================================================== */
+    <div class="opening-content">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        <p class="small-title">
+            YOU ARE
+        </p>
 
-html {
-    scroll-behavior: smooth;
-}
+        <h1 class="invited-title">
+            Invited
+        </h1>
 
-body {
+        <p class="opening-subtitle">
+            TO CELEBRATE A SPECIAL MOMENT
+        </p>
 
-    background: var(--pearl);
+        <!-- ENVELOPE -->
 
-    color: var(--text);
+        <button
+            id="envelopeButton"
+            class="envelope-wrapper"
+            aria-label="Open invitation"
+            type="button">
 
-    font-family: var(--sans);
+            <div class="envelope">
 
-    overflow-x: hidden;
+                <div class="envelope-back"></div>
 
-}
+                <div class="letter">
+                    <span>Russien</span>
+                    <small>XVIII</small>
+                </div>
 
-body.locked {
-    overflow: hidden;
-}
+                <div class="envelope-front"></div>
 
-img {
-    display: block;
-    width: 100%;
-}
+                <div class="envelope-flap"></div>
 
-button,
-a {
-    font: inherit;
-}
+                <div class="wax-seal">
+                    R
+                </div>
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+            </div>
 
+        </button>
 
-/* =====================================================
-   OPENING SCREEN
-===================================================== */
+        <p class="tap-text">
+            TAP THE ENVELOPE
+        </p>
 
-.opening-screen {
+        <div class="opening-name">
+            <span>RUSSIEN</span>
+            <strong>XVIII</strong>
+        </div>
 
-    position: fixed;
+    </div>
 
-    inset: 0;
+</div>
 
-    z-index: 9999;
 
-    min-height: 100svh;
+<!-- =====================================================
+     MAIN WEBSITE
+===================================================== -->
 
-    display: grid;
+<main id="mainInvitation" class="main-invitation">
 
-    place-items: center;
+    <!-- NAVIGATION -->
 
-    overflow: hidden;
+    <header class="navbar">
 
-    background:
+        <a href="#home" class="nav-logo">
+            R<span>·</span>XVIII
+        </a>
 
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,.9),
-            transparent 30%
-        ),
+        <nav class="nav-links" aria-label="Main navigation">
 
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(201,169,211,.28),
-            transparent 35%
-        ),
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#details">Details</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#traditions">18 Specials</a>
 
-        linear-gradient(
-            135deg,
-            #fcecf2,
-            #fffafa,
-            #eee6f5
-        );
+        </nav>
 
-    transition:
-        opacity 1.2s var(--transition),
-        visibility 1.2s;
+    </header>
 
-}
 
-.opening-screen.hidden {
+    <!-- =================================================
+         HERO
+    ================================================= -->
 
-    opacity: 0;
+    <section id="home" class="hero">
 
-    visibility: hidden;
+        <div class="hero-background"></div>
 
-    pointer-events: none;
+        <div class="hero-overlay"></div>
 
-}
+        <div class="floating-light light-one"></div>
+        <div class="floating-light light-two"></div>
+        <div class="floating-light light-three"></div>
 
+        <div class="hero-content reveal">
 
-.opening-content {
+            <p class="eyebrow">
+                YOU ARE CORDIALLY INVITED
+            </p>
 
-    position: relative;
+            <h1>
+                Russien's
+                <span>18th Birthday</span>
+            </h1>
 
-    width: min(900px, 92%);
+            <div class="hero-divider">
+                <span></span>
+                ✦
+                <span></span>
+            </div>
 
-    text-align: center;
+            <p class="hero-date">
+                SEPTEMBER 26, 2026
+            </p>
 
-    padding: 40px 20px;
+            <p class="hero-location">
+                MONTALBAN, RIZAL
+            </p>
 
-}
+            <a href="#details" class="primary-button">
+                Explore Invitation
+            </a>
 
+        </div>
 
-/* =====================================================
-   OPENING TEXT
-===================================================== */
+        <div class="scroll-indicator">
+            <span>SCROLL TO DISCOVER</span>
+            <div class="scroll-line"></div>
+        </div>
 
-.small-title {
+    </section>
 
-    letter-spacing: .45em;
 
-    font-size: clamp(
-        .65rem,
-        1.5vw,
-        .85rem
-    );
+    <!-- =================================================
+         INTRODUCTION
+    ================================================= -->
 
-    color: var(--purple-dark);
+    <section id="about" class="intro section">
 
-    animation: fadeDown 1.2s ease both;
+        <div class="section-decoration">✦</div>
 
-}
+        <div class="intro-content reveal">
 
-.invited-title {
+            <p class="section-label">
+                A BEAUTIFUL MILESTONE
+            </p>
 
-    margin-top: 5px;
+            <h2>
+                A Chapter
+                <span>Begins</span>
+            </h2>
 
-    font-family: var(--script);
+            <div class="ornament">❧ ✦ ❧</div>
 
-    font-size: clamp(
-        4rem,
-        10vw,
-        8rem
-    );
+            <p class="intro-text">
+                Eighteen is more than a number.
+                It is the beginning of a beautiful new chapter,
+                filled with dreams, memories, laughter,
+                and endless possibilities.
+            </p>
 
-    font-weight: 400;
+            <p class="intro-text">
+                With hearts filled with joy, we invite you
+                to celebrate this unforgettable milestone
+                in Russien's life.
+            </p>
 
-    line-height: .95;
+        </div>
 
-    color: #98677e;
+    </section>
 
-    text-shadow:
-        0 10px 35px rgba(150,100,130,.15);
 
-    animation:
-        titleReveal 1.4s var(--transition) both;
+    <!-- =================================================
+         FEATURE PHOTO
+    ================================================= -->
 
-}
+    <section class="feature-photo">
 
-.opening-subtitle {
+        <div class="feature-image reveal">
 
-    margin-top: 15px;
+            <img
+                src="images/hero.jpg"
+                alt="Russien's birthday portrait">
 
-    letter-spacing: .35em;
+            <div class="image-overlay">
 
-    font-size: .65rem;
+                <p>
+                    THE DEBUTANT
+                </p>
 
-    color: var(--text-light);
+                <h2>
+                    Russien
+                </h2>
 
-    animation:
-        fadeUp 1.3s .3s ease both;
+            </div>
 
-}
+        </div>
 
+    </section>
 
-/* =====================================================
-   ENVELOPE
-===================================================== */
 
-.envelope-wrapper {
+    <!-- =================================================
+         COUNTDOWN
+    ================================================= -->
 
-    position: relative;
+    <section class="countdown-section section">
 
-    margin: 55px auto 25px;
+        <div class="reveal">
 
-    width: min(520px, 88vw);
+            <p class="section-label">
+                UNTIL THE BIG DAY
+            </p>
 
-    aspect-ratio: 1.55 / 1;
+            <h2>
+                The Celebration
+                <span>Begins In</span>
+            </h2>
 
-    border: 0;
+            <div class="countdown">
 
-    background: transparent;
+                <div class="count-box">
+                    <strong id="days">00</strong>
+                    <span>DAYS</span>
+                </div>
 
-    cursor: pointer;
+                <div class="count-box">
+                    <strong id="hours">00</strong>
+                    <span>HOURS</span>
+                </div>
 
-    perspective: 1200px;
+                <div class="count-box">
+                    <strong id="minutes">00</strong>
+                    <span>MINUTES</span>
+                </div>
 
-    display: block;
+                <div class="count-box">
+                    <strong id="seconds">00</strong>
+                    <span>SECONDS</span>
+                </div>
 
-}
+            </div>
 
-.envelope {
+        </div>
 
-    position: absolute;
+    </section>
 
-    inset: 0;
 
-    transform-style: preserve-3d;
+    <!-- =================================================
+         EVENT DETAILS
+    ================================================= -->
 
-    filter:
-        drop-shadow(
-            0 30px 30px
-            rgba(120,75,100,.18)
-        );
+    <section id="details" class="details-section section">
 
-    transition:
-        transform 1.4s var(--transition);
+        <div class="details-heading reveal">
 
-}
+            <p class="section-label">
+                SAVE THE DATE
+            </p>
 
-.envelope-back {
+            <h2>
+                Event
+                <span>Details</span>
+            </h2>
 
-    position: absolute;
+        </div>
 
-    inset: 0;
+        <div class="details-grid">
 
-    border-radius: 4px;
+            <article class="detail-card reveal">
 
-    background:
-        linear-gradient(
-            145deg,
-            #f7cbd9,
-            #f2b8cd
-        );
+                <div class="detail-icon">
+                    ✦
+                </div>
 
-    border: 1px solid
-        rgba(160,100,130,.18);
+                <p>DATE</p>
 
-}
+                <h3>
+                    September 26
+                </h3>
 
+                <span>
+                    2026
+                </span>
 
-/* LETTER */
+            </article>
 
-.letter {
 
-    position: absolute;
+            <article class="detail-card reveal">
 
-    left: 8%;
+                <div class="detail-icon">
+                    ◷
+                </div>
 
-    right: 8%;
+                <p>TIME</p>
 
-    bottom: 3%;
+                <h3>
+                    4:00 PM
+                </h3>
 
-    height: 92%;
+                <span>
+                    In the afternoon
+                </span>
 
-    background:
+            </article>
 
-        linear-gradient(
-            135deg,
-            #fffdf9,
-            #fff5f7
-        );
 
-    box-shadow:
-        0 10px 25px rgba(100,70,90,.12);
+            <article class="detail-card reveal">
 
-    display: flex;
+                <div class="detail-icon">
+                    ♡
+                </div>
 
-    flex-direction: column;
+                <p>VENUE</p>
 
-    align-items: center;
+                <h3>
+                    XentroMall
+                </h3>
 
-    justify-content: center;
+                <span>
+                    Montalban, Rizal
+                </span>
 
-    gap: 5px;
+            </article>
 
-    font-family: var(--serif);
+        </div>
 
-    color: var(--purple-dark);
 
-    transform:
-        translateY(20%);
+        <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=XentroMall+Montalban+Rizal"
+            target="_blank"
+            rel="noopener noreferrer">
 
-    transition:
-        transform 1.3s .25s var(--transition);
+            VIEW LOCATION
+            <span>↗</span>
 
-}
+        </a>
 
-.letter span {
+    </section>
 
-    font-family: var(--script);
 
-    font-size: clamp(2rem, 5vw, 4rem);
+    <!-- =================================================
+         DRESS CODE
+    ================================================= -->
 
-}
+    <section class="dress-code section">
 
-.letter small {
+        <div class="dress-background"></div>
 
-    letter-spacing: .4em;
+        <div class="dress-content reveal">
 
-}
+            <p class="section-label">
+                ATTIRE
+            </p>
 
+            <h2>
+                Pretty in
+                <span>Pink</span>
+            </h2>
 
-/* FRONT */
+            <p>
+                Come dressed in your favorite shade
+                of pink and celebrate this special
+                milestone with us.
+            </p>
 
-.envelope-front {
+            <div class="pink-palette">
 
-    position: absolute;
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
 
-    inset: 0;
+            </div>
 
-    background:
+            <strong>
+                PINK
+            </strong>
 
-        linear-gradient(
-            145deg,
-            #f4c1d2,
-            #eeb0c6
-        );
+        </div>
 
-    clip-path:
-        polygon(
-            0 0,
-            50% 52%,
-            100% 0,
-            100% 100%,
-            0 100%
-        );
+    </section>
 
-    z-index: 3;
 
-}
+    <!-- =================================================
+         GALLERY
+    ================================================= -->
 
+    <section id="gallery" class="gallery-section section">
 
-/* FLAP */
+        <div class="gallery-heading reveal">
 
-.envelope-flap {
+            <p class="section-label">
+                MOMENTS TO REMEMBER
+            </p>
 
-    position: absolute;
+            <h2>
+                Through the
+                <span>Lens</span>
+            </h2>
 
-    left: 0;
+            <p>
+                A collection of memories from
+                Russien's special celebration.
+            </p>
 
-    top: 0;
+        </div>
 
-    width: 100%;
 
-    height: 62%;
+        <div class="gallery-grid">
 
-    background:
+            <div class="gallery-item large reveal">
 
-        linear-gradient(
-            145deg,
-            #f9d9e4,
-            #efb8cb
-        );
+                <img
+                    src="images/photo1.jpg"
+                    alt="Russien portrait">
 
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 100%
-        );
+            </div>
 
-    transform-origin: top center;
 
-    transition:
-        transform 1.3s var(--transition);
+            <div class="gallery-item reveal">
 
-    z-index: 5;
+                <img
+                    src="images/photo2.jpg"
+                    alt="Birthday photoshoot">
 
-}
+            </div>
 
 
-/* SEAL */
+            <div class="gallery-item reveal">
 
-.wax-seal {
+                <img
+                    src="images/photo3.jpg"
+                    alt="Russien photoshoot">
 
-    position: absolute;
+            </div>
 
-    z-index: 6;
 
-    left: 50%;
+            <div class="gallery-item wide reveal">
 
-    top: 50%;
+                <img
+                    src="images/photo4.jpg"
+                    alt="Birthday memory">
 
-    transform: translate(-50%, -25%);
+            </div>
 
-    width: clamp(55px, 10vw, 80px);
 
-    aspect-ratio: 1;
+            <div class="gallery-item reveal">
 
-    border-radius: 50%;
+                <img
+                    src="images/photo5.jpg"
+                    alt="Celebration photo">
 
-    display: grid;
+            </div>
 
-    place-items: center;
 
-    color: white;
+            <div class="gallery-item reveal">
 
-    font-family: var(--script);
+                <img
+                    src="images/photo6.jpg"
+                    alt="Special birthday moment">
 
-    font-size: 2rem;
+            </div>
 
-    background:
+        </div>
 
-        radial-gradient(
-            circle,
-            #d18ba6,
-            #aa617d
-        );
+    </section>
 
-    border: 4px solid
-        rgba(255,255,255,.5);
 
-    box-shadow:
-        0 10px 20px
-        rgba(110,70,90,.25);
+    <!-- =================================================
+         18 SPECIALS
+    ================================================= -->
 
-    transition:
-        opacity .4s,
-        transform .8s var(--transition);
+    <section id="traditions" class="traditions section">
 
-}
+        <div class="reveal">
 
+            <p class="section-label">
+                A NIGHT TO REMEMBER
+            </p>
 
-/* OPEN STATE */
+            <h2>
+                18
+                <span>Specials</span>
+            </h2>
 
-.envelope-wrapper.open .envelope-flap {
+            <p class="specials-instruction">
+                Tap a section to see the guests
+            </p>
 
-    transform:
-        rotateX(180deg);
+        </div>
 
-}
 
-.envelope-wrapper.open .letter {
+        <div class="traditions-grid">
 
-    transform:
-        translateY(-35%);
+            <!-- 18 GIFTS -->
+            <article class="tradition-card reveal"
+                     data-section="gifts"
+                     tabindex="0"
+                     role="button"
+                     aria-label="View guests for 18 Gifts">
 
-}
+                <span>01</span>
 
-.envelope-wrapper.open .wax-seal {
+                <div>
+                    <h3>18 Gifts</h3>
+                    <p>
+                        Thoughtful gifts for a beautiful new chapter.
+                    </p>
+                </div>
 
-    opacity: 0;
+            </article>
 
-    transform:
-        translate(-50%, -25%)
-        scale(.5);
 
-}
+            <!-- 18 CANDLES -->
+            <article class="tradition-card reveal"
+                     data-section="candles"
+                     tabindex="0"
+                     role="button"
+                     aria-label="View guests for 18 Candles">
 
+                <span>02</span>
 
-.tap-text {
+                <div>
+                    <h3>18 Candles</h3>
+                    <p>
+                        Eighteen lights representing wishes and blessings.
+                    </p>
+                </div>
 
-    font-size: .65rem;
+            </article>
 
-    letter-spacing: .3em;
 
-    color: var(--purple-dark);
+            <!-- 18 ROSES -->
+            <article class="tradition-card reveal"
+                     data-section="roses"
+                     tabindex="0"
+                     role="button"
+                     aria-label="View guests for 18 Roses">
 
-    animation:
-        pulseText 2s infinite;
+                <span>03</span>
 
-}
+                <div>
+                    <h3>18 Roses</h3>
+                    <p>
+                        A celebration of love, friendship, and meaningful connections.
+                    </p>
+                </div>
 
-.opening-name {
+            </article>
 
-    position: absolute;
 
-    right: 4%;
+            <!-- 18 BLUE BILLS -->
+            <article class="tradition-card reveal"
+                     data-section="blue-bills"
+                     tabindex="0"
+                     role="button"
+                     aria-label="View guests for 18 Blue Bills">
 
-    bottom: 5%;
+                <span>04</span>
 
-    display: flex;
+                <div>
+                    <h3>18 Blue Bills</h3>
+                    <p>
+                        A traditional gesture of blessings and prosperity.
+                    </p>
+                </div>
 
-    flex-direction: column;
+            </article>
 
-    align-items: flex-end;
 
-    color: var(--purple-dark);
+            <!-- 18 SHOTS -->
+            <article class="tradition-card reveal"
+                     data-section="shots"
+                     tabindex="0"
+                     role="button"
+                     aria-label="View guests for 18 Shots">
 
-}
+                <span>05</span>
 
-.opening-name span {
+                <div>
+                    <h3>18 Shots</h3>
+                    <p>
+                        A toast to eighteen wonderful years and many more to come.
+                    </p>
+                </div>
 
-    font-size: .6rem;
+            </article>
 
-    letter-spacing: .3em;
+        </div>
 
-}
 
-.opening-name strong {
+        <!-- GUEST POPUP -->
 
-    font-family: var(--serif);
+        <div id="guestPopup"
+             class="guest-popup"
+             aria-hidden="true">
 
-    font-size: 2rem;
+            <div class="guest-popup-overlay"></div>
 
-    font-weight: 400;
+            <div class="guest-popup-box"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="guestPopupTitle">
 
-}
+                <button
+                    id="closeGuestPopup"
+                    class="guest-popup-close"
+                    type="button"
+                    aria-label="Close guest list">
+                    ×
+                </button>
 
+                <p class="guest-popup-label">
+                    RUSSIEN'S XVIII
+                </p>
 
-/* =====================================================
-   MAIN INVITATION
-===================================================== */
+                <h3 id="guestPopupTitle">
+                    18 Gifts
+                </h3>
 
-.main-invitation {
+                <div class="guest-divider">
+                    <span></span>
+                    ✦
+                    <span></span>
+                </div>
 
-    opacity: 0;
+                <ol id="guestList">
+                    <!-- Guests are inserted by JavaScript -->
+                </ol>
 
-    transform: translateY(30px);
+            </div>
 
-    transition:
-        opacity 1.5s 1s var(--transition),
-        transform 1.5s 1s var(--transition);
+        </div>
 
-}
+    </section>
 
-.main-invitation.visible {
 
-    opacity: 1;
+    <!-- =================================================
+         FINAL MESSAGE
+    ================================================= -->
 
-    transform: translateY(0);
+    <section class="closing section">
 
-}
+        <div class="closing-glow"></div>
 
+        <div class="closing-content reveal">
 
-/* =====================================================
-   NAVBAR
-===================================================== */
+            <p class="section-label">
+                YOUR PRESENCE MATTERS
+            </p>
 
-.navbar {
+            <h2>
+                Let's make this
+                <span>day unforgettable.</span>
+            </h2>
 
-    position: fixed;
+            <div class="closing-ornament">
+                ✦ ❧ ✦
+            </div>
 
-    top: 0;
+            <p>
+                Your presence would make this
+                celebration even more special.
+                We can't wait to celebrate
+                this beautiful milestone with you.
+            </p>
 
-    left: 0;
+            <div class="closing-name">
+                <small>WITH LOVE</small>
 
-    width: 100%;
+                <strong>
+                    Russien
+                </strong>
 
-    z-index: 100;
+                <span>
+                    XVIII
+                </span>
+            </div>
 
-    display: flex;
+            <p class="closing-date">
+                SEPTEMBER 26 · 2026
+            </p>
 
-    justify-content: space-between;
+        </div>
 
-    align-items: center;
+    </section>
 
-    padding:
-        25px clamp(20px, 5vw, 70px);
 
-    background:
-        linear-gradient(
-            rgba(255,255,255,.75),
-            transparent
-        );
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
 
-    backdrop-filter: blur(10px);
+    <footer>
 
-}
+        <p>
+            MADE WITH LOVE FOR RUSSIEN'S 18TH
+        </p>
 
-.nav-logo {
+        <span>
+            ✦
+        </span>
 
-    font-family: var(--serif);
+        <p>
+            2026
+        </p>
 
-    font-size: 1.4rem;
+    </footer>
 
-    letter-spacing: .08em;
+</main>
 
-}
 
-.nav-logo span {
-    color: var(--pink-dark);
-}
+<!-- BACKGROUND MUSIC -->
 
-.nav-links {
+<audio
+    id="backgroundMusic"
+    preload="auto"
+    loop>
 
-    display: flex;
+    <source
+        src="music/enchanted.mp3"
+        type="audio/mpeg">
 
-    gap: clamp(15px, 3vw, 40px);
+</audio>
 
-}
 
-.nav-links a {
+<script src="script.js"></script>
 
-    font-size: .65rem;
-
-    letter-spacing: .18em;
-
-    color: var(--text-light);
-
-    transition: color .3s;
-
-}
-
-.nav-links a:hover {
-    color: var(--pink-dark);
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero {
-
-    position: relative;
-
-    min-height: 100svh;
-
-    display: grid;
-
-    place-items: center;
-
-    overflow: hidden;
-
-    color: white;
-
-}
-
-.hero-background {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-
-        linear-gradient(
-            rgba(105,60,85,.15),
-            rgba(105,60,85,.4)
-        ),
-
-        url("images/hero.jpg")
-        center / cover no-repeat;
-
-    transform:
-        scale(1.05);
-
-    animation:
-        heroZoom 10s ease-out forwards;
-
-}
-
-.hero-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-
-        linear-gradient(
-            180deg,
-            rgba(60,30,50,.25),
-            rgba(70,35,55,.5)
-        );
-
-}
-
-.hero-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    text-align: center;
-
-    width: min(900px, 90%);
-
-}
-
-.eyebrow {
-
-    letter-spacing: .4em;
-
-    font-size: .65rem;
-
-}
-
-.hero h1 {
-
-    margin-top: 15px;
-
-    font-family: var(--serif);
-
-    font-size: clamp(
-        4rem,
-        10vw,
-        9rem
-    );
-
-    line-height: .85;
-
-    font-weight: 400;
-
-}
-
-.hero h1 span {
-
-    display: block;
-
-    font-family: var(--script);
-
-    font-size: .8em;
-
-}
-
-.hero-divider {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin: 30px 0;
-
-}
-
-.hero-divider span {
-
-    width: 70px;
-
-    height: 1px;
-
-    background:
-        rgba(255,255,255,.7);
-
-}
-
-.hero-date {
-
-    letter-spacing: .25em;
-
-    font-size: .75rem;
-
-}
-
-.hero-location {
-
-    margin-top: 8px;
-
-    letter-spacing: .2em;
-
-    font-size: .65rem;
-
-}
-
-.primary-button,
-.map-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-top: 35px;
-
-    padding: 15px 28px;
-
-    border: 1px solid
-        rgba(255,255,255,.6);
-
-    border-radius: 100px;
-
-    letter-spacing: .15em;
-
-    font-size: .65rem;
-
-    transition:
-        background .4s,
-        color .4s,
-        transform .4s;
-
-}
-
-.primary-button:hover {
-
-    background: white;
-
-    color: var(--purple-dark);
-
-    transform: translateY(-4px);
-
-}
-
-.scroll-indicator {
-
-    position: absolute;
-
-    z-index: 2;
-
-    bottom: 35px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 12px;
-
-    font-size: .55rem;
-
-    letter-spacing: .25em;
-
-}
-
-.scroll-line {
-
-    width: 1px;
-
-    height: 45px;
-
-    background: white;
-
-    animation:
-        scrollLine 2s infinite;
-
-}
-
-
-/* =====================================================
-   SECTIONS
-===================================================== */
-
-.section {
-
-    position: relative;
-
-    padding:
-        clamp(90px, 12vw, 170px)
-        clamp(20px, 7vw, 100px);
-
-}
-
-.section-label {
-
-    font-size: .62rem;
-
-    letter-spacing: .35em;
-
-    color: var(--purple-dark);
-
-}
-
-
-/* =====================================================
-   INTRO
-===================================================== */
-
-.intro {
-
-    text-align: center;
-
-    background:
-
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(235,193,211,.4),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(197,174,213,.3),
-            transparent 25%
-        );
-
-}
-
-.intro-content {
-
-    max-width: 750px;
-
-    margin: auto;
-
-}
-
-.intro h2,
-.details-heading h2,
-.gallery-heading h2,
-.traditions h2,
-.closing h2,
-.countdown-section h2,
-.dress-content h2 {
-
-    margin-top: 15px;
-
-    font-family: var(--serif);
-
-    font-weight: 400;
-
-    font-size: clamp(
-        3rem,
-        7vw,
-        6rem
-    );
-
-    line-height: .95;
-
-}
-
-.intro h2 span,
-.details-heading h2 span,
-.gallery-heading h2 span,
-.traditions h2 span,
-.closing h2 span,
-.countdown-section h2 span,
-.dress-content h2 span {
-
-    display: block;
-
-    font-family: var(--script);
-
-    color: var(--pink-dark);
-
-}
-
-.ornament {
-
-    margin: 25px;
-
-    color: var(--pink-dark);
-
-}
-
-.intro-text {
-
-    max-width: 600px;
-
-    margin: 15px auto;
-
-    line-height: 1.9;
-
-    font-size: .95rem;
-
-    color: var(--text-light);
-
-}
-
-
-/* =====================================================
-   FEATURE PHOTO
-===================================================== */
-
-.feature-photo {
-
-    padding:
-        0 clamp(15px, 5vw, 70px) 100px;
-
-    background: var(--pearl);
-
-}
-
-.feature-image {
-
-    position: relative;
-
-    width: min(1100px, 100%);
-
-    margin: auto;
-
-    overflow: hidden;
-
-    border-radius: 3px;
-
-}
-
-.feature-image img {
-
-    height: min(80vh, 800px);
-
-    object-fit: cover;
-
-    transition:
-        transform 1.5s var(--transition);
-
-}
-
-.feature-image:hover img {
-
-    transform: scale(1.04);
-
-}
-
-.image-overlay {
-
-    position: absolute;
-
-    inset: auto 0 0 0;
-
-    padding: 50px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(40,20,35,.65)
-        );
-
-}
-
-.image-overlay p {
-
-    letter-spacing: .3em;
-
-    font-size: .6rem;
-
-}
-
-.image-overlay h2 {
-
-    margin-top: 5px;
-
-    font-family: var(--script);
-
-    font-size: clamp(
-        3rem,
-        7vw,
-        6rem
-    );
-
-    font-weight: 400;
-
-}
-
-
-/* =====================================================
-   COUNTDOWN
-===================================================== */
-
-.countdown-section {
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--pink-light),
-            var(--purple-light)
-        );
-
-}
-
-.countdown {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    width: min(900px, 100%);
-
-    margin: 60px auto 0;
-
-}
-
-.count-box {
-
-    padding: 25px 10px;
-
-    border-right: 1px solid var(--border);
-
-}
-
-.count-box:last-child {
-    border-right: none;
-}
-
-.count-box strong {
-
-    display: block;
-
-    font-family: var(--serif);
-
-    font-size: clamp(
-        2.5rem,
-        6vw,
-        5rem
-    );
-
-    font-weight: 400;
-
-    color: var(--purple-dark);
-
-}
-
-.count-box span {
-
-    font-size: .55rem;
-
-    letter-spacing: .25em;
-
-    color: var(--text-light);
-
-}
-
-
-/* =====================================================
-   DETAILS
-===================================================== */
-
-.details-section {
-
-    text-align: center;
-
-}
-
-.details-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    max-width: 1100px;
-
-    margin: 70px auto 0;
-
-}
-
-.detail-card {
-
-    padding: 50px 30px;
-
-    border-right: 1px solid var(--border);
-
-}
-
-.detail-card:last-child {
-    border-right: none;
-}
-
-.detail-icon {
-
-    color: var(--pink-dark);
-
-    font-size: 1.5rem;
-
-    margin-bottom: 20px;
-
-}
-
-.detail-card p {
-
-    font-size: .55rem;
-
-    letter-spacing: .3em;
-
-}
-
-.detail-card h3 {
-
-    margin-top: 12px;
-
-    font-family: var(--serif);
-
-    font-size: 2rem;
-
-    font-weight: 500;
-
-}
-
-.detail-card span {
-
-    color: var(--text-light);
-
-    font-size: .8rem;
-
-}
-
-.map-button {
-
-    color: var(--purple-dark);
-
-    border-color: var(--border);
-
-}
-
-.map-button:hover {
-
-    background: var(--purple-dark);
-
-    color: white;
-
-}
-
-
-/* =====================================================
-   DRESS CODE
-===================================================== */
-
-.dress-code {
-
-    min-height: 700px;
-
-    display: grid;
-
-    place-items: center;
-
-    overflow: hidden;
-
-    color: white;
-
-}
-
-.dress-background {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-
-        linear-gradient(
-            rgba(120,70,100,.5),
-            rgba(120,70,100,.7)
-        ),
-
-        url("images/photo4.jpg")
-        center / cover no-repeat;
-
-    background-attachment: fixed;
-
-}
-
-.dress-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: min(700px, 90%);
-
-    text-align: center;
-
-}
-
-.dress-content .section-label {
-    color: white;
-}
-
-.dress-content h2 {
-    color: white;
-}
-
-.dress-content h2 span {
-    color: #ffd7e5;
-}
-
-.dress-content p {
-
-    max-width: 500px;
-
-    margin: 30px auto;
-
-    line-height: 1.8;
-
-}
-
-.pink-palette {
-
-    display: flex;
-
-    justify-content: center;
-
-    margin: 35px 0;
-
-}
-
-.pink-palette span {
-
-    width: 50px;
-
-    height: 50px;
-
-    border-radius: 50%;
-
-    margin-left: -8px;
-
-    border: 3px solid rgba(255,255,255,.7);
-
-}
-
-.pink-palette span:nth-child(1) {
-    background: #f9d5df;
-}
-
-.pink-palette span:nth-child(2) {
-    background: #efb6ca;
-}
-
-.pink-palette span:nth-child(3) {
-    background: #d98da9;
-}
-
-.pink-palette span:nth-child(4) {
-    background: #c57798;
-}
-
-.pink-palette span:nth-child(5) {
-    background: #eee2ef;
-}
-
-.dress-content strong {
-
-    letter-spacing: .5em;
-
-    font-size: .7rem;
-
-}
-
-
-/* =====================================================
-   GALLERY
-===================================================== */
-
-.gallery-section {
-
-    background:
-        linear-gradient(
-            180deg,
-            #fffdfb,
-            #fdf3f7
-        );
-
-}
-
-.gallery-heading {
-
-    max-width: 650px;
-
-    margin-bottom: 70px;
-
-}
-
-.gallery-heading > p:last-child {
-
-    margin-top: 25px;
-
-    color: var(--text-light);
-
-    line-height: 1.8;
-
-}
-
-.gallery-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    grid-auto-rows: 350px;
-
-    gap: 15px;
-
-}
-
-.gallery-item {
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-.gallery-item.large {
-
-    grid-row: span 2;
-
-}
-
-.gallery-item.wide {
-
-    grid-column: span 2;
-
-}
-
-.gallery-item img {
-
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform 1s var(--transition);
-
-}
-
-.gallery-item:hover img {
-
-    transform: scale(1.06);
-
-}
-
-
-/* =====================================================
-   TRADITIONS
-===================================================== */
-
-.traditions {
-
-    background:
-        linear-gradient(
-            135deg,
-            #f9e7ee,
-            #eee4f3
-        );
-
-}
-
-.traditions-grid {
-
-    max-width: 1000px;
-
-    margin: 70px auto 0;
-
-}
-
-.tradition-card {
-
-    display: grid;
-
-    grid-template-columns: 80px 1fr;
-
-    align-items: center;
-
-    padding: 30px 0;
-
-    border-bottom: 1px solid var(--border);
-
-    transition:
-        transform .5s var(--transition);
-
-}
-
-.tradition-card:hover {
-
-    transform: translateX(15px);
-
-}
-
-.tradition-card > span {
-
-    font-family: var(--serif);
-
-    color: var(--pink-dark);
-
-    font-size: 1.2rem;
-
-}
-
-.tradition-card h3 {
-
-    font-family: var(--serif);
-
-    font-size: 2rem;
-
-    font-weight: 500;
-
-}
-
-.tradition-card p {
-
-    margin-top: 5px;
-
-    color: var(--text-light);
-
-    font-size: .8rem;
-
-}
-
-
-/* =====================================================
-   CLOSING
-===================================================== */
-
-.closing {
-
-    min-height: 90svh;
-
-    display: grid;
-
-    place-items: center;
-
-    text-align: center;
-
-    overflow: hidden;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #f9dce7,
-            #eee3f1 60%,
-            #e4d5e9
-        );
-
-}
-
-.closing-content {
-
-    position: relative;
-
-    max-width: 800px;
-
-}
-
-.closing h2 span {
-
-    color: var(--purple-dark);
-
-}
-
-.closing-content > p:not(.section-label):not(.closing-date) {
-
-    max-width: 550px;
-
-    margin: 35px auto;
-
-    line-height: 1.9;
-
-    color: var(--text-light);
-
-}
-
-.closing-ornament {
-
-    margin-top: 30px;
-
-    color: var(--pink-dark);
-
-}
-
-.closing-name {
-
-    display: flex;
-
-    flex-direction: column;
-
-    margin-top: 60px;
-
-}
-
-.closing-name small {
-
-    letter-spacing: .35em;
-
-    font-size: .55rem;
-
-}
-
-.closing-name strong {
-
-    font-family: var(--script);
-
-    font-size: clamp(
-        4rem,
-        9vw,
-        7rem
-    );
-
-    font-weight: 400;
-
-    color: var(--purple-dark);
-
-}
-
-.closing-name span {
-
-    letter-spacing: .5em;
-
-    font-family: var(--serif);
-
-}
-
-.closing-date {
-
-    margin-top: 30px;
-
-    font-size: .6rem;
-
-    letter-spacing: .3em;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-
-    padding: 30px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 20px;
-
-    background: #eee1ed;
-
-    color: var(--text-light);
-
-}
-
-footer p {
-
-    font-size: .5rem;
-
-    letter-spacing: .2em;
-
-}
-
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-.reveal {
-
-    opacity: 0;
-
-    transform: translateY(60px);
-
-    transition:
-        opacity 1s var(--transition),
-        transform 1s var(--transition);
-
-}
-
-.reveal.active {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-/* =====================================================
-   LIGHTS
-===================================================== */
-
-.floating-light {
-
-    position: absolute;
-
-    width: 8px;
-
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    box-shadow:
-        0 0 20px 5px rgba(255,255,255,.8);
-
-    animation:
-        floatLight 5s infinite ease-in-out;
-
-    z-index: 1;
-
-}
-
-.light-one {
-    top: 25%;
-    left: 20%;
-}
-
-.light-two {
-    top: 60%;
-    right: 15%;
-    animation-delay: 1.5s;
-}
-
-.light-three {
-    top: 35%;
-    right: 30%;
-    animation-delay: 3s;
-}
-
-
-/* =====================================================
-   ANIMATIONS
-===================================================== */
-
-@keyframes fadeDown {
-
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-@keyframes fadeUp {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-@keyframes titleReveal {
-
-    from {
-        opacity: 0;
-        transform: scale(.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-}
-
-@keyframes pulseText {
-
-    0%,
-    100% {
-        opacity: .45;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-}
-
-@keyframes heroZoom {
-
-    from {
-        transform: scale(1.05);
-    }
-
-    to {
-        transform: scale(1);
-    }
-
-}
-
-@keyframes scrollLine {
-
-    0% {
-        transform: scaleY(0);
-        transform-origin: top;
-    }
-
-    50% {
-        transform: scaleY(1);
-        transform-origin: top;
-    }
-
-    51% {
-        transform-origin: bottom;
-    }
-
-    100% {
-        transform: scaleY(0);
-        transform-origin: bottom;
-    }
-
-}
-
-@keyframes floatLight {
-
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            scale(1);
-        opacity: .4;
-    }
-
-    50% {
-        transform:
-            translateY(-30px)
-            scale(1.5);
-        opacity: 1;
-    }
-
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media (max-width: 800px) {
-
-    .nav-links {
-
-        display: none;
-
-    }
-
-    .navbar {
-
-        padding: 20px;
-
-    }
-
-    .details-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-    .detail-card {
-
-        border-right: none;
-
-        border-bottom: 1px solid var(--border);
-
-    }
-
-    .detail-card:last-child {
-
-        border-bottom: none;
-
-    }
-
-    .gallery-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        grid-auto-rows: 280px;
-
-    }
-
-    .gallery-item.large {
-
-        grid-row: span 1;
-
-    }
-
-    .gallery-item.wide {
-
-        grid-column: span 2;
-
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 550px) {
-
-    .opening-content {
-
-        padding:
-            30px 10px;
-
-    }
-
-    .opening-subtitle {
-
-        letter-spacing: .2em;
-
-        font-size: .55rem;
-
-    }
-
-    .envelope-wrapper {
-
-        margin-top: 45px;
-
-    }
-
-    .opening-name {
-
-        position: static;
-
-        margin-top: 20px;
-
-        align-items: center;
-
-    }
-
-    .hero h1 {
-
-        font-size: clamp(
-            3.4rem,
-            18vw,
-            5rem
-        );
-
-    }
-
-    .hero-divider span {
-
-        width: 35px;
-
-    }
-
-    .section {
-
-        padding:
-            80px 20px;
-
-    }
-
-    .countdown {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
-
-    .count-box {
-
-        border-right: none;
-
-        border-bottom: 1px solid var(--border);
-
-    }
-
-    .count-box:nth-child(odd) {
-
-        border-right: 1px solid var(--border);
-
-    }
-
-    .count-box:nth-last-child(-n+2) {
-
-        border-bottom: none;
-
-    }
-
-    .feature-photo {
-
-        padding:
-            0 15px 70px;
-
-    }
-
-    .feature-image img {
-
-        height: 65vh;
-
-    }
-
-    .image-overlay {
-
-        padding: 25px;
-
-    }
-
-    .gallery-grid {
-
-        grid-template-columns: 1fr;
-
-        grid-auto-rows: 400px;
-
-    }
-
-    .gallery-item.wide {
-
-        grid-column: span 1;
-
-    }
-
-    .tradition-card {
-
-        grid-template-columns:
-            55px 1fr;
-
-    }
-
-    .tradition-card h3 {
-
-        font-size: 1.7rem;
-
-    }
-
-    .dress-background {
-
-        background-attachment:
-            scroll;
-
-    }
-
-    footer {
-
-        flex-direction: column;
-
-        gap: 8px;
-
-    }
-
-}
-
-
-/* =====================================================
-   ACCESSIBILITY
-===================================================== */
-
-.envelope-wrapper:focus-visible,
-a:focus-visible {
-
-    outline:
-        3px solid
-        rgba(168,93,120,.7);
-
-    outline-offset: 6px;
-
-}
-
-
-/* Respect user's reduced-motion preference */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration: .01ms !important;
-
-        animation-iteration-count: 1 !important;
-
-        transition-duration: .01ms !important;
-
-    }
-
-    .reveal {
-
-        opacity: 1;
-
-        transform: none;
-
-    }
-
-}
+</body>
+</html>
