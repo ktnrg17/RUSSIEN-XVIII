@@ -2269,3 +2269,200 @@ body.popup-open {
         padding: 6px 0;
     }
 }
+
+
+/* =====================================================
+   ENVELOPE CLICK FIX
+   Ensures decorative layers never block the button
+===================================================== */
+
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: auto;
+    min-height: 100svh;
+}
+
+.opening-glow,
+.opening-particles {
+    pointer-events: none;
+}
+
+.opening-content {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.envelope-wrapper {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+/* Make the whole envelope area receive taps */
+.envelope-wrapper,
+.envelope-wrapper * {
+    pointer-events: auto;
+}
+
+/* Keep decorative envelope pieces from stealing the button click */
+.envelope-wrapper .envelope,
+.envelope-wrapper .envelope-back,
+.envelope-wrapper .letter,
+.envelope-wrapper .envelope-front,
+.envelope-wrapper .envelope-flap,
+.envelope-wrapper .wax-seal {
+    pointer-events: none;
+}
+
+/* iPad/iPhone touch support */
+@media (hover: none) and (pointer: coarse) {
+    .envelope-wrapper {
+        touch-action: manipulation;
+        cursor: pointer;
+    }
+}
+
+/* =====================================================
+   GUEST POPUP
+===================================================== */
+
+body.popup-open {
+    overflow: hidden;
+}
+
+.guest-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.guest-popup.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.guest-popup-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(40, 20, 30, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.guest-popup-box {
+    position: relative;
+    z-index: 2;
+    width: min(520px, 92vw);
+    max-height: 82svh;
+    overflow-y: auto;
+    padding: 35px 28px;
+    background: #fff7fa;
+    border: 1px solid rgba(170, 100, 130, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 25px 70px rgba(50, 20, 35, 0.3);
+    text-align: center;
+    transform: translateY(15px) scale(0.97);
+    transition: transform 0.3s ease;
+    -webkit-overflow-scrolling: touch;
+}
+
+.guest-popup.active .guest-popup-box {
+    transform: translateY(0) scale(1);
+}
+
+.guest-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    background: transparent;
+    color: #8f526b;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3;
+    touch-action: manipulation;
+}
+
+.guest-popup-label {
+    margin: 0 0 8px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #a56b82;
+}
+
+.guest-popup-box h3 {
+    margin: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(30px, 7vw, 44px);
+    font-weight: 600;
+    color: #704052;
+}
+
+.guest-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 15px 0 22px;
+    color: #b77a91;
+}
+
+.guest-divider span {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: #d9aabd;
+}
+
+.guest-popup-box ol {
+    margin: 0;
+    padding: 0 0 0 32px;
+    text-align: left;
+}
+
+.guest-popup-box li {
+    padding: 6px 0;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    color: #593b47;
+}
+
+@media (max-width: 600px) {
+    .guest-popup {
+        padding: 14px;
+    }
+
+    .guest-popup-box {
+        width: 94vw;
+        max-height: 84svh;
+        padding: 32px 20px 25px;
+        border-radius: 17px;
+    }
+
+    .guest-popup-box li {
+        font-size: 14px;
+        padding: 5px 0;
+    }
+
+    .guest-divider span {
+        width: 40px;
+    }
+}
