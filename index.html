@@ -1,108 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+                   viewport-fit=cover">
 
-    <meta
-        name="description"
-        content="Russien @ 18 — Digital Birthday Invitation"
-    >
+    <meta name="theme-color" content="#f8dce8">
 
-    <title>Russien @ 18</title>
+    <meta name="description"
+          content="You are invited to celebrate Russien's 18th Birthday.">
 
-    <link rel="stylesheet" href="style.css">
+    <title>Russien's 18th Birthday | You Are Invited</title>
 
-    <!-- Elegant fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
 
-<body class="locked">
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
 
+<div id="openingScreen" class="opening-screen">
 
-    <!-- ==================================================
-         OPENING SCREEN
-    =================================================== -->
+    <div class="opening-glow"></div>
 
-    <section id="openingScreen" class="opening-screen">
+    <div class="opening-particles"></div>
 
-        <div class="opening-glow"></div>
+    <div class="opening-content">
 
-        <div class="particles" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <p class="small-title">
+            YOU ARE
+        </p>
 
+        <h1 class="invited-title">
+            Invited
+        </h1>
 
-        <div class="opening-content">
+        <p class="opening-subtitle">
+            TO CELEBRATE A SPECIAL MOMENT
+        </p>
 
-            <p class="opening-small">
-                YOU ARE
-            </p>
+        <!-- ENVELOPE -->
 
-            <h1 class="opening-title">
-                Invited
-            </h1>
+        <button
+            id="envelopeButton"
+            class="envelope-wrapper"
+            aria-label="Open invitation"
+            type="button">
 
+            <div class="envelope">
 
-            <!-- ENVELOPE -->
+                <div class="envelope-back"></div>
 
-            <button
-                id="envelopeButton"
-                class="envelope-wrapper"
-                aria-label="Open invitation"
-                type="button"
-            >
-
-                <div class="envelope">
-
-                    <div class="envelope-back"></div>
-
-                    <div class="letter">
-
-                        <span>
-                            Russien
-                        </span>
-
-                        <small>
-                            @ 18
-                        </small>
-
-                    </div>
-
-                    <div class="envelope-front"></div>
-
-                    <div class="envelope-flap"></div>
-
-                    <div class="wax-seal">
-                        R
-                    </div>
-
+                <div class="letter">
+                    <span>Russien</span>
+                    <small>XVIII</small>
                 </div>
 
-            </button>
+                <div class="envelope-front"></div>
+
+                <div class="envelope-flap"></div>
+
+                <div class="wax-seal">
+                    R
+                </div>
+
+            </div>
+
+        </button>
+
+        <p class="tap-text">
+            TAP THE ENVELOPE
+        </p>
+
+        <div class="opening-name">
+            <span>RUSSIEN</span>
+            <strong>XVIII</strong>
+        </div>
+
+    </div>
+
+</div>
 
 
-            <p class="tap-text">
-                TAP TO OPEN
+<!-- =====================================================
+     MAIN WEBSITE
+===================================================== -->
+
+<main id="mainInvitation" class="main-invitation">
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="#home" class="nav-logo">
+            R<span>·</span>XVIII
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#details">Details</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#traditions">18 Specials</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =================================================
+         HERO
+    ================================================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-background"></div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="floating-light light-one"></div>
+        <div class="floating-light light-two"></div>
+        <div class="floating-light light-three"></div>
+
+        <div class="hero-content reveal">
+
+            <p class="eyebrow">
+                YOU ARE CORDIALLY INVITED
+            </p>
+
+            <h1>
+                Russien's
+                <span>18th Birthday</span>
+            </h1>
+
+            <div class="hero-divider">
+                <span></span>
+                ✦
+                <span></span>
+            </div>
+
+            <p class="hero-date">
+                SEPTEMBER 26, 2026
+            </p>
+
+            <p class="hero-location">
+                MONTALBAN, RIZAL
+            </p>
+
+            <a href="#details" class="primary-button">
+                Explore Invitation
+            </a>
+
+        </div>
+
+        <div class="scroll-indicator">
+            <span>SCROLL TO DISCOVER</span>
+            <div class="scroll-line"></div>
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         INTRODUCTION
+    ================================================= -->
+
+    <section id="about" class="intro section">
+
+        <div class="section-decoration">✦</div>
+
+        <div class="intro-content reveal">
+
+            <p class="section-label">
+                A BEAUTIFUL MILESTONE
+            </p>
+
+            <h2>
+                A Chapter
+                <span>Begins</span>
+            </h2>
+
+            <div class="ornament">❧ ✦ ❧</div>
+
+            <p class="intro-text">
+                Eighteen is more than a number.
+                It is the beginning of a beautiful new chapter,
+                filled with dreams, memories, laughter,
+                and endless possibilities.
+            </p>
+
+            <p class="intro-text">
+                With hearts filled with joy, we invite you
+                to celebrate this unforgettable milestone
+                in Russien's life.
             </p>
 
         </div>
@@ -110,766 +212,495 @@
     </section>
 
 
+    <!-- =================================================
+         FEATURE PHOTO
+    ================================================= -->
 
-    <!-- ==================================================
-         MAIN INVITATION
-    =================================================== -->
+    <section class="feature-photo">
 
-    <main id="mainInvitation" class="main-invitation">
+        <div class="feature-image reveal">
 
+            <img
+                src="images/hero.jpg"
+                alt="Russien's birthday portrait">
 
-        <!-- ==================================================
-             HERO
-        =================================================== -->
+            <div class="image-overlay">
 
-        <section class="hero section-dark">
-
-            <div class="hero-background"></div>
-
-            <div class="hero-overlay"></div>
-
-            <div class="hero-content reveal">
-
-                <p class="eyebrow">
-                    A SPECIAL CELEBRATION
-                </p>
-
-                <h1>
-                    Russien @ 18
-                </h1>
-
-                <div class="hero-line"></div>
-
-                <p class="hero-date">
-                    September 26, 2026
-                    <span>•</span>
-                    4:00 PM
-                </p>
-
-                <p class="hero-location">
-                    Montalban, Rizal
-                </p>
-
-                <a
-                    href="https://www.google.com/maps/dir//XentroMall+Montalban,+E+Rodriguez+Hwy,+Rodriguez,+Rizal/@14.7184929,121.1373764,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3397bb0031e82a91:0x7cc6db022661f25f!2m2!1d121.1420344!2d14.7294845"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="map-button"
-                >
-                    VIEW LOCATION
-                </a>
-
-            </div>
-
-            <div class="scroll-indicator">
-                <span>SCROLL</span>
-                <i></i>
-            </div>
-
-        </section>
-
-
-
-        <!-- ==================================================
-             INVITATION MESSAGE
-        =================================================== -->
-
-        <section class="message-section section-light">
-
-            <div class="soft-orb orb-one"></div>
-            <div class="soft-orb orb-two"></div>
-
-            <div class="container reveal">
-
-                <p class="eyebrow pink">
-                    YOU ARE CORDIALLY INVITED
+                <p>
+                    THE DEBUTANT
                 </p>
 
                 <h2>
-                    A night to remember
+                    Russien
                 </h2>
 
-                <div class="decorative-line">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         COUNTDOWN
+    ================================================= -->
+
+    <section class="countdown-section section">
+
+        <div class="reveal">
+
+            <p class="section-label">
+                UNTIL THE BIG DAY
+            </p>
+
+            <h2>
+                The Celebration
+                <span>Begins In</span>
+            </h2>
+
+            <div class="countdown">
+
+                <div class="count-box">
+                    <strong id="days">00</strong>
+                    <span>DAYS</span>
+                </div>
+
+                <div class="count-box">
+                    <strong id="hours">00</strong>
+                    <span>HOURS</span>
+                </div>
+
+                <div class="count-box">
+                    <strong id="minutes">00</strong>
+                    <span>MINUTES</span>
+                </div>
+
+                <div class="count-box">
+                    <strong id="seconds">00</strong>
+                    <span>SECONDS</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         EVENT DETAILS
+    ================================================= -->
+
+    <section id="details" class="details-section section">
+
+        <div class="details-heading reveal">
+
+            <p class="section-label">
+                SAVE THE DATE
+            </p>
+
+            <h2>
+                Event
+                <span>Details</span>
+            </h2>
+
+        </div>
+
+        <div class="details-grid">
+
+            <article class="detail-card reveal">
+
+                <div class="detail-icon">
                     ✦
                 </div>
 
-                <p class="invitation-message">
-                    With joy in our hearts, we invite you to celebrate
-                    a beautiful milestone as Russien turns eighteen.
-                    Join us for an evening filled with love, laughter,
-                    cherished memories, and unforgettable moments.
-                </p>
+                <p>DATE</p>
+
+                <h3>
+                    September 26
+                </h3>
+
+                <span>
+                    2026
+                </span>
+
+            </article>
+
+
+            <article class="detail-card reveal">
+
+                <div class="detail-icon">
+                    ◷
+                </div>
+
+                <p>TIME</p>
+
+                <h3>
+                    4:00 PM
+                </h3>
+
+                <span>
+                    In the afternoon
+                </span>
+
+            </article>
+
+
+            <article class="detail-card reveal">
+
+                <div class="detail-icon">
+                    ♡
+                </div>
+
+                <p>VENUE</p>
+
+                <h3>
+                    XentroMall
+                </h3>
+
+                <span>
+                    Montalban, Rizal
+                </span>
+
+            </article>
+
+        </div>
+
+
+        <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=XentroMall+Montalban+Rizal"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            VIEW LOCATION
+            <span>↗</span>
+
+        </a>
+
+    </section>
+
+
+    <!-- =================================================
+         DRESS CODE
+    ================================================= -->
+
+    <section class="dress-code section">
+
+        <div class="dress-background"></div>
+
+        <div class="dress-content reveal">
+
+            <p class="section-label">
+                ATTIRE
+            </p>
+
+            <h2>
+                Pretty in
+                <span>Pink</span>
+            </h2>
+
+            <p>
+                Come dressed in your favorite shade
+                of pink and celebrate this special
+                milestone with us.
+            </p>
+
+            <div class="pink-palette">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
 
             </div>
 
-        </section>
+            <strong>
+                PINK
+            </strong>
+
+        </div>
+
+    </section>
 
 
+    <!-- =================================================
+         GALLERY
+    ================================================= -->
 
-        <!-- ==================================================
-             FEATURE PHOTO
-        =================================================== -->
+    <section id="gallery" class="gallery-section section">
 
-        <section class="feature-photo">
+        <div class="gallery-heading reveal">
 
-            <div class="feature-image reveal">
+            <p class="section-label">
+                MOMENTS TO REMEMBER
+            </p>
+
+            <h2>
+                Through the
+                <span>Lens</span>
+            </h2>
+
+            <p>
+                A collection of memories from
+                Russien's special celebration.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item large reveal">
 
                 <img
                     src="images/photo1.jpg"
-                    alt="Russien"
-                    loading="lazy"
-                >
-
-                <div class="image-caption">
-                    <span>RUSSIEN</span>
-                    <span>XVIII</span>
-                </div>
+                    alt="Russien portrait">
 
             </div>
 
-        </section>
 
+            <div class="gallery-item reveal">
 
-
-        <!-- ==================================================
-             EVENT DETAILS
-        =================================================== -->
-
-        <section class="details-section section-pink">
-
-            <div class="container">
-
-                <div class="section-heading reveal">
-
-                    <p class="eyebrow">
-                        SAVE THE DATE
-                    </p>
-
-                    <h2>
-                        The Celebration
-                    </h2>
-
-                </div>
-
-
-                <div class="details-grid">
-
-                    <article class="detail-card reveal">
-
-                        <span class="detail-number">
-                            01
-                        </span>
-
-                        <span class="detail-icon">
-                            ♡
-                        </span>
-
-                        <h3>
-                            Date
-                        </h3>
-
-                        <p>
-                            September 26, 2026
-                        </p>
-
-                    </article>
-
-
-                    <article class="detail-card reveal">
-
-                        <span class="detail-number">
-                            02
-                        </span>
-
-                        <span class="detail-icon">
-                            ◷
-                        </span>
-
-                        <h3>
-                            Time
-                        </h3>
-
-                        <p>
-                            4:00 PM
-                        </p>
-
-                    </article>
-
-
-                    <article class="detail-card reveal">
-
-                        <span class="detail-number">
-                            03
-                        </span>
-
-                        <span class="detail-icon">
-                            ♧
-                        </span>
-
-                        <h3>
-                            Venue
-                        </h3>
-
-                        <p>
-                            XentroMall Montalban
-                            <br>
-                            Rizal
-                        </p>
-
-                    </article>
-
-
-                    <article class="detail-card reveal">
-
-                        <span class="detail-number">
-                            04
-                        </span>
-
-                        <span class="detail-icon">
-                            ✧
-                        </span>
-
-                        <h3>
-                            Dress Code
-                        </h3>
-
-                        <p>
-                            Pastel Pink
-                        </p>
-
-                    </article>
-
-                </div>
+                <img
+                    src="images/photo2.jpg"
+                    alt="Birthday photoshoot">
 
             </div>
 
-        </section>
 
+            <div class="gallery-item reveal">
 
-
-        <!-- ==================================================
-             COUNTDOWN
-        =================================================== -->
-
-        <section class="countdown-section section-lavender">
-
-            <div class="countdown-background"></div>
-
-            <div class="container reveal">
-
-                <p class="eyebrow">
-                    COUNTING DOWN TO THE MOMENT
-                </p>
-
-                <h2>
-                    Until We Celebrate
-                </h2>
-
-
-                <div class="countdown">
-
-                    <div class="count-box">
-                        <strong id="days">00</strong>
-                        <span>DAYS</span>
-                    </div>
-
-                    <div class="count-box">
-                        <strong id="hours">00</strong>
-                        <span>HOURS</span>
-                    </div>
-
-                    <div class="count-box">
-                        <strong id="minutes">00</strong>
-                        <span>MINUTES</span>
-                    </div>
-
-                    <div class="count-box">
-                        <strong id="seconds">00</strong>
-                        <span>SECONDS</span>
-                    </div>
-
-                </div>
+                <img
+                    src="images/photo3.jpg"
+                    alt="Russien photoshoot">
 
             </div>
 
-        </section>
 
+            <div class="gallery-item wide reveal">
 
-
-        <!-- ==================================================
-             GALLERY
-        =================================================== -->
-
-        <section class="gallery-section section-light">
-
-            <div class="container">
-
-                <div class="section-heading reveal">
-
-                    <p class="eyebrow pink">
-                        MOMENTS
-                    </p>
-
-                    <h2>
-                        Through the Lens
-                    </h2>
-
-                </div>
-
-
-                <div class="gallery">
-
-                    <figure class="gallery-item gallery-large reveal">
-
-                        <img
-                            src="images/photo2.jpg"
-                            alt="Russien photoshoot"
-                            loading="lazy"
-                        >
-
-                    </figure>
-
-
-                    <figure class="gallery-item gallery-small reveal">
-
-                        <img
-                            src="images/photo3.jpg"
-                            alt="Russien photoshoot"
-                            loading="lazy"
-                        >
-
-                    </figure>
-
-
-                    <figure class="gallery-item gallery-medium reveal">
-
-                        <img
-                            src="images/photo4.jpg"
-                            alt="Russien photoshoot"
-                            loading="lazy"
-                        >
-
-                    </figure>
-
-
-                    <figure class="gallery-item gallery-small second reveal">
-
-                        <img
-                            src="images/photo5.jpg"
-                            alt="Russien photoshoot"
-                            loading="lazy"
-                        >
-
-                    </figure>
-
-                </div>
+                <img
+                    src="images/photo4.jpg"
+                    alt="Birthday memory">
 
             </div>
 
-        </section>
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="images/photo5.jpg"
+                    alt="Celebration photo">
+
+            </div>
 
 
+            <div class="gallery-item reveal">
 
-        <!-- ==================================================
-             18 SPECIALS
-        =================================================== -->
+                <img
+                    src="images/photo6.jpg"
+                    alt="Special birthday moment">
 
-        <section class="specials-section section-dark">
+            </div>
 
-            <div class="container">
+        </div>
 
-                <div class="section-heading light reveal">
+    </section>
 
-                    <p class="eyebrow">
-                        THE PEOPLE WHO MAKE IT SPECIAL
-                    </p>
 
-                    <h2>
-                        18 Specials
-                    </h2>
+    <!-- =================================================
+         18 SPECIALS
+    ================================================= -->
 
+    <section id="traditions" class="traditions section">
+
+        <div class="reveal">
+
+            <p class="section-label">
+                A NIGHT TO REMEMBER
+            </p>
+
+            <h2>
+                18
+                <span>Specials</span>
+            </h2>
+
+        </div>
+
+
+        <div class="traditions-grid">
+
+            <article class="tradition-card reveal">
+
+                <span>01</span>
+
+                <div>
+                    <h3>18 Roses</h3>
                     <p>
-                        A celebration made more meaningful
-                        by the people closest to Russien.
+                        A celebration of love,
+                        friendship, and meaningful
+                        connections.
                     </p>
-
                 </div>
 
-
-                <!-- ================================
-                     ROSES
-                ================================= -->
-
-                <div class="special-item reveal">
-
-                    <button
-                        class="special-header"
-                        type="button"
-                        aria-expanded="false"
-                    >
-
-                        <span class="special-left">
-
-                            <span class="special-symbol">
-                                18
-                            </span>
-
-                            <span>
-                                <small>WITH LOVE</small>
-                                <strong>Roses</strong>
-                            </span>
-
-                        </span>
-
-                        <span class="special-arrow">
-                            +
-                        </span>
-
-                    </button>
+            </article>
 
 
-                    <div class="special-list">
+            <article class="tradition-card reveal">
 
-                        <div class="names-grid">
+                <span>02</span>
 
-                            <span>ZU</span>
-                            <span>CYRUS</span>
-                            <span>MATTHEW</span>
-                            <span>PRINCE</span>
-                            <span>ALEX</span>
-                            <span>RAYMOND</span>
-                            <span>JM</span>
-                            <span>TITO NOY</span>
-                            <span>TITO BONGKOY</span>
-                            <span>TITO SONNY</span>
-                            <span>ANDREI</span>
-                            <span>SAM</span>
-                            <span>KYLE</span>
-                            <span>NITOY</span>
-                            <span>CHRISTIAN</span>
-                            <span>CAPAO</span>
-                            <span>JOLO</span>
-                            <span>AJ</span>
-                            <span>CHOLO</span>
-
-                        </div>
-
-                    </div>
-
+                <div>
+                    <h3>18 Candles</h3>
+                    <p>
+                        Eighteen lights representing
+                        wishes and blessings.
+                    </p>
                 </div>
 
+            </article>
 
 
-                <!-- ================================
-                     CANDLES
-                ================================= -->
+            <article class="tradition-card reveal">
 
-                <div class="special-item reveal">
+                <span>03</span>
 
-                    <button
-                        class="special-header"
-                        type="button"
-                        aria-expanded="false"
-                    >
-
-                        <span class="special-left">
-
-                            <span class="special-symbol">
-                                18
-                            </span>
-
-                            <span>
-                                <small>WITH LIGHT</small>
-                                <strong>Candles</strong>
-                            </span>
-
-                        </span>
-
-                        <span class="special-arrow">
-                            +
-                        </span>
-
-                    </button>
-
-
-                    <div class="special-list">
-
-                        <div class="names-grid">
-
-                            <span>MARY</span>
-                            <span>BLAIRE</span>
-                            <span>SYRIA</span>
-                            <span>PRINCESS DURAN</span>
-                            <span>HANNA</span>
-                            <span>MAILA</span>
-                            <span>KEAN</span>
-                            <span>NATHALIE</span>
-                            <span>JAM</span>
-                            <span>AURIE</span>
-                            <span>NICOLE</span>
-                            <span>MAMA NI PRINCESS</span>
-                            <span>ATE LALET</span>
-                            <span>HERSHEY</span>
-                            <span>JOANNA</span>
-                            <span>TRIXIE</span>
-                            <span>DJANA</span>
-                            <span>MAMA BENG</span>
-                            <span>ANGELA</span>
-
-                        </div>
-
-                    </div>
-
+                <div>
+                    <h3>18 Gifts</h3>
+                    <p>
+                        Thoughtful gifts for a
+                        beautiful new chapter.
+                    </p>
                 </div>
 
+            </article>
 
 
-                <!-- ================================
-                     GIFTS
-                ================================= -->
+            <article class="tradition-card reveal">
 
-                <div class="special-item reveal">
+                <span>04</span>
 
-                    <button
-                        class="special-header"
-                        type="button"
-                        aria-expanded="false"
-                    >
-
-                        <span class="special-left">
-
-                            <span class="special-symbol">
-                                18
-                            </span>
-
-                            <span>
-                                <small>WITH THOUGHTFULNESS</small>
-                                <strong>Gifts</strong>
-                            </span>
-
-                        </span>
-
-                        <span class="special-arrow">
-                            +
-                        </span>
-
-                    </button>
-
-
-                    <div class="special-list">
-
-                        <div class="names-grid">
-
-                            <span>KAIRA</span>
-                            <span>ANGELA</span>
-                            <span>STEPHANIE</span>
-                            <span>ZATHEENA</span>
-                            <span>JOANNA</span>
-                            <span>AILEEN</span>
-                            <span>PRINCESS DURAN</span>
-                            <span>CATHY NITOLLAMA</span>
-                            <span>NICA</span>
-                            <span>RACHELLE ANNE</span>
-                            <span>KAT</span>
-                            <span>KEAN</span>
-                            <span>SYRIA</span>
-                            <span>AZTI</span>
-                            <span>AIRA</span>
-                            <span>EZRA/ASEC</span>
-                            <span>CLEARY</span>
-                            <span>SHAMAINE</span>
-
-                        </div>
-
-                    </div>
-
+                <div>
+                    <h3>18 Blue Bills</h3>
+                    <p>
+                        A traditional gesture of
+                        blessings and prosperity.
+                    </p>
                 </div>
 
+            </article>
 
 
-                <!-- ================================
-                     BLUE BILLS
-                ================================= -->
+            <article class="tradition-card reveal">
 
-                <div class="special-item reveal">
+                <span>05</span>
 
-                    <button
-                        class="special-header"
-                        type="button"
-                        aria-expanded="false"
-                    >
-
-                        <span class="special-left">
-
-                            <span class="special-symbol">
-                                18
-                            </span>
-
-                            <span>
-                                <small>WITH GENEROSITY</small>
-                                <strong>Blue Bills</strong>
-                            </span>
-
-                        </span>
-
-                        <span class="special-arrow">
-                            +
-                        </span>
-
-                    </button>
-
-
-                    <div class="special-list">
-
-                        <div class="names-grid">
-
-                            <span>NANAY</span>
-                            <span>TITA TESS</span>
-                            <span>INAY</span>
-                            <span>PHEA</span>
-                            <span>XANDREI</span>
-                            <span>CHEBE</span>
-                            <span>CHAME</span>
-                            <span>TE BENG</span>
-                            <span>MAM MALOU</span>
-                            <span>GERM</span>
-                            <span>SUMALNAP</span>
-                            <span>CHAI</span>
-                            <span>TITO NOY</span>
-                            <span>KUYA NOY</span>
-                            <span>ATE LALET</span>
-                            <span>TITA JUVIE</span>
-                            <span>KAGAWAD RODERICK</span>
-                            <span>HENRY/PRINCESS</span>
-
-                        </div>
-
-                    </div>
-
+                <div>
+                    <h3>18 Shots</h3>
+                    <p>
+                        A toast to eighteen wonderful
+                        years and many more to come.
+                    </p>
                 </div>
 
+            </article>
+
+        </div>
+
+    </section>
 
 
-                <!-- ================================
-                     SHOTS
-                ================================= -->
+    <!-- =================================================
+         FINAL MESSAGE
+    ================================================= -->
 
-                <div class="special-item reveal">
+    <section class="closing section">
 
-                    <button
-                        class="special-header"
-                        type="button"
-                        aria-expanded="false"
-                    >
+        <div class="closing-glow"></div>
 
-                        <span class="special-left">
+        <div class="closing-content reveal">
 
-                            <span class="special-symbol">
-                                18
-                            </span>
+            <p class="section-label">
+                YOUR PRESENCE MATTERS
+            </p>
 
-                            <span>
-                                <small>WITH MEMORIES</small>
-                                <strong>Shots</strong>
-                            </span>
+            <h2>
+                Let's make this
+                <span>day unforgettable.</span>
+            </h2>
 
-                        </span>
-
-                        <span class="special-arrow">
-                            +
-                        </span>
-
-                    </button>
-
-
-                    <div class="special-list">
-
-                        <div class="names-grid">
-
-                            <span>TITO NOY</span>
-                            <span>KUYA NOY</span>
-                            <span>VIENNA</span>
-                            <span>ABI</span>
-                            <span>JANINE</span>
-                            <span>HAVEN</span>
-                            <span>AZTI</span>
-                            <span>JOANNA</span>
-                            <span>DIAH</span>
-                            <span>MARLEY</span>
-                            <span>GAB</span>
-                            <span>SAMANTHA</span>
-                            <span>CATHY</span>
-                            <span>MAILA</span>
-                            <span>LUCY</span>
-                            <span>GLIEZEL</span>
-                            <span>PRINCESS NICOLE</span>
-                            <span>ANGELA</span>
-                            <span>STEPHANIE</span>
-                            <span>ALTHEA</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+            <div class="closing-ornament">
+                ✦ ❧ ✦
             </div>
 
-        </section>
+            <p>
+                Your presence would make this
+                celebration even more special.
+                We can't wait to celebrate
+                this beautiful milestone with you.
+            </p>
 
+            <div class="closing-name">
+                <small>WITH LOVE</small>
 
+                <strong>
+                    Russien
+                </strong>
 
-        <!-- ==================================================
-             CLOSING
-        =================================================== -->
-
-        <section class="closing-section">
-
-            <div class="closing-glow"></div>
-
-            <div class="container reveal">
-
-                <p class="eyebrow">
-                    WITH LOVE
-                </p>
-
-                <h2>
-                    Russien @ 18
-                </h2>
-
-                <div class="closing-line"></div>
-
-                <p>
-                    Thank you for being part of
-                    this beautiful celebration.
-                </p>
-
-                <span class="closing-date">
-                    September 26, 2026
+                <span>
+                    XVIII
                 </span>
-
             </div>
 
-        </section>
+            <p class="closing-date">
+                SEPTEMBER 26 · 2026
+            </p>
+
+        </div>
+
+    </section>
 
 
-    </main>
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
+
+    <footer>
+
+        <p>
+            MADE WITH LOVE FOR RUSSIEN'S 18TH
+        </p>
+
+        <span>
+            ✦
+        </span>
+
+        <p>
+            2026
+        </p>
+
+    </footer>
+
+</main>
 
 
+<!-- BACKGROUND MUSIC -->
 
-    <!-- ==================================================
-         BACKGROUND MUSIC
-    =================================================== -->
+<audio
+    id="backgroundMusic"
+    preload="auto"
+    loop>
 
-    <audio
-        id="backgroundMusic"
+    <source
         src="music/enchanted.mp3"
-        loop
-        preload="auto"
-    ></audio>
+        type="audio/mpeg">
+
+</audio>
 
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
