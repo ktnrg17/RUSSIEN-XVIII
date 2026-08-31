@@ -5,6 +5,302 @@
 
 
 /* =====================================================
+   OPENING ENVELOPE
+===================================================== */
+
+const openingScreen = document.getElementById("openingScreen");
+const mainInvitation = document.getElementById("mainInvitation");
+const envelopeButton = document.getElementById("envelopeButton");
+const backgroundMusic = document.getElementById("backgroundMusic");
+
+let invitationOpened = false;
+
+
+function openInvitation() {
+
+    if (invitationOpened) return;
+
+    invitationOpened = true;
+
+    envelopeButton.classList.add("open");
+
+    setTimeout(() => {
+
+        openingScreen.classList.add("hidden");
+        mainInvitation.classList.add("visible");
+
+        document.body.classList.remove("locked");
+
+        if (backgroundMusic) {
+
+            backgroundMusic.volume = 0.45;
+
+            backgroundMusic.play().catch(error => {
+                console.log("Music could not autoplay:", error);
+            });
+
+        }
+
+        revealOnScroll();
+
+    }, 1500);
+}
+
+
+if (envelopeButton) {
+
+    envelopeButton.addEventListener(
+        "click",
+        openInvitation
+    );
+
+
+    envelopeButton.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                openInvitation();
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+const eventDate =
+    new Date(
+        "September 26, 2026 16:00:00"
+    ).getTime();
+
+
+function updateCountdown() {
+
+    const now =
+        new Date().getTime();
+
+    const difference =
+        eventDate - now;
+
+
+    if (difference <= 0) {
+
+        const days = document.getElementById("days");
+        const hours = document.getElementById("hours");
+        const minutes = document.getElementById("minutes");
+        const seconds = document.getElementById("seconds");
+
+        if (days) days.textContent = "00";
+        if (hours) hours.textContent = "00";
+        if (minutes) minutes.textContent = "00";
+        if (seconds) seconds.textContent = "00";
+
+        return;
+    }
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference %
+                (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference %
+                (1000 * 60 * 60)) /
+                (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference %
+                (1000 * 60)) /
+                1000
+        );
+
+
+    const daysElement =
+        document.getElementById("days");
+
+    const hoursElement =
+        document.getElementById("hours");
+
+    const minutesElement =
+        document.getElementById("minutes");
+
+    const secondsElement =
+        document.getElementById("seconds");
+
+
+    if (daysElement) {
+        daysElement.textContent =
+            String(days).padStart(2, "0");
+    }
+
+    if (hoursElement) {
+        hoursElement.textContent =
+            String(hours).padStart(2, "0");
+    }
+
+    if (minutesElement) {
+        minutesElement.textContent =
+            String(minutes).padStart(2, "0");
+    }
+
+    if (secondsElement) {
+        secondsElement.textContent =
+            String(seconds).padStart(2, "0");
+    }
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealItems =
+    document.querySelectorAll(".reveal");
+
+
+function revealOnScroll() {
+
+    const windowHeight =
+        window.innerHeight;
+
+
+    revealItems.forEach(
+        element => {
+
+            const elementTop =
+                element.getBoundingClientRect().top;
+
+
+            if (
+                elementTop <
+                windowHeight * 0.88
+            ) {
+
+                element.classList.add("active");
+
+            }
+
+        }
+    );
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll,
+    {
+        passive: true
+    }
+);
+
+
+
+/* =====================================================
+   HERO PARALLAX
+===================================================== */
+
+const heroBackground =
+    document.querySelector(".hero-background");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (!heroBackground) return;
+
+
+        if (window.innerWidth > 700) {
+
+            const scrollY =
+                window.scrollY;
+
+
+            heroBackground.style.transform =
+                `scale(1.05) translateY(${scrollY * 0.12}px)`;
+
+        }
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+
+/* =====================================================
+   INITIAL PAGE STATE
+===================================================== */
+
+document.body.classList.add("locked");
+
+
+
+/* =====================================================
+   REDUCED MOTION ACCESSIBILITY
+===================================================== */
+
+const prefersReducedMotion =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+
+if (prefersReducedMotion) {
+
+    revealItems.forEach(
+        element => {
+
+            element.classList.add("active");
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
    18 SPECIALS — GUEST LISTS
 ===================================================== */
 
@@ -31,6 +327,7 @@ const guestLists = {
         "SHAMAINE"
     ],
 
+
     candles: [
         "MARY",
         "BLAIRE",
@@ -56,6 +353,7 @@ const guestLists = {
         "ERICA"
     ],
 
+
     roses: [
         "ZU",
         "CYRUS",
@@ -78,6 +376,7 @@ const guestLists = {
         "CHOLO"
     ],
 
+
     "blue-bills": [
         "TITA TESS",
         "TE BENG",
@@ -98,6 +397,7 @@ const guestLists = {
         "KAGAWAD RODERICK",
         "HENRY/PRINCESS"
     ],
+
 
     shots: [
         "TITO NOY",
@@ -127,8 +427,9 @@ const guestLists = {
 };
 
 
+
 /* =====================================================
-   TITLES
+   18 SPECIALS — TITLES
 ===================================================== */
 
 const guestSectionTitles = {
@@ -146,28 +447,37 @@ const guestSectionTitles = {
 };
 
 
+
 /* =====================================================
-   OPEN GUEST LIST
+   OPEN GUEST POPUP
 ===================================================== */
 
 function openGuestPopup(section) {
 
     const popup =
-        document.getElementById("guestPopup");
+        document.getElementById(
+            "guestPopup"
+        );
 
     const title =
-        document.getElementById("guestPopupTitle");
+        document.getElementById(
+            "guestPopupTitle"
+        );
 
     const list =
-        document.getElementById("guestList");
+        document.getElementById(
+            "guestList"
+        );
 
 
     if (!popup || !title || !list) {
+
         console.error(
-            "Guest popup elements were not found in index.html."
+            "Guest popup elements are missing from index.html."
         );
 
         return;
+
     }
 
 
@@ -176,52 +486,47 @@ function openGuestPopup(section) {
 
 
     if (!guests) {
+
         console.error(
             "Guest list not found:",
             section
         );
 
         return;
+
     }
 
-
-    /* Set title */
 
     title.textContent =
         guestSectionTitles[section];
 
 
-    /* Remove old guests */
-
     list.innerHTML = "";
 
 
-    /* Add guests */
+    guests.forEach(
+        function(guest) {
 
-    guests.forEach(function(guest) {
+            const item =
+                document.createElement("li");
 
-        const item =
-            document.createElement("li");
+            item.textContent =
+                guest;
 
-        item.textContent =
-            guest;
+            list.appendChild(item);
 
-        list.appendChild(item);
+        }
+    );
 
-    });
-
-
-    /* Show popup */
 
     popup.classList.add("active");
+
 
     popup.setAttribute(
         "aria-hidden",
         "false"
     );
 
-
-    /* Stop background from scrolling */
 
     document.body.classList.add(
         "popup-open"
@@ -230,19 +535,20 @@ function openGuestPopup(section) {
 }
 
 
+
 /* =====================================================
-   CLOSE GUEST LIST
+   CLOSE GUEST POPUP
 ===================================================== */
 
 function closeGuestPopup() {
 
     const popup =
-        document.getElementById("guestPopup");
+        document.getElementById(
+            "guestPopup"
+        );
 
 
-    if (!popup) {
-        return;
-    }
+    if (!popup) return;
 
 
     popup.classList.remove(
@@ -263,38 +569,20 @@ function closeGuestPopup() {
 }
 
 
+
 /* =====================================================
-   WAIT UNTIL PAGE IS READY
+   18 SPECIALS — CLICK EVENTS
 ===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
 
-
-        /* ---------------------------------------------
-           GET ELEMENTS
-        --------------------------------------------- */
-
         const cards =
             document.querySelectorAll(
-                ".tradition-card"
+                ".tradition-card[data-section]"
             );
 
-        const popup =
-            document.getElementById(
-                "guestPopup"
-            );
-
-        const closeButton =
-            document.getElementById(
-                "closeGuestPopup"
-            );
-
-
-        /* ---------------------------------------------
-           CHECK CARDS
-        --------------------------------------------- */
 
         console.log(
             "18 Specials cards found:",
@@ -302,95 +590,95 @@ document.addEventListener(
         );
 
 
-        /* ---------------------------------------------
-           CARD CLICK
-        --------------------------------------------- */
+        cards.forEach(
+            function(card) {
 
-        cards.forEach(function(card) {
+                card.addEventListener(
+                    "click",
+                    function() {
 
-            card.addEventListener(
-                "click",
-                function() {
-
-                    const section =
-                        card.getAttribute(
-                            "data-section"
-                        );
+                        const section =
+                            card.getAttribute(
+                                "data-section"
+                            );
 
 
-                    console.log(
-                        "Selected section:",
-                        section
-                    );
+                        if (!section) return;
 
 
-                    /*
-                       If the popup is already open
-                       for the same section,
-                       clicking again closes it.
-                    */
+                        /*
+                           If the same section is
+                           clicked again, close it.
+                        */
 
-                    const currentTitle =
-                        document.getElementById(
-                            "guestPopupTitle"
-                        );
+                        const popup =
+                            document.getElementById(
+                                "guestPopup"
+                            );
 
-
-                    if (
-                        popup &&
-                        popup.classList.contains(
-                            "active"
-                        ) &&
-                        currentTitle &&
-                        currentTitle.textContent ===
-                            guestSectionTitles[section]
-                    ) {
-
-                        closeGuestPopup();
-
-                        return;
-
-                    }
+                        const title =
+                            document.getElementById(
+                                "guestPopupTitle"
+                            );
 
 
-                    /* Open selected section */
+                        if (
+                            popup &&
+                            popup.classList.contains(
+                                "active"
+                            ) &&
+                            title &&
+                            title.textContent ===
+                                guestSectionTitles[section]
+                        ) {
 
-                    openGuestPopup(
-                        section
-                    );
+                            closeGuestPopup();
 
-                }
-            );
+                            return;
+
+                        }
 
 
-            /* -----------------------------------------
-               KEYBOARD SUPPORT
-            ----------------------------------------- */
-
-            card.addEventListener(
-                "keydown",
-                function(event) {
-
-                    if (
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
-
-                        event.preventDefault();
-
-                        card.click();
+                        openGuestPopup(section);
 
                     }
-
-                }
-            );
-
-        });
+                );
 
 
-        /* ---------------------------------------------
+                /* Keyboard support */
+
+                card.addEventListener(
+                    "keydown",
+                    function(event) {
+
+                        if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                        ) {
+
+                            event.preventDefault();
+
+                            card.click();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =================================================
            CLOSE BUTTON
-        --------------------------------------------- */
+        ================================================= */
+
+        const closeButton =
+            document.getElementById(
+                "closeGuestPopup"
+            );
+
 
         if (closeButton) {
 
@@ -406,9 +694,16 @@ document.addEventListener(
         }
 
 
-        /* ---------------------------------------------
+
+        /* =================================================
            CLICK OUTSIDE POPUP
-        --------------------------------------------- */
+        ================================================= */
+
+        const popup =
+            document.getElementById(
+                "guestPopup"
+            );
+
 
         if (popup) {
 
@@ -432,9 +727,10 @@ document.addEventListener(
         }
 
 
-        /* ---------------------------------------------
+
+        /* =================================================
            ESCAPE KEY
-        --------------------------------------------- */
+        ================================================= */
 
         document.addEventListener(
             "keydown",
