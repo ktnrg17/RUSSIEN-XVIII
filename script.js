@@ -1,278 +1,387 @@
 /* =====================================================
-   RUSSIEN'S 18TH BIRTHDAY INVITATION
+   RUSSIEN @ 18
    MAIN JAVASCRIPT
 ===================================================== */
 
 
 /* =====================================================
-   OPENING ENVELOPE
+   18 SPECIALS - GUEST DATA
 ===================================================== */
 
-const openingScreen =
-    document.getElementById("openingScreen");
+const guestLists = {
 
-const mainInvitation =
-    document.getElementById("mainInvitation");
+    gifts: [
+        "KAIRA",
+        "ANGELA",
+        "STEPHANIE",
+        "ZATHEENA",
+        "JOANNA",
+        "AILEEN",
+        "PRINCESS DURAN",
+        "CATHY NITOLLAMA",
+        "TITA JUVIE",
+        "RACHELLE ANNE",
+        "KAT",
+        "KEAN",
+        "SYRIA",
+        "AZTI",
+        "AIRA",
+        "EZRA/ASEC",
+        "CLEARY",
+        "SHAMAINE"
+    ],
 
-const envelopeButton =
-    document.getElementById("envelopeButton");
+    candles: [
+        "MARY",
+        "BLAIRE",
+        "SYRIA",
+        "PRINCESS DURAN",
+        "HANNA",
+        "MAILA",
+        "KEAN",
+        "NATHALIE",
+        "JAM",
+        "AURIE",
+        "NICOLE",
+        "MAMA NI PRINCESS",
+        "ATE LALET",
+        "HERSHEY",
+        "JOANNA",
+        "TRIXIE",
+        "DJANA",
+        "MAMA BENG",
+        "ANGELA",
+        "TITA NENG",
+        "GLIEZEL",
+        "ERICA"
+    ],
 
-const backgroundMusic =
-    document.getElementById("backgroundMusic");
+    roses: [
+        "ZU",
+        "CYRUS",
+        "MATTHEW",
+        "PRINCE",
+        "ALEX",
+        "RAYMOND",
+        "JM",
+        "TITO NOY",
+        "TITO BONGKOY",
+        "TITO SONNY",
+        "ANDREI",
+        "SAM",
+        "KYLE",
+        "NITOY",
+        "CHRISTIAN",
+        "CAPAO",
+        "JOLO",
+        "AJ",
+        "CHOLO"
+    ],
 
-let invitationOpened = false;
+    "blue-bills": [
+        "TITA TESS",
+        "TE BENG",
+        "NANAY",
+        "INAY",
+        "PHEA",
+        "XANDREI",
+        "CHEBE",
+        "CHAME",
+        "MAM MALOU",
+        "GERM",
+        "SUMALNAP",
+        "CHAI",
+        "TITO NOY",
+        "KUYA NOY",
+        "ATE LALET",
+        "NICA",
+        "KAGAWAD RODERICK",
+        "HENRY/PRINCESS"
+    ],
+
+    shots: [
+        "TITO NOY",
+        "KUYA NOY",
+        "VIENNA",
+        "ABI",
+        "JANINE",
+        "HAVEN",
+        "AZTI",
+        "JOANNA",
+        "DIAH",
+        "MARLEY",
+        "GAB",
+        "SAMANTHA",
+        "CATHY",
+        "MAILA",
+        "GLIEZEL",
+        "LUCY",
+        "PRINCESS NICOLE",
+        "ANGELA",
+        "STEPHANIE",
+        "ALTHEA",
+        "SYRIA",
+        "NICOLE"
+    ]
+
+};
 
 
-/*
-   Open the invitation
-*/
+/* =====================================================
+   SECTION TITLES
+===================================================== */
 
-function openInvitation() {
+const guestSectionTitles = {
 
-    // Prevent opening multiple times
-    if (invitationOpened) return;
+    gifts: "18 Gifts",
 
-    invitationOpened = true;
+    candles: "18 Candles",
 
-    // Add envelope opening animation
-    envelopeButton.classList.add("open");
+    roses: "18 Roses",
+
+    "blue-bills": "18 Blue Bills",
+
+    shots: "18 Shots"
+
+};
 
 
-    /*
-       Wait for envelope animation
-       before revealing the website.
-    */
+/* =====================================================
+   GET POPUP ELEMENTS
+===================================================== */
 
-    setTimeout(() => {
+const guestPopup =
+    document.getElementById("guestPopup");
 
-        // Hide opening screen
-        openingScreen.classList.add("hidden");
+const guestPopupTitle =
+    document.getElementById("guestPopupTitle");
 
-        // Show main invitation
-        mainInvitation.classList.add("visible");
+const guestList =
+    document.getElementById("guestList");
 
-        // Allow scrolling
-        document.body.classList.remove("locked");
+const closeGuestPopup =
+    document.getElementById("closeGuestPopup");
+
+
+/* =====================================================
+   OPEN GUEST POPUP
+===================================================== */
+
+function openGuestPopup(section) {
+
+    if (
+        !guestPopup ||
+        !guestPopupTitle ||
+        !guestList
+    ) {
+        return;
+    }
+
+
+    const guests =
+        guestLists[section];
+
+
+    if (!guests) {
+        return;
+    }
+
+
+    /* Set popup title */
+
+    guestPopupTitle.textContent =
+        guestSectionTitles[section];
+
+
+    /* Clear previous list */
+
+    guestList.innerHTML = "";
+
+
+    /* Add guests */
+
+    guests.forEach(function(guest) {
+
+        const listItem =
+            document.createElement("li");
+
+        listItem.textContent =
+            guest;
+
+        guestList.appendChild(listItem);
+
+    });
+
+
+    /* Show popup */
+
+    guestPopup.classList.add("active");
+
+    guestPopup.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    /* Prevent background scrolling */
+
+    document.body.classList.add(
+        "popup-open"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE GUEST POPUP
+===================================================== */
+
+function closeGuestList() {
+
+    if (!guestPopup) {
+        return;
+    }
+
+
+    guestPopup.classList.remove(
+        "active"
+    );
+
+
+    guestPopup.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "popup-open"
+    );
+
+}
+
+
+/* =====================================================
+   18 SPECIALS CARDS
+===================================================== */
+
+const traditionCards =
+    document.querySelectorAll(
+        ".tradition-card"
+    );
+
+
+traditionCards.forEach(function(card) {
+
+
+    function activateCard() {
+
+        const section =
+            card.dataset.section;
+
+
+        if (!section) {
+            return;
+        }
 
 
         /*
-           Start music after user interaction.
-
-           IMPORTANT:
-           Browsers allow audio playback more easily
-           because the guest clicked the envelope.
-        */
-
-        if (backgroundMusic) {
-
-            backgroundMusic.volume = 0.45;
-
-            backgroundMusic.play()
-                .catch(error => {
-
-                    console.log(
-                        "Music could not autoplay:",
-                        error
-                    );
-
-                });
-
-        }
-
-
-        // Activate elements currently visible
-        revealOnScroll();
-
-    }, 1500);
-
-}
-
-
-/*
-   CLICK EVENT
-*/
-
-envelopeButton.addEventListener(
-    "click",
-    openInvitation
-);
-
-
-/*
-   KEYBOARD ACCESSIBILITY
-
-   Enter or Space can also open the envelope.
-*/
-
-envelopeButton.addEventListener(
-    "keydown",
-    function(event) {
+         * If the popup is already showing
+         * this same section, clicking it again
+         * will close the popup.
+         */
 
         if (
-            event.key === "Enter" ||
-            event.key === " "
+            guestPopup &&
+            guestPopup.classList.contains(
+                "active"
+            ) &&
+            guestPopupTitle.textContent ===
+                guestSectionTitles[section]
         ) {
 
-            event.preventDefault();
+            closeGuestList();
 
-            openInvitation();
+            return;
 
         }
 
-    }
-);
 
+        /*
+         * If another section is selected,
+         * show the new guest list.
+         */
+
+        openGuestPopup(section);
+
+    }
+
+
+    /* Mouse / touch */
+
+    card.addEventListener(
+        "click",
+        activateCard
+    );
+
+
+    /*
+     * Keyboard support
+     * Enter or Space will open the list.
+     */
+
+    card.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                activateCard();
+
+            }
+
+        }
+    );
+
+});
 
 
 /* =====================================================
-   COUNTDOWN
+   CLOSE BUTTON
 ===================================================== */
 
+if (closeGuestPopup) {
 
-/*
-   September 26, 2026
-   4:00 PM
-*/
-
-const eventDate =
-    new Date(
-        "September 26, 2026 16:00:00"
-    ).getTime();
-
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-    const difference =
-        eventDate - now;
-
-
-    /*
-       If the event has already happened
-    */
-
-    if (difference <= 0) {
-
-        document.getElementById("days").textContent =
-            "00";
-
-        document.getElementById("hours").textContent =
-            "00";
-
-        document.getElementById("minutes").textContent =
-            "00";
-
-        document.getElementById("seconds").textContent =
-            "00";
-
-        return;
-
-    }
-
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60 * 24)) /
-                (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60)) /
-                (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (difference %
-                (1000 * 60)) /
-                1000
-        );
-
-
-    /*
-       Update HTML
-    */
-
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
+    closeGuestPopup.addEventListener(
+        "click",
+        closeGuestList
+    );
 
 }
 
 
-/*
-   Run immediately
-*/
-
-updateCountdown();
-
-
-/*
-   Update every second
-*/
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-
 /* =====================================================
-   SCROLL REVEAL
+   CLICK OUTSIDE POPUP
 ===================================================== */
 
+if (guestPopup) {
 
-/*
-   IMPORTANT:
-   This has a different name from the function below.
-*/
-
-const revealItems =
-    document.querySelectorAll(".reveal");
-
-
-function revealOnScroll() {
-
-    const windowHeight =
-        window.innerHeight;
-
-
-    revealItems.forEach(
-        element => {
-
-            const elementTop =
-                element.getBoundingClientRect().top;
-
+    guestPopup.addEventListener(
+        "click",
+        function(event) {
 
             if (
-                elementTop <
-                windowHeight * 0.88
+                event.target.classList.contains(
+                    "guest-popup-overlay"
+                )
             ) {
 
-                element.classList.add("active");
+                closeGuestList();
 
             }
 
@@ -282,91 +391,25 @@ function revealOnScroll() {
 }
 
 
-/*
-   Run when scrolling
-*/
-
-window.addEventListener(
-    "scroll",
-    revealOnScroll,
-    {
-        passive: true
-    }
-);
-
-
-
 /* =====================================================
-   HERO PARALLAX
+   ESCAPE KEY
 ===================================================== */
 
-const heroBackground =
-    document.querySelector(".hero-background");
+document.addEventListener(
+    "keydown",
+    function(event) {
 
+        if (
+            event.key === "Escape" &&
+            guestPopup &&
+            guestPopup.classList.contains(
+                "active"
+            )
+        ) {
 
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (!heroBackground) return;
-
-
-        /*
-           Only use parallax on larger screens.
-           This keeps mobile smooth.
-        */
-
-        if (window.innerWidth > 700) {
-
-            const scrollY =
-                window.scrollY;
-
-
-            heroBackground.style.transform =
-                `scale(1.05)
-                 translateY(${scrollY * 0.12}px)`;
+            closeGuestList();
 
         }
 
-    },
-    {
-        passive: true
     }
 );
-
-
-
-/* =====================================================
-   INITIAL PAGE STATE
-===================================================== */
-
-
-/*
-   Prevent scrolling while envelope is closed.
-*/
-
-document.body.classList.add("locked");
-
-
-
-/* =====================================================
-   REDUCED MOTION ACCESSIBILITY
-===================================================== */
-
-const prefersReducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-if (prefersReducedMotion) {
-
-    revealItems.forEach(
-        element => {
-
-            element.classList.add("active");
-
-        }
-    );
-
-}
