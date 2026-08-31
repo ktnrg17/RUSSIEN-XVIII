@@ -1,373 +1,11 @@
 /* =====================================================
-   RUSSIEN'S 18TH BIRTHDAY INVITATION
-   MAIN JAVASCRIPT
+   RUSSIEN @ 18
+   SCRIPT.JS
 ===================================================== */
 
 
 /* =====================================================
-   OPENING ENVELOPE
-===================================================== */
-
-const openingScreen =
-    document.getElementById("openingScreen");
-
-const mainInvitation =
-    document.getElementById("mainInvitation");
-
-const envelopeButton =
-    document.getElementById("envelopeButton");
-
-const backgroundMusic =
-    document.getElementById("backgroundMusic");
-
-let invitationOpened = false;
-
-
-/*
-   Open the invitation
-*/
-
-function openInvitation() {
-
-    // Prevent opening multiple times
-    if (invitationOpened) return;
-
-    invitationOpened = true;
-
-    // Add envelope opening animation
-    envelopeButton.classList.add("open");
-
-
-    /*
-       Wait for envelope animation
-       before revealing the website.
-    */
-
-    setTimeout(() => {
-
-        // Hide opening screen
-        openingScreen.classList.add("hidden");
-
-        // Show main invitation
-        mainInvitation.classList.add("visible");
-
-        // Allow scrolling
-        document.body.classList.remove("locked");
-
-
-        /*
-           Start music after user interaction.
-
-           IMPORTANT:
-           Browsers allow audio playback more easily
-           because the guest clicked the envelope.
-        */
-
-        if (backgroundMusic) {
-
-            backgroundMusic.volume = 0.45;
-
-            backgroundMusic.play()
-                .catch(error => {
-
-                    console.log(
-                        "Music could not autoplay:",
-                        error
-                    );
-
-                });
-
-        }
-
-
-        // Activate elements currently visible
-        revealOnScroll();
-
-    }, 1500);
-
-}
-
-
-/*
-   CLICK EVENT
-*/
-
-envelopeButton.addEventListener(
-    "click",
-    openInvitation
-);
-
-
-/*
-   KEYBOARD ACCESSIBILITY
-
-   Enter or Space can also open the envelope.
-*/
-
-envelopeButton.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter" ||
-            event.key === " "
-        ) {
-
-            event.preventDefault();
-
-            openInvitation();
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
-   COUNTDOWN
-===================================================== */
-
-
-/*
-   September 26, 2026
-   4:00 PM
-*/
-
-const eventDate =
-    new Date(
-        "September 26, 2026 16:00:00"
-    ).getTime();
-
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-    const difference =
-        eventDate - now;
-
-
-    /*
-       If the event has already happened
-    */
-
-    if (difference <= 0) {
-
-        document.getElementById("days").textContent =
-            "00";
-
-        document.getElementById("hours").textContent =
-            "00";
-
-        document.getElementById("minutes").textContent =
-            "00";
-
-        document.getElementById("seconds").textContent =
-            "00";
-
-        return;
-
-    }
-
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60 * 24)) /
-                (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60)) /
-                (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (difference %
-                (1000 * 60)) /
-                1000
-        );
-
-
-    /*
-       Update HTML
-    */
-
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
-
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
-
-    document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
-
-}
-
-
-/*
-   Run immediately
-*/
-
-updateCountdown();
-
-
-/*
-   Update every second
-*/
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
-
-
-/*
-   IMPORTANT:
-   This has a different name from the function below.
-*/
-
-const revealItems =
-    document.querySelectorAll(".reveal");
-
-
-function revealOnScroll() {
-
-    const windowHeight =
-        window.innerHeight;
-
-
-    revealItems.forEach(
-        element => {
-
-            const elementTop =
-                element.getBoundingClientRect().top;
-
-
-            if (
-                elementTop <
-                windowHeight * 0.88
-            ) {
-
-                element.classList.add("active");
-
-            }
-
-        }
-    );
-
-}
-
-
-/*
-   Run when scrolling
-*/
-
-window.addEventListener(
-    "scroll",
-    revealOnScroll,
-    {
-        passive: true
-    }
-);
-
-
-
-/* =====================================================
-   HERO PARALLAX
-===================================================== */
-
-const heroBackground =
-    document.querySelector(".hero-background");
-
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        if (!heroBackground) return;
-
-
-        /*
-           Only use parallax on larger screens.
-           This keeps mobile smooth.
-        */
-
-        if (window.innerWidth > 700) {
-
-            const scrollY =
-                window.scrollY;
-
-
-            heroBackground.style.transform =
-                `scale(1.05)
-                 translateY(${scrollY * 0.12}px)`;
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
-
-
-
-/* =====================================================
-   INITIAL PAGE STATE
-===================================================== */
-
-
-/*
-   Prevent scrolling while envelope is closed.
-*/
-
-document.body.classList.add("locked");
-
-
-
-/* =====================================================
-   REDUCED MOTION ACCESSIBILITY
-===================================================== */
-
-const prefersReducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-
-if (prefersReducedMotion) {
-
-    revealItems.forEach(
-        element => {
-
-            element.classList.add("active");
-
-
-            18 SPECIALS - GUEST DATA
+   18 SPECIALS — GUEST LISTS
 ===================================================== */
 
 const guestLists = {
@@ -490,7 +128,7 @@ const guestLists = {
 
 
 /* =====================================================
-   SECTION TITLES
+   TITLES
 ===================================================== */
 
 const guestSectionTitles = {
@@ -509,33 +147,26 @@ const guestSectionTitles = {
 
 
 /* =====================================================
-   GET POPUP ELEMENTS
-===================================================== */
-
-const guestPopup =
-    document.getElementById("guestPopup");
-
-const guestPopupTitle =
-    document.getElementById("guestPopupTitle");
-
-const guestList =
-    document.getElementById("guestList");
-
-const closeGuestPopup =
-    document.getElementById("closeGuestPopup");
-
-
-/* =====================================================
-   OPEN GUEST POPUP
+   OPEN GUEST LIST
 ===================================================== */
 
 function openGuestPopup(section) {
 
-    if (
-        !guestPopup ||
-        !guestPopupTitle ||
-        !guestList
-    ) {
+    const popup =
+        document.getElementById("guestPopup");
+
+    const title =
+        document.getElementById("guestPopupTitle");
+
+    const list =
+        document.getElementById("guestList");
+
+
+    if (!popup || !title || !list) {
+        console.error(
+            "Guest popup elements were not found in index.html."
+        );
+
         return;
     }
 
@@ -545,47 +176,52 @@ function openGuestPopup(section) {
 
 
     if (!guests) {
+        console.error(
+            "Guest list not found:",
+            section
+        );
+
         return;
     }
 
 
-    /* Set popup title */
+    /* Set title */
 
-    guestPopupTitle.textContent =
+    title.textContent =
         guestSectionTitles[section];
 
 
-    /* Clear previous list */
+    /* Remove old guests */
 
-    guestList.innerHTML = "";
+    list.innerHTML = "";
 
 
     /* Add guests */
 
     guests.forEach(function(guest) {
 
-        const listItem =
+        const item =
             document.createElement("li");
 
-        listItem.textContent =
+        item.textContent =
             guest;
 
-        guestList.appendChild(listItem);
+        list.appendChild(item);
 
     });
 
 
     /* Show popup */
 
-    guestPopup.classList.add("active");
+    popup.classList.add("active");
 
-    guestPopup.setAttribute(
+    popup.setAttribute(
         "aria-hidden",
         "false"
     );
 
 
-    /* Prevent background scrolling */
+    /* Stop background from scrolling */
 
     document.body.classList.add(
         "popup-open"
@@ -595,22 +231,26 @@ function openGuestPopup(section) {
 
 
 /* =====================================================
-   CLOSE GUEST POPUP
+   CLOSE GUEST LIST
 ===================================================== */
 
-function closeGuestList() {
+function closeGuestPopup() {
 
-    if (!guestPopup) {
+    const popup =
+        document.getElementById("guestPopup");
+
+
+    if (!popup) {
         return;
     }
 
 
-    guestPopup.classList.remove(
+    popup.classList.remove(
         "active"
     );
 
 
-    guestPopup.setAttribute(
+    popup.setAttribute(
         "aria-hidden",
         "true"
     );
@@ -624,159 +264,196 @@ function closeGuestList() {
 
 
 /* =====================================================
-   18 SPECIALS CARDS
-===================================================== */
-
-const traditionCards =
-    document.querySelectorAll(
-        ".tradition-card"
-    );
-
-
-traditionCards.forEach(function(card) {
-
-
-    function activateCard() {
-
-        const section =
-            card.dataset.section;
-
-
-        if (!section) {
-            return;
-        }
-
-
-        /*
-         * If the popup is already showing
-         * this same section, clicking it again
-         * will close the popup.
-         */
-
-        if (
-            guestPopup &&
-            guestPopup.classList.contains(
-                "active"
-            ) &&
-            guestPopupTitle.textContent ===
-                guestSectionTitles[section]
-        ) {
-
-            closeGuestList();
-
-            return;
-
-        }
-
-
-        /*
-         * If another section is selected,
-         * show the new guest list.
-         */
-
-        openGuestPopup(section);
-
-    }
-
-
-    /* Mouse / touch */
-
-    card.addEventListener(
-        "click",
-        activateCard
-    );
-
-
-    /*
-     * Keyboard support
-     * Enter or Space will open the list.
-     */
-
-    card.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                activateCard();
-
-            }
-
-        }
-    );
-
-});
-
-
-/* =====================================================
-   CLOSE BUTTON
-===================================================== */
-
-if (closeGuestPopup) {
-
-    closeGuestPopup.addEventListener(
-        "click",
-        closeGuestList
-    );
-
-}
-
-
-/* =====================================================
-   CLICK OUTSIDE POPUP
-===================================================== */
-
-if (guestPopup) {
-
-    guestPopup.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target.classList.contains(
-                    "guest-popup-overlay"
-                )
-            ) {
-
-                closeGuestList();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   ESCAPE KEY
+   WAIT UNTIL PAGE IS READY
 ===================================================== */
 
 document.addEventListener(
-    "keydown",
-    function(event) {
+    "DOMContentLoaded",
+    function() {
 
-        if (
-            event.key === "Escape" &&
-            guestPopup &&
-            guestPopup.classList.contains(
-                "active"
-            )
-        ) {
 
-            closeGuestList();
+        /* ---------------------------------------------
+           GET ELEMENTS
+        --------------------------------------------- */
+
+        const cards =
+            document.querySelectorAll(
+                ".tradition-card"
+            );
+
+        const popup =
+            document.getElementById(
+                "guestPopup"
+            );
+
+        const closeButton =
+            document.getElementById(
+                "closeGuestPopup"
+            );
+
+
+        /* ---------------------------------------------
+           CHECK CARDS
+        --------------------------------------------- */
+
+        console.log(
+            "18 Specials cards found:",
+            cards.length
+        );
+
+
+        /* ---------------------------------------------
+           CARD CLICK
+        --------------------------------------------- */
+
+        cards.forEach(function(card) {
+
+            card.addEventListener(
+                "click",
+                function() {
+
+                    const section =
+                        card.getAttribute(
+                            "data-section"
+                        );
+
+
+                    console.log(
+                        "Selected section:",
+                        section
+                    );
+
+
+                    /*
+                       If the popup is already open
+                       for the same section,
+                       clicking again closes it.
+                    */
+
+                    const currentTitle =
+                        document.getElementById(
+                            "guestPopupTitle"
+                        );
+
+
+                    if (
+                        popup &&
+                        popup.classList.contains(
+                            "active"
+                        ) &&
+                        currentTitle &&
+                        currentTitle.textContent ===
+                            guestSectionTitles[section]
+                    ) {
+
+                        closeGuestPopup();
+
+                        return;
+
+                    }
+
+
+                    /* Open selected section */
+
+                    openGuestPopup(
+                        section
+                    );
+
+                }
+            );
+
+
+            /* -----------------------------------------
+               KEYBOARD SUPPORT
+            ----------------------------------------- */
+
+            card.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        card.click();
+
+                    }
+
+                }
+            );
+
+        });
+
+
+        /* ---------------------------------------------
+           CLOSE BUTTON
+        --------------------------------------------- */
+
+        if (closeButton) {
+
+            closeButton.addEventListener(
+                "click",
+                function() {
+
+                    closeGuestPopup();
+
+                }
+            );
 
         }
+
+
+        /* ---------------------------------------------
+           CLICK OUTSIDE POPUP
+        --------------------------------------------- */
+
+        if (popup) {
+
+            popup.addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target.classList.contains(
+                            "guest-popup-overlay"
+                        )
+                    ) {
+
+                        closeGuestPopup();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* ---------------------------------------------
+           ESCAPE KEY
+        --------------------------------------------- */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape" &&
+                    popup &&
+                    popup.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    closeGuestPopup();
+
+                }
+
+            }
+        );
 
     }
 );
-
-        }
-    );
-
-}
