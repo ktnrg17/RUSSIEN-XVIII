@@ -54,28 +54,41 @@
 
     <!-- ENVELOPE -->
 
-    <button
-        id="envelopeButton"
-        class="envelope-wrapper"
-        aria-label="Open invitation"
-        type="button">
+  
 
-        <div class="envelope">
+          <button
+    id="envelopeButton"
+    class="envelope-wrapper"
+    aria-label="Open invitation"
+    type="button"
+    onclick="openInvitation()">
 
-            <div class="envelope-back"></div>
+    <div class="envelope">
 
-            <div class="letter">
-                <span>Russien</span>
-                <small>XVIII</small>
-            </div>
+        <!-- Back of envelope -->
+        <div class="envelope-back"></div>
 
-            <div class="envelope-front"></div>
+        <!-- Paper INSIDE envelope -->
+        <div class="letter">
+            <span>Russien</span>
+            <small>XVIII</small>
+        </div>
 
-            <div class="envelope-flap"></div>
+        <!-- Front pocket -->
+        <div class="envelope-front"></div>
 
-            <div class="wax-seal">
-                R
-            </div>
+        <!-- Top flap -->
+        <div class="envelope-flap"></div>
+
+        <!-- Wax seal -->
+        <div class="wax-seal">
+            R
+        </div>
+
+    </div>
+
+</button>  
+    
             /* =================================
    ENVELOPE - LETTER RISES FROM INSIDE
 ================================= */
