@@ -60,7 +60,7 @@ function openInvitation() {
 
         if (backgroundMusic) {
 
-            backgroundMusic.volume = 0.45;
+            backgroundMusic.volume = 40;
 
             backgroundMusic.play().catch(function (error) {
 
