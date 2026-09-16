@@ -1,751 +1,678 @@
-/* =====================================================
-RUSSIEN @ 18
-SCRIPT.JS
-===================================================== */
-
 document.addEventListener("DOMContentLoaded", function () {
 
-/* =================================================
-   OPENING ENVELOPE
-================================================= */
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
-const openingScreen =
-    document.getElementById("openingScreen");
+    const openingScreen =
+        document.getElementById("openingScreen");
 
-const mainInvitation =
-    document.getElementById("mainInvitation");
+    const mainInvitation =
+        document.getElementById("mainInvitation");
 
-const envelopeButton =
-    document.getElementById("envelopeButton");
+    const envelopeButton =
+        document.getElementById("envelopeButton");
 
-const backgroundMusic =
-    document.getElementById("backgroundMusic");
+    const backgroundMusic =
+        document.getElementById("backgroundMusic");
 
-let invitationOpened = false;
+    const guestPopup =
+        document.getElementById("guestPopup");
 
+    const guestPopupOverlay =
+        document.getElementById("guestPopupOverlay");
 
-function openInvitation() {
+    const guestPopupClose =
+        document.getElementById("guestPopupClose");
 
-    if (invitationOpened) return;
+    const guestPopupTitle =
+        document.getElementById("guestPopupTitle");
 
-    invitationOpened = true;
-
-    console.log("Envelope clicked!");
-
-
-    /* Open envelope animation */
-
-    if (envelopeButton) {
-        envelopeButton.classList.add("open");
-    }
+    const guestList =
+        document.getElementById("guestList");
 
 
-    /* Reveal website */
+    /* =====================================================
+       STATE
+    ===================================================== */
 
-    setTimeout(function () {
+    let invitationOpened = false;
 
-        if (openingScreen) {
-            openingScreen.classList.add("hidden");
+
+    /* =====================================================
+       OPEN INVITATION
+    ===================================================== */
+
+    function openInvitation() {
+
+        if (invitationOpened) {
+            return;
         }
 
-        if (mainInvitation) {
-            mainInvitation.classList.add("visible");
-        }
-
-        document.body.classList.remove("locked");
-       window.scrollTo(0, 0);
+        invitationOpened = true;
 
 
-        /* Start music */
+        console.log("Envelope clicked!");
 
-        if (backgroundMusic) {
 
-            backgroundMusic.volume = 40;
+        /* Open envelope animation */
 
-            backgroundMusic.play().catch(function (error) {
-
-                console.log(
-                    "Music could not autoplay:",
-                    error
-                );
-
-            });
-
+        if (envelopeButton) {
+            envelopeButton.classList.add("open");
         }
 
 
-        revealOnScroll();
+        /* Wait for envelope animation */
 
-    }, 1500);
+        setTimeout(function () {
 
-}
-
-
-/* Envelope CLICK */
-
-if (envelopeButton) {
-
-    envelopeButton.addEventListener(
-        "click",
-        openInvitation
-    );
-
-
-    /* Envelope KEYBOARD */
-
-    envelopeButton.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                openInvitation();
-
+            if (openingScreen) {
+                openingScreen.classList.add("hidden");
             }
 
-        }
-    );
-
-} else {
-
-    console.error(
-        "ERROR: envelopeButton was not found."
-    );
-
-}
+            if (mainInvitation) {
+                mainInvitation.classList.add("visible");
+            }
 
 
+            /* Unlock scrolling */
 
-/* =================================================
-   COUNTDOWN
-================================================= */
-
-const eventDate =
-    new Date(
-        "September 26, 2026 16:00:00"
-    ).getTime();
+            document.body.classList.remove("locked");
 
 
-function updateCountdown() {
+            /* Always start at first page */
 
-    const now =
-        new Date().getTime();
-
-    const difference =
-        eventDate - now;
-
-
-    const daysElement =
-        document.getElementById("days");
-
-    const hoursElement =
-        document.getElementById("hours");
-
-    const minutesElement =
-        document.getElementById("minutes");
-
-    const secondsElement =
-        document.getElementById("seconds");
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "instant"
+            });
 
 
-    if (difference <= 0) {
+            /* Start music */
 
-        if (daysElement)
-            daysElement.textContent = "00";
+            if (backgroundMusic) {
 
-        if (hoursElement)
-            hoursElement.textContent = "00";
+                backgroundMusic.volume = 0.4;
 
-        if (minutesElement)
-            minutesElement.textContent = "00";
+                backgroundMusic
+                    .play()
+                    .catch(function (error) {
 
-        if (secondsElement)
-            secondsElement.textContent = "00";
+                        console.log(
+                            "Music could not autoplay:",
+                            error
+                        );
 
-        return;
+                    });
+            }
+
+
+            /* Start reveal animations */
+
+            revealOnScroll();
+
+        }, 1500);
 
     }
 
 
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
+    /* =====================================================
+       ENVELOPE CLICK
+    ===================================================== */
+
+    if (envelopeButton) {
+
+        envelopeButton.addEventListener(
+            "click",
+            openInvitation
         );
 
+    }
 
-    const hours =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60 * 24)) /
+
+    /* =====================================================
+       COUNTDOWN
+    ===================================================== */
+
+    const targetDate =
+        new Date(
+            "September 26, 2026 16:00:00"
+        ).getTime();
+
+
+    function updateCountdown() {
+
+        const now =
+            new Date().getTime();
+
+        const distance =
+            targetDate - now;
+
+
+        const daysElement =
+            document.getElementById("days");
+
+        const hoursElement =
+            document.getElementById("hours");
+
+        const minutesElement =
+            document.getElementById("minutes");
+
+        const secondsElement =
+            document.getElementById("seconds");
+
+
+        if (
+            !daysElement ||
+            !hoursElement ||
+            !minutesElement ||
+            !secondsElement
+        ) {
+            return;
+        }
+
+
+        if (distance <= 0) {
+
+            daysElement.textContent = "00";
+            hoursElement.textContent = "00";
+            minutesElement.textContent = "00";
+            secondsElement.textContent = "00";
+
+            return;
+        }
+
+
+        const days =
+            Math.floor(
+                distance /
+                (1000 * 60 * 60 * 24)
+            );
+
+        const hours =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60 * 24)) /
                 (1000 * 60 * 60)
-        );
+            );
 
-
-    const minutes =
-        Math.floor(
-            (difference %
-                (1000 * 60 * 60)) /
+        const minutes =
+            Math.floor(
+                (distance %
+                    (1000 * 60 * 60)) /
                 (1000 * 60)
-        );
+            );
 
-
-    const seconds =
-        Math.floor(
-            (difference %
-                (1000 * 60)) /
+        const seconds =
+            Math.floor(
+                (distance %
+                    (1000 * 60)) /
                 1000
-        );
+            );
 
 
-    if (daysElement)
         daysElement.textContent =
             String(days).padStart(2, "0");
 
-    if (hoursElement)
         hoursElement.textContent =
             String(hours).padStart(2, "0");
 
-    if (minutesElement)
         minutesElement.textContent =
             String(minutes).padStart(2, "0");
 
-    if (secondsElement)
         secondsElement.textContent =
             String(seconds).padStart(2, "0");
 
-}
+    }
 
 
-updateCountdown();
+    updateCountdown();
 
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-
-/* =================================================
-   SCROLL REVEAL
-================================================= */
-
-const revealItems =
-    document.querySelectorAll(".reveal");
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
 
-function revealOnScroll() {
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
 
-    const windowHeight =
-        window.innerHeight;
+    function revealOnScroll() {
 
-
-    revealItems.forEach(
-        function (element) {
-
-            const elementTop =
-                element.getBoundingClientRect().top;
+        const revealElements =
+            document.querySelectorAll(".reveal");
 
 
-            if (
-                elementTop <
-                windowHeight * 0.88
-            ) {
+        if (
+            "IntersectionObserver"
+            in window
+        ) {
 
-                element.classList.add("active");
+            const observer =
+                new IntersectionObserver(
+                    function (entries) {
+
+                        entries.forEach(
+                            function (entry) {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target.classList.add(
+                                        "active"
+                                    );
+
+                                    observer.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: 0.12
+                    }
+                );
+
+
+            revealElements.forEach(
+                function (element) {
+
+                    observer.observe(
+                        element
+                    );
+
+                }
+            );
+
+        } else {
+
+            revealElements.forEach(
+                function (element) {
+
+                    element.classList.add(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+
+    }
+
+
+    revealOnScroll();
+
+
+    /* =====================================================
+       GUEST LISTS
+    ===================================================== */
+
+    const guestLists = {
+
+        gifts: [
+
+            "KAIRA",
+            "ANGELA",
+            "STEPHANIE",
+            "ZATHEENA",
+            "JOANNA",
+            "AILEEN",
+            "PRINCESS DURAN",
+            "TITA JUVIE",
+            "RACHELLE ANNE",
+            "KAT",
+            "KEAN",
+            "SYRIA",
+            "AZTI",
+            "AIRA",
+            "EZRA/ASEC",
+            "CLEARY",
+            "SHANE MACABODBOD",
+            "CHLOE",
+            "GERALDINE",
+            "NICO",
+            "MARLEY",
+            "PRINCESS BACARON"
+
+        ],
+
+
+        candles: [
+
+            "MARY",
+            "BLAIRE",
+            "SYRIA",
+            "PRINCESS DURAN",
+            "HANNA",
+            "MAILA",
+            "KEAN",
+            "NATHALIE",
+            "JAM",
+            "AURIE",
+            "NICOLE",
+            "HERSHEY",
+            "JOANNA",
+            "ANGELA",
+            "NICA",
+            "CATHERINE NITOLLAMA",
+            "ERIC",
+            "KATRINA",
+            "JANINE"
+
+        ],
+
+
+        dance: [
+
+            "ZU",
+            "CYRUS",
+            "MATTHEW",
+            "PRINCE",
+            "ALEX",
+            "RAYMOND",
+            "TITO NOY",
+            "TITO BONGKOY",
+            "TITO SONNY",
+            "ANDREI",
+            "SAM",
+            "KYLE",
+            "NITOY",
+            "CHRISTIAN",
+            "CAPAO",
+            "JOLO",
+            "AJ",
+            "TJ",
+            "JONASH",
+            "CHOLO"
+
+        ],
+
+
+        "blue-bills": [
+
+            "TITA TESS",
+            "TE BENG",
+            "NANAY",
+            "INAY",
+            "PHEA",
+            "XANDREI",
+            "CHEBE",
+            "GERM",
+            "CHAI",
+            "TITO NOY",
+            "KUYA NOY",
+            "ATE LALET",
+            "NICA",
+            "KAGAWAD RODERICK",
+            "HENRY/PRINCESS",
+            "MIA",
+            "CATHERINE NITOLLAMA",
+            "MADE",
+            "FAITH",
+            "AIRA"
+
+        ],
+
+
+        shots: [
+
+            "VIENNA",
+            "ABI",
+            "JANINE",
+            "HAVEN",
+            "AZTI",
+            "JOANNA",
+            "DIAH",
+            "MARLEY",
+            "GAB",
+            "SAMANTHA",
+            "CATHY",
+            "MAILA",
+            "LUCY",
+            "ANGELA",
+            "STEPHANIE",
+            "ALTHEA",
+            "SYRIA",
+            "NICOLE",
+            "ALEX"
+
+        ]
+
+    };
+
+
+    /* =====================================================
+       POPUP TITLES
+    ===================================================== */
+
+    const guestSectionTitles = {
+
+        gifts:
+            "18 Gifts",
+
+        candles:
+            "18 Candles",
+
+        dance:
+            "18 Dance",
+
+        "blue-bills":
+            "18 Blue Bills",
+
+        shots:
+            "18 Shots"
+
+    };
+
+
+    /* =====================================================
+       OPEN GUEST POPUP
+    ===================================================== */
+
+    function openGuestPopup(section) {
+
+        if (
+            !guestPopup ||
+            !guestPopupTitle ||
+            !guestList
+        ) {
+            return;
+        }
+
+
+        const guests =
+            guestLists[section];
+
+
+        if (!guests) {
+            return;
+        }
+
+
+        guestPopupTitle.textContent =
+            guestSectionTitles[section];
+
+
+        guestList.innerHTML = "";
+
+
+        guests.forEach(
+            function (guest) {
+
+                const li =
+                    document.createElement("li");
+
+                li.textContent =
+                    guest;
+
+                guestList.appendChild(li);
 
             }
-
-        }
-    );
-
-}
+        );
 
 
-window.addEventListener(
-    "scroll",
-    revealOnScroll,
-    {
-        passive: true
-    }
-);
+        guestPopup.classList.add(
+            "active"
+        );
+
+        guestPopup.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
 
-
-/* =================================================
-   HERO PARALLAX
-================================================= */
-
-const heroBackground =
-    document.querySelector(
-        ".hero-background"
-    );
+        document.body.classList.add(
+            "popup-open"
+        );
 
 
-window.addEventListener(
-    "scroll",
-    function () {
+        if (guestPopupClose) {
 
-        if (!heroBackground) return;
+            setTimeout(
+                function () {
 
+                    guestPopupClose.focus();
 
-        if (window.innerWidth > 700) {
-
-            const scrollY =
-                window.scrollY;
-
-
-            heroBackground.style.transform =
-                `scale(1.05) translateY(${scrollY * 0.12}px)`;
+                },
+                50
+            );
 
         }
 
-    },
-    {
-        passive: true
     }
-);
 
 
+    /* =====================================================
+       CLOSE GUEST POPUP
+    ===================================================== */
 
-/* =================================================
-   INITIAL PAGE STATE
-================================================= */
+    function closeGuestPopup() {
 
-document.body.classList.add(
-    "locked"
-);
-
-
-
-/* =================================================
-   REDUCED MOTION
-================================================= */
-
-const prefersReducedMotion =
-    window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
+        if (!guestPopup) {
+            return;
+        }
 
 
-if (prefersReducedMotion) {
+        guestPopup.classList.remove(
+            "active"
+        );
 
-    revealItems.forEach(
-        function (element) {
+        guestPopup.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
-            element.classList.add(
-                "active"
+
+        document.body.classList.remove(
+            "popup-open"
+        );
+
+    }
+
+
+    /* =====================================================
+       SPECIAL CARD CLICK
+    ===================================================== */
+
+    const traditionCards =
+        document.querySelectorAll(
+            ".tradition-card"
+        );
+
+
+    traditionCards.forEach(
+        function (card) {
+
+            card.addEventListener(
+                "click",
+                function () {
+
+                    const section =
+                        card.dataset.section;
+
+                    openGuestPopup(
+                        section
+                    );
+
+                }
+            );
+
+
+            card.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        const section =
+                            card.dataset.section;
+
+                        openGuestPopup(
+                            section
+                        );
+
+                    }
+
+                }
             );
 
         }
     );
 
-}
 
+    /* =====================================================
+       CLOSE BUTTON
+    ===================================================== */
 
+    if (guestPopupClose) {
 
-/* =================================================
-   18 SPECIALS — GUEST LISTS
-================================================= */
-
-const guestLists = {
-    gifts: [
-        "KAIRA",
-        "ANGELA",
-        "STEPHANIE",
-        "ZATHEENA",
-        "JOANNA",
-        "AILEEN",
-        "PRINCESS DURAN",
-        "TITA JUVIE",
-        "RACHELLE ANNE",
-        "KAT",
-        "KEAN",
-        "SYRIA",
-        "AZTI",
-        "AIRA",
-        "EZRA/ASEC",
-        "CLEARY",
-        "SHANE MACABODBOD",
-        "CHLOE",
-        "GERALDINE",
-        "NICO",
-        "MARLEY",
-        "PRINCESS BACARON"
-    ],
-
-    candles: [
-        "MARY",
-        "BLAIRE",
-        "SYRIA",
-        "PRINCESS DURAN",
-        "HANNA",
-        "MAILA",
-        "KEAN",
-        "NATHALIE",
-        "JAM",
-        "AURIE",
-        "NICOLE",
-        "HERSHEY",
-        "JOANNA",
-        "ANGELA",
-        "NICA",
-        "CATHERINE NITOLLAMA",
-        "ERIC",
-        "KATRINA",
-        "JANINE"
-    ],
-
-    dance: [
-        "ZU",
-        "CYRUS",
-        "MATTHEW",
-        "PRINCE",
-        "ALEX",
-        "RAYMOND",
-        "TITO NOY",
-        "TITO BONGKOY",
-        "TITO SONNY",
-        "ANDREI",
-        "SAM",
-        "KYLE",
-        "NITOY",
-        "CHRISTIAN",
-        "CAPAO",
-        "JOLO",
-        "AJ",
-        "TJ",
-        "JONASH",
-        "CHOLO"
-    ],
-
-    bills: [
-        "TITA TESS",
-        "TE BENG",
-        "NANAY",
-        "INAY",
-        "PHEA",
-        "XANDREI",
-        "CHEBE",
-        "GERM",
-        "CHAI",
-        "TITO NOY",
-        "KUYA NOY",
-        "ATE LALET",
-        "NICA",
-        "KAGAWAD RODERICK",
-        "HENRY/PRINCESS",
-        "MIA",
-        "CATHERINE NITOLLAMA",
-        "MADE",
-        "FAITH",
-        "AIRA"
-    ],
-
-    shots: [
-        "VIENNA",
-        "ABI",
-        "JANINE",
-        "HAVEN",
-        "AZTI",
-        "JOANNA",
-        "DIAH",
-        "MARLEY",
-        "GAB",
-        "SAMANTHA",
-        "CATHY",
-        "MAILA",
-        "LUCY",
-        "ANGELA",
-        "STEPHANIE",
-        "ALTHEA",
-        "SYRIA",
-        "NICOLE",
-        "ALEX"
-    ]
-};
-    ]
-
-};
-
-
-const guestSectionTitles = {
-
-    gifts: "18 Gifts",
-
-    candles: "18 Candles",
-
-    roses: "18 Roses",
-
-    "blue-bills": "18 Blue Bills",
-
-    shots: "18 Shots"
-
-};
-
-
-
-/* =================================================
-   OPEN GUEST POPUP
-================================================= */
-
-function openGuestPopup(section) {
-
-    const popup =
-        document.getElementById(
-            "guestPopup"
-        );
-
-    const title =
-        document.getElementById(
-            "guestPopupTitle"
-        );
-
-    const list =
-        document.getElementById(
-            "guestList"
-        );
-
-
-    if (!popup || !title || !list) {
-
-        console.error(
-            "Guest popup HTML is missing."
-        );
-
-        return;
-
-    }
-
-
-    const guests =
-        guestLists[section];
-
-
-    if (!guests) {
-
-        console.error(
-            "Guest list not found:",
-            section
-        );
-
-        return;
-
-    }
-
-
-    title.textContent =
-        guestSectionTitles[section];
-
-
-    list.innerHTML = "";
-
-
-    guests.forEach(
-        function (guest) {
-
-            const item =
-                document.createElement("li");
-
-            item.textContent =
-                guest;
-
-            list.appendChild(item);
-
-        }
-    );
-
-
-    popup.classList.add(
-        "active"
-    );
-
-
-    popup.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    document.body.classList.add(
-        "popup-open"
-    );
-
-}
-
-
-
-/* =================================================
-   CLOSE GUEST POPUP
-================================================= */
-
-function closeGuestPopup() {
-
-    const popup =
-        document.getElementById(
-            "guestPopup"
-        );
-
-
-    if (!popup) return;
-
-
-    popup.classList.remove(
-        "active"
-    );
-
-
-    popup.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-
-    document.body.classList.remove(
-        "popup-open"
-    );
-
-}
-
-
-
-/* =================================================
-   18 SPECIALS CLICK EVENTS
-================================================= */
-
-const cards =
-    document.querySelectorAll(
-        ".tradition-card[data-section]"
-    );
-
-
-console.log(
-    "18 Specials cards found:",
-    cards.length
-);
-
-
-cards.forEach(
-    function (card) {
-
-        card.addEventListener(
+        guestPopupClose.addEventListener(
             "click",
-            function () {
-
-                const section =
-                    card.getAttribute(
-                        "data-section"
-                    );
-
-
-                if (!section) return;
-
-
-                const popup =
-                    document.getElementById(
-                        "guestPopup"
-                    );
-
-                const title =
-                    document.getElementById(
-                        "guestPopupTitle"
-                    );
-
-
-                if (
-                    popup &&
-                    popup.classList.contains(
-                        "active"
-                    ) &&
-                    title &&
-                    title.textContent ===
-                        guestSectionTitles[section]
-                ) {
-
-                    closeGuestPopup();
-
-                    return;
-
-                }
-
-
-                openGuestPopup(
-                    section
-                );
-
-            }
-        );
-
-
-        card.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
-
-                    event.preventDefault();
-
-                    card.click();
-
-                }
-
-            }
+            closeGuestPopup
         );
 
     }
-);
 
 
+    /* =====================================================
+       CLICK OUTSIDE POPUP
+    ===================================================== */
 
-/* =================================================
-   CLOSE BUTTON
-================================================= */
+    if (guestPopupOverlay) {
 
-const closeButton =
-    document.getElementById(
-        "closeGuestPopup"
-    );
+        guestPopupOverlay.addEventListener(
+            "click",
+            closeGuestPopup
+        );
 
-
-if (closeButton) {
-
-    closeButton.addEventListener(
-        "click",
-        closeGuestPopup
-    );
-
-}
+    }
 
 
+    /* =====================================================
+       ESC KEY
+    ===================================================== */
 
-/* =================================================
-   CLICK OUTSIDE POPUP
-================================================= */
-
-const popup =
-    document.getElementById(
-        "guestPopup"
-    );
-
-
-if (popup) {
-
-    popup.addEventListener(
-        "click",
+    document.addEventListener(
+        "keydown",
         function (event) {
 
             if (
-                event.target.classList.contains(
-                    "guest-popup-overlay"
-                )
+                event.key === "Escape" &&
+                guestPopup &&
+                guestPopup.classList.contains("active")
             ) {
 
                 closeGuestPopup();
@@ -755,36 +682,97 @@ if (popup) {
         }
     );
 
-}
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
 
 
+    navLinks.forEach(
+        function (link) {
 
-/* =================================================
-   ESCAPE KEY
-================================================= */
+            link.addEventListener(
+                "click",
+                function () {
 
-document.addEventListener(
-    "keydown",
-    function (event) {
+                    const target =
+                        document.querySelector(
+                            link.getAttribute("href")
+                        );
 
-        if (
-            event.key === "Escape" &&
-            popup &&
-            popup.classList.contains(
-                "active"
-            )
-        ) {
 
-            closeGuestPopup();
+                    if (target) {
+
+                        setTimeout(
+                            function () {
+
+                                window.scrollTo({
+                                    top:
+                                        target.offsetTop -
+                                        70,
+                                    behavior:
+                                        "smooth"
+                                });
+
+                            },
+                            10
+                        );
+
+                    }
+
+                }
+            );
 
         }
+    );
+
+
+    /* =====================================================
+       HERO PARALLAX
+    ===================================================== */
+
+    const heroBackground =
+        document.querySelector(
+            ".hero-background"
+        );
+
+
+    if (
+        heroBackground &&
+        !window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                const scrollY =
+                    window.scrollY;
+
+
+                if (
+                    scrollY <
+                    window.innerHeight
+                ) {
+
+                    heroBackground.style.transform =
+                        `scale(1.12) translateY(${scrollY * 0.12}px)`;
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
 
     }
-);
-
-
-/* Initial reveal */
-
-revealOnScroll();
 
 });
