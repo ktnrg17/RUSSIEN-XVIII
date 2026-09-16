@@ -2270,37 +2270,39 @@ body.popup-open {
     }
 }
 /* PHONE COUNTDOWN - ONE LINE */
-@media (max-width: 550px) {
+@media screen and (max-width: 550px) {
 
     .countdown {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        width: 100%;
-        gap: 0;
-        border: none;
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-rows: 1fr !important;
+        width: 100% !important;
+        gap: 0 !important;
     }
 
     .count-box {
-        flex: 1;
-        width: 25%;
-        min-width: 0;
-        padding: 10px 2px;
+        width: auto !important;
+        min-width: 0 !important;
+        padding: 12px 0 !important;
         border: none !important;
-        text-align: center;
+        border-right: 1px solid var(--border) !important;
+    }
+
+    .count-box:last-child {
+        border-right: none !important;
     }
 
     .count-number {
-        display: block;
-        font-size: 1.4rem;
-        line-height: 1;
+        font-size: 1.4rem !important;
+        line-height: 1 !important;
     }
 
     .count-label {
-        display: block;
-        font-size: 0.5rem;
-        letter-spacing: 0.04em;
-        white-space: nowrap;
+        font-size: 0.5rem !important;
+        white-space: nowrap !important;
+    }
+
+}
     
     }
 
