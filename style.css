@@ -2382,3 +2382,32 @@ a:focus-visible {
             6px 0;
     }
 }
+/* =====================================================
+   FIX ENVELOPE CLICK
+===================================================== */
+
+.opening-screen {
+    position: fixed;
+    z-index: 99999;
+}
+
+.opening-glow,
+.opening-particles {
+    pointer-events: none;
+}
+
+.opening-content {
+    position: relative;
+    z-index: 100000;
+}
+
+.envelope-wrapper {
+    position: relative;
+    z-index: 100001;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.envelope-wrapper * {
+    pointer-events: none;
+}
