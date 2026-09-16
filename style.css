@@ -2273,27 +2273,35 @@ body.popup-open {
 @media (max-width: 550px) {
 
     .countdown {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 6px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 0;
+        border: none;
     }
 
     .count-box {
-        padding: 12px 2px;
-        border-right: 1px solid var(--border);
-        border-bottom: none;
-    }
-
-    .count-box:last-child {
-        border-right: none;
+        flex: 1;
+        width: 25%;
+        min-width: 0;
+        padding: 10px 2px;
+        border: none !important;
+        text-align: center;
     }
 
     .count-number {
-        font-size: 1.6rem;
+        display: block;
+        font-size: 1.4rem;
+        line-height: 1;
     }
 
     .count-label {
-        font-size: 0.55rem;
-        letter-spacing: 0.08em;
+        display: block;
+        font-size: 0.5rem;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+    
     }
 
 }
