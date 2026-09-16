@@ -2269,3 +2269,31 @@ body.popup-open {
         padding: 6px 0;
     }
 }
+/* PHONE COUNTDOWN - ONE LINE */
+@media (max-width: 550px) {
+
+    .countdown {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
+
+    .count-box {
+        padding: 12px 2px;
+        border-right: 1px solid var(--border);
+        border-bottom: none;
+    }
+
+    .count-box:last-child {
+        border-right: none;
+    }
+
+    .count-number {
+        font-size: 1.6rem;
+    }
+
+    .count-label {
+        font-size: 0.55rem;
+        letter-spacing: 0.08em;
+    }
+
+}
