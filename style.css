@@ -2303,7 +2303,7 @@ body.popup-open {
     }
 
 .hero-background {
-    filter: blur(5px);
+    filter: blur(10px);
     transform: scale(1.05);
 
     
