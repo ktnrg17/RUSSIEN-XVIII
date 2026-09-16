@@ -53,6 +53,7 @@ function openInvitation() {
         }
 
         document.body.classList.remove("locked");
+       window.scrollTo(0, 0);
 
 
         /* Start music */
