@@ -76,6 +76,66 @@
             <div class="wax-seal">
                 R
             </div>
+            /* =================================
+   ENVELOPE - LETTER RISES FROM INSIDE
+================================= */
+
+.envelope {
+    position: relative;
+    z-index: 1;
+}
+
+/* Back of envelope */
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+/* Letter starts INSIDE the envelope */
+.envelope-letter {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    z-index: 2;
+
+    transition:
+        transform 1s ease,
+        z-index 0s;
+}
+
+/* Front pocket stays in front of the lower part of the letter */
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+}
+
+/* Flap stays above the letter */
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+
+    transform-origin: top center;
+    transition: transform 0.8s ease;
+}
+
+
+.envelope-button.open .envelope-letter {
+    z-index: 3;
+
+    transform:
+        translateX(-50%)
+        translateY(-85px);
+}
+
+.envelope-button.open .envelope-flap {
+    z-index: 2;
+
+    transform: rotateX(180deg);
+}
 
         </div>
 
