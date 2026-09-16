@@ -2302,7 +2302,10 @@ body.popup-open {
         white-space: nowrap !important;
     }
 
-}
+.hero-background {
+    filter: blur(3px);
+    transform: scale(1.05);
+
     
     }
 
