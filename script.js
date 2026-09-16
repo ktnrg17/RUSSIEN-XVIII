@@ -354,7 +354,6 @@ if (prefersReducedMotion) {
 ================================================= */
 
 const guestLists = {
-
     gifts: [
         "KAIRA",
         "ANGELA",
@@ -363,7 +362,6 @@ const guestLists = {
         "JOANNA",
         "AILEEN",
         "PRINCESS DURAN",
-        "CATHY NITOLLAMA",
         "TITA JUVIE",
         "RACHELLE ANNE",
         "KAT",
@@ -373,7 +371,12 @@ const guestLists = {
         "AIRA",
         "EZRA/ASEC",
         "CLEARY",
-        "SHAMAINE"
+        "SHANE MACABODBOD",
+        "CHLOE",
+        "GERALDINE",
+        "NICO",
+        "MARLEY",
+        "PRINCESS BACARON"
     ],
 
     candles: [
@@ -388,27 +391,23 @@ const guestLists = {
         "JAM",
         "AURIE",
         "NICOLE",
-        "MAMA NI PRINCESS",
-        "ATE LALET",
         "HERSHEY",
         "JOANNA",
-        "TRIXIE",
-        "DJANA",
-        "MAMA BENG",
         "ANGELA",
-        "TITA NENG",
-        "GLIEZEL",
-        "ERICA"
+        "NICA",
+        "CATHERINE NITOLLAMA",
+        "ERIC",
+        "KATRINA",
+        "JANINE"
     ],
 
-    roses: [
+    dance: [
         "ZU",
         "CYRUS",
         "MATTHEW",
         "PRINCE",
         "ALEX",
         "RAYMOND",
-        "JM",
         "TITO NOY",
         "TITO BONGKOY",
         "TITO SONNY",
@@ -420,10 +419,12 @@ const guestLists = {
         "CAPAO",
         "JOLO",
         "AJ",
+        "TJ",
+        "JONASH",
         "CHOLO"
     ],
 
-    "blue-bills": [
+    bills: [
         "TITA TESS",
         "TE BENG",
         "NANAY",
@@ -431,22 +432,22 @@ const guestLists = {
         "PHEA",
         "XANDREI",
         "CHEBE",
-        "CHAME",
-        "MAM MALOU",
         "GERM",
-        "SUMALNAP",
         "CHAI",
         "TITO NOY",
         "KUYA NOY",
         "ATE LALET",
         "NICA",
         "KAGAWAD RODERICK",
-        "HENRY/PRINCESS"
+        "HENRY/PRINCESS",
+        "MIA",
+        "CATHERINE NITOLLAMA",
+        "MADE",
+        "FAITH",
+        "AIRA"
     ],
 
     shots: [
-        "TITO NOY",
-        "KUYA NOY",
         "VIENNA",
         "ABI",
         "JANINE",
@@ -459,14 +460,15 @@ const guestLists = {
         "SAMANTHA",
         "CATHY",
         "MAILA",
-        "GLIEZEL",
         "LUCY",
-        "PRINCESS NICOLE",
         "ANGELA",
         "STEPHANIE",
         "ALTHEA",
         "SYRIA",
-        "NICOLE"
+        "NICOLE",
+        "ALEX"
+    ]
+};
     ]
 
 };
