@@ -370,7 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
 
 
-        dance: [
+        roses: [
 
             "ZU",
             "CYRUS",
@@ -461,8 +461,8 @@ document.addEventListener("DOMContentLoaded", function () {
         candles:
             "18 Candles",
 
-        dance:
-            "18 Dance",
+        roses:
+            "18 Roses",
 
         "blue-bills":
             "18 Blue Bills",
