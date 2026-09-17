@@ -390,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "JOLO",
             "AJ",
             "TJ",
-            "JONASH",
+            "EZEKIEL",
             "CHOLO"
 
         ],
