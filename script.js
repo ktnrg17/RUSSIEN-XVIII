@@ -51,18 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         invitationOpened = true;
 
-
         console.log("Envelope clicked!");
 
-
-        /* Open envelope animation */
 
         if (envelopeButton) {
             envelopeButton.classList.add("open");
         }
 
-
-        /* Wait for envelope animation */
 
         setTimeout(function () {
 
@@ -75,12 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
 
-            /* Unlock scrolling */
-
             document.body.classList.remove("locked");
 
-
-            /* Always start at first page */
 
             window.scrollTo({
                 top: 0,
@@ -88,8 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 behavior: "instant"
             });
 
-
-            /* Start music */
 
             if (backgroundMusic) {
 
@@ -107,8 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
             }
 
-
-            /* Start reveal animations */
 
             revealOnScroll();
 
@@ -318,7 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const guestLists = {
 
         gifts: [
-
             "KAIRA",
             "ANGELA",
             "STEPHANIE",
@@ -341,12 +327,10 @@ document.addEventListener("DOMContentLoaded", function () {
             "NICO",
             "MARLEY",
             "PRINCESS BACARON"
-
         ],
 
 
         candles: [
-
             "MARY",
             "BLAIRE",
             "SYRIA",
@@ -366,12 +350,10 @@ document.addEventListener("DOMContentLoaded", function () {
             "ERIC",
             "KATRINA",
             "JANINE"
-
         ],
 
 
-        roses: [
-
+        dance: [
             "ZU",
             "CYRUS",
             "MATTHEW",
@@ -390,14 +372,12 @@ document.addEventListener("DOMContentLoaded", function () {
             "JOLO",
             "AJ",
             "TJ",
-            "EZEKIEL",
+            "JONASH",
             "CHOLO"
-
         ],
 
 
         "blue-bills": [
-
             "TITA TESS",
             "TE BENG",
             "NANAY",
@@ -418,12 +398,10 @@ document.addEventListener("DOMContentLoaded", function () {
             "MADE",
             "FAITH",
             "AIRA"
-
         ],
 
 
         shots: [
-
             "VIENNA",
             "ABI",
             "JANINE",
@@ -443,7 +421,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "SYRIA",
             "NICOLE",
             "ALEX"
-
         ]
 
     };
@@ -455,20 +432,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const guestSectionTitles = {
 
-        gifts:
-            "18 Gifts",
+        gifts: "18 Gifts",
 
-        candles:
-            "18 Candles",
+        candles: "18 Candles",
 
-        roses:
-            "18 Roses",
+        dance: "18 Dance",
 
-        "blue-bills":
-            "18 Blue Bills",
+        "blue-bills": "18 Blue Bills",
 
-        shots:
-            "18 Shots"
+        shots: "18 Shots"
 
     };
 
@@ -499,7 +471,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         guestPopupTitle.textContent =
             guestSectionTitles[section];
-
 
         guestList.innerHTML = "";
 
