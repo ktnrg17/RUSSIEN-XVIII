@@ -181,7 +181,7 @@ a {
     left: 25px;
 
     transform:
-        translateY(-60px);
+        translateY(-75px);
 
     letter-spacing: .45em;
 
@@ -196,7 +196,7 @@ a {
     margin-bottom: 0;
 
     animation:
-        fadeDown 1.2s ease both;
+        fadeUp 1.2s ease both;
 }
 
 .invited-title {
