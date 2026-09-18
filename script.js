@@ -52,6 +52,36 @@ document.addEventListener("DOMContentLoaded", function () {
         invitationOpened = true;
 
 
+        /* =================================================
+           START MUSIC IMMEDIATELY FROM ENVELOPE CLICK
+        ================================================= */
+
+        if (backgroundMusic) {
+
+            backgroundMusic.volume = 0.4;
+
+            backgroundMusic.currentTime = 0;
+
+            backgroundMusic
+                .play()
+                .then(function () {
+
+                    console.log(
+                        "Background music started."
+                    );
+
+                })
+                .catch(function (error) {
+
+                    console.log(
+                        "Music could not autoplay:",
+                        error
+                    );
+
+                });
+        }
+
+
         /*
          * Pink glow transition.
          * No paper-rising animation.
@@ -96,25 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
 
-            /* Start music */
-
-            if (backgroundMusic) {
-
-                backgroundMusic.volume = 0.4;
-
-                backgroundMusic
-                    .play()
-                    .catch(function (error) {
-
-                        console.log(
-                            "Music could not autoplay:",
-                            error
-                        );
-
-                    });
-            }
-
-
             /* Start reveal animations */
 
             revealOnScroll();
@@ -132,7 +143,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         envelopeButton.addEventListener(
             "click",
-            openInvitation
+            function (event) {
+
+                event.preventDefault();
+
+                openInvitation();
+
+            }
         );
 
     }
