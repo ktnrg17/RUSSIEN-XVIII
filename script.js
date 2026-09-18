@@ -1,777 +1,1249 @@
-document.addEventListener("DOMContentLoaded", function () {
+<!DOCTYPE html>
+<html lang="en">
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+<head>
+    <meta charset="UTF-8">
 
-    const openingScreen =
-        document.getElementById("openingScreen");
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    const mainInvitation =
-        document.getElementById("mainInvitation");
+    <meta
+        name="theme-color"
+        content="#f8dce8"
+    >
 
-    const envelopeButton =
-        document.getElementById("envelopeButton");
+    <title>Russien @18</title>
 
-    const backgroundMusic =
-        document.getElementById("backgroundMusic");
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    const guestPopup =
-        document.getElementById("guestPopup");
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet"
+    >
 
-    const guestPopupOverlay =
-        document.getElementById("guestPopupOverlay");
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    const guestPopupClose =
-        document.getElementById("guestPopupClose");
 
-    const guestPopupTitle =
-        document.getElementById("guestPopupTitle");
+<body class="locked">
 
-    const guestList =
-        document.getElementById("guestList");
 
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
 
-    /* =====================================================
-       STATE
-    ===================================================== */
+<div id="openingScreen" class="opening-screen">
 
-    let invitationOpened = false;
+    <div class="opening-glow"></div>
 
+    <div class="opening-particles"></div>
 
-    /* =====================================================
-       OPEN INVITATION
-    ===================================================== */
+    <div class="opening-content">
 
-    function openInvitation() {
+        <p class="small-title">
+            YOU ARE
+        </p>
 
-        if (invitationOpened) {
-            return;
-        }
+        <h1 class="invited-title">
+            Invited
+        </h1>
 
-        invitationOpened = true;
+        <p class="opening-subtitle">
+            TO CELEBRATE A SPECIAL MOMENT
+        </p>
 
-        console.log("Envelope clicked!");
 
+        <!-- ENVELOPE -->
 
-        /* Open envelope animation */
+        <button
+            id="envelopeButton"
+            class="envelope-wrapper"
+            aria-label="Open invitation"
+            type="button"
+        >
 
-        if (envelopeButton) {
-            envelopeButton.classList.add("open");
-        }
+            <div class="envelope">
 
+                <div class="envelope-back"></div>
 
-        /* Wait for envelope animation */
+                <div class="letter">
 
-        setTimeout(function () {
+                    <span>
+                        Russien's 18th Birthday
+                    </span>
 
-            if (openingScreen) {
-                openingScreen.classList.add("hidden");
-            }
+                    <small class="letter-line"></small>
 
-            if (mainInvitation) {
-                mainInvitation.classList.add("visible");
-            }
+                </div>
 
+                <div class="envelope-front"></div>
 
-            /* Unlock scrolling */
+                <div class="envelope-flap"></div>
 
-            document.body.classList.remove("locked");
+                <div class="wax-seal">
+                    R
+                </div>
 
+            </div>
 
-            /* Always start at first page */
+        </button>
 
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "instant"
-            });
 
+        <p class="tap-text">
+            TAP THE ENVELOPE
+        </p>
 
-            /* Start music */
+    </div>
 
-            if (backgroundMusic) {
+</div>
 
-                backgroundMusic.volume = 0.4;
 
-                backgroundMusic
-                    .play()
-                    .catch(function (error) {
 
-                        console.log(
-                            "Music could not autoplay:",
-                            error
-                        );
+<!-- =====================================================
+     MAIN INVITATION
+===================================================== -->
 
-                    });
-            }
+<main
+    id="mainInvitation"
+    class="main-invitation"
+>
 
 
-            /* Start reveal animations */
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-            revealOnScroll();
+<nav class="navbar">
 
-        }, 1500);
+    <div class="nav-links">
 
-    }
+        <a href="#home">
+            HOME
+        </a>
 
+        <a href="#about">
+            ABOUT
+        </a>
 
-    /* =====================================================
-       ENVELOPE CLICK
-    ===================================================== */
+        <a href="#details">
+            DETAILS
+        </a>
 
-    if (envelopeButton) {
+        <a href="#traditions">
+            18 SPECIALS
+        </a>
 
-        envelopeButton.addEventListener(
-            "click",
-            openInvitation
-        );
+        <a href="#seating">
+            SEATING
+        </a>
 
-    }
+    </div>
 
+</nav>
 
-    /* =====================================================
-       COUNTDOWN
-    ===================================================== */
 
-    const targetDate =
-        new Date(
-            "September 26, 2026 16:00:00"
-        ).getTime();
 
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    function updateCountdown() {
+<section
+    id="home"
+    class="hero"
+>
 
-        const now =
-            new Date().getTime();
+    <div class="hero-background"></div>
 
-        const distance =
-            targetDate - now;
+    <div class="hero-overlay"></div>
 
 
-        const daysElement =
-            document.getElementById("days");
+    <!-- FLOATING LIGHTS -->
 
-        const hoursElement =
-            document.getElementById("hours");
+    <div class="floating-light light-one"></div>
 
-        const minutesElement =
-            document.getElementById("minutes");
+    <div class="floating-light light-two"></div>
 
-        const secondsElement =
-            document.getElementById("seconds");
+    <div class="floating-light light-three"></div>
 
 
-        if (
-            !daysElement ||
-            !hoursElement ||
-            !minutesElement ||
-            !secondsElement
-        ) {
-            return;
-        }
+    <div class="hero-content">
 
+        <p class="eyebrow">
+            A SPECIAL CELEBRATION
+        </p>
 
-        if (distance <= 0) {
 
-            daysElement.textContent = "00";
-            hoursElement.textContent = "00";
-            minutesElement.textContent = "00";
-            secondsElement.textContent = "00";
+        <h1>
+            Russien's
+            <span>
+                18th Birthday
+            </span>
+        </h1>
 
-            return;
-        }
 
+        <div class="hero-divider">
 
-        const days =
-            Math.floor(
-                distance /
-                (1000 * 60 * 60 * 24)
-            );
+            <span></span>
 
-        const hours =
-            Math.floor(
-                (distance %
-                    (1000 * 60 * 60 * 24)) /
-                (1000 * 60 * 60)
-            );
+            <p>
+                XVIII
+            </p>
 
-        const minutes =
-            Math.floor(
-                (distance %
-                    (1000 * 60 * 60)) /
-                (1000 * 60)
-            );
+            <span></span>
 
-        const seconds =
-            Math.floor(
-                (distance %
-                    (1000 * 60)) /
-                1000
-            );
+        </div>
 
 
-        daysElement.textContent =
-            String(days).padStart(2, "0");
+        <p class="hero-date">
+            SEPTEMBER 26, 2026 · 4:00 PM
+        </p>
 
-        hoursElement.textContent =
-            String(hours).padStart(2, "0");
+        <p class="hero-location">
+            PAGAYON COMP., RODRIGUEZ, RIZAL
+        </p>
 
-        minutesElement.textContent =
-            String(minutes).padStart(2, "0");
+    </div>
 
-        secondsElement.textContent =
-            String(seconds).padStart(2, "0");
+</section>
 
-    }
 
 
-    updateCountdown();
+<!-- =====================================================
+     ABOUT / INTRO
+===================================================== -->
 
-    setInterval(
-        updateCountdown,
-        1000
-    );
+<section
+    id="about"
+    class="intro section"
+>
 
+    <div class="intro-content reveal">
 
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
+        <p class="section-label">
+            A NEW CHAPTER
+        </p>
 
-    function revealOnScroll() {
+        <h2>
+            Eighteen
+            <span>
+                & Fabulous
+            </span>
+        </h2>
 
-        const revealElements =
-            document.querySelectorAll(".reveal");
+        <div class="ornament">
+            ✦
+        </div>
 
+        <p class="intro-text">
+            Join us as we celebrate Russien's journey into
+            adulthood with an evening filled with love,
+            laughter, beautiful memories, and the people
+            who make every moment meaningful.
+        </p>
 
-        if (
-            "IntersectionObserver"
-            in window
-        ) {
+    </div>
 
-            const observer =
-                new IntersectionObserver(
-                    function (entries) {
+</section>
 
-                        entries.forEach(
-                            function (entry) {
 
-                                if (
-                                    entry.isIntersecting
-                                ) {
 
-                                    entry.target.classList.add(
-                                        "active"
-                                    );
+<!-- =====================================================
+     FEATURE PHOTO
+===================================================== -->
 
-                                    observer.unobserve(
-                                        entry.target
-                                    );
+<section class="feature-photo">
 
-                                }
+    <div class="feature-image reveal">
 
-                            }
-                        );
+        <img
+            src="images/hero.jpg"
+            alt="Russien's birthday portrait"
+        >
 
-                    },
-                    {
-                        threshold: 0.12
-                    }
-                );
+        <div class="image-overlay">
 
+            <p>
+                THE DEBUTANT
+            </p>
 
-            revealElements.forEach(
-                function (element) {
+            <h2>
+                Russien
+            </h2>
 
-                    observer.observe(
-                        element
-                    );
+        </div>
 
-                }
-            );
+    </div>
 
-        } else {
+</section>
 
-            revealElements.forEach(
-                function (element) {
 
-                    element.classList.add(
-                        "active"
-                    );
 
-                }
-            );
+<!-- =====================================================
+     THREE ADDITIONAL PHOTOS
+===================================================== -->
 
-        }
+<section class="extra-photos-section section">
 
-    }
+    <div class="extra-photos-grid">
 
+        <div class="extra-photo reveal">
 
-    revealOnScroll();
+            <img
+                src="images/photoI.jpg"
+                alt="Russien birthday moment"
+            >
 
+        </div>
 
-    /* =====================================================
-       GUEST LISTS
-    ===================================================== */
 
-    const guestLists = {
+        <div class="extra-photo reveal">
 
-        gifts: [
+            <img
+                src="images/photoII.jpg"
+                alt="Russien birthday moment"
+            >
 
-            "KAIRA",
-            "ANGELA",
-            "STEPHANIE",
-            "ZATHEENA",
-            "JOANNA",
-            "AILEEN",
-            "PRINCESS DURAN",
-            "TITA JUVIE",
-            "RACHELLE ANNE",
-            "KAT",
-            "KEAN",
-            "SYRIA",
-            "AZTI",
-            "AIRA",
-            "EZRA/ASEC",
-            "CLEARY",
-            "SHANE MACABODBOD",
-            "CHLOE",
-            "GERALDINE",
-            "NICO",
-            "MARLEY",
-            "PRINCESS BACARON"
+        </div>
 
-        ],
 
+        <div class="extra-photo reveal">
 
-        candles: [
+            <img
+                src="images/photoIII.jpg"
+                alt="Russien birthday moment"
+            >
 
-            "MARY",
-            "BLAIRE",
-            "SYRIA",
-            "PRINCESS DURAN",
-            "HANNA",
-            "MAILA",
-            "KEAN",
-            "NATHALIE",
-            "JAM",
-            "AURIE",
-            "NICOLE",
-            "HERSHEY",
-            "JOANNA",
-            "ANGELA",
-            "NICA",
-            "CATHERINE NITOLLAMA",
-            "ERIC",
-            "KATRINA",
-            "JANINE"
+        </div>
 
-        ],
+    </div>
 
+</section>
 
-        dance: [
 
-            "ZU",
-            "CYRUS",
-            "MATTHEW",
-            "PRINCE",
-            "ALEX",
-            "RAYMOND",
-            "TITO NOY",
-            "TITO BONGKOY",
-            "TITO SONNY",
-            "ANDREI",
-            "SAM",
-            "KYLE",
-            "NITOY",
-            "CHRISTIAN",
-            "CAPAO",
-            "JOLO",
-            "AJ",
-            "TJ",
-            "JONASH",
-            "CHOLO"
 
-        ],
+<!-- =====================================================
+     COUNTDOWN
+===================================================== -->
 
+<section class="countdown-section section">
 
-        "blue-bills": [
+    <div class="reveal">
 
-            "TITA TESS",
-            "TE BENG",
-            "NANAY",
-            "INAY",
-            "PHEA",
-            "XANDREI",
-            "CHEBE",
-            "GERM",
-            "CHAI",
-            "TITO NOY",
-            "KUYA NOY",
-            "ATE LALET",
-            "NICA",
-            "KAGAWAD RODERICK",
-            "HENRY/PRINCESS",
-            "MIA",
-            "CATHERINE NITOLLAMA",
-            "MADE",
-            "FAITH",
-            "AIRA"
+        <p class="section-label">
+            COUNTING DOWN TO
+        </p>
 
-        ],
+        <h2>
+            The Big
+            <span>
+                Day
+            </span>
+        </h2>
 
+    </div>
 
-        shots: [
 
-            "VIENNA",
-            "ABI",
-            "JANINE",
-            "HAVEN",
-            "AZTI",
-            "JOANNA",
-            "DIAH",
-            "MARLEY",
-            "GAB",
-            "SAMANTHA",
-            "CATHY",
-            "MAILA",
-            "LUCY",
-            "ANGELA",
-            "STEPHANIE",
-            "ALTHEA",
-            "SYRIA",
-            "NICOLE",
-            "ALEX"
+    <div class="countdown reveal">
 
-        ]
+        <div class="count-box">
 
-    };
+            <strong id="days">
+                00
+            </strong>
 
+            <span>
+                DAYS
+            </span>
 
-    /* =====================================================
-       POPUP TITLES
-    ===================================================== */
+        </div>
 
-    const guestSectionTitles = {
 
-        gifts:
-            "18 Gifts",
+        <div class="count-box">
 
-        candles:
-            "18 Candles",
+            <strong id="hours">
+                00
+            </strong>
 
-        dance:
-            "18 Roses",
+            <span>
+                HOURS
+            </span>
 
-        "blue-bills":
-            "18 Blue Bills",
+        </div>
 
-        shots:
-            "18 Shots"
 
-    };
+        <div class="count-box">
 
+            <strong id="minutes">
+                00
+            </strong>
 
-    /* =====================================================
-       OPEN GUEST POPUP
-    ===================================================== */
+            <span>
+                MINUTES
+            </span>
 
-    function openGuestPopup(section) {
+        </div>
 
-        if (
-            !guestPopup ||
-            !guestPopupTitle ||
-            !guestList
-        ) {
-            return;
-        }
 
+        <div class="count-box">
 
-        const guests =
-            guestLists[section];
+            <strong id="seconds">
+                00
+            </strong>
 
+            <span>
+                SECONDS
+            </span>
 
-        if (!guests) {
-            return;
-        }
+        </div>
 
+    </div>
 
-        guestPopupTitle.textContent =
-            guestSectionTitles[section];
+</section>
 
 
-        guestList.innerHTML = "";
 
+<!-- =====================================================
+     EVENT DETAILS
+===================================================== -->
 
-        guests.forEach(
-            function (guest) {
+<section
+    id="details"
+    class="details-section section"
+>
 
-                const li =
-                    document.createElement("li");
+    <div class="details-heading reveal">
 
-                li.textContent =
-                    guest;
+        <p class="section-label">
+            JOIN US
+        </p>
 
-                guestList.appendChild(li);
+        <h2>
+            Event
+            <span>
+                Details
+            </span>
+        </h2>
 
-            }
-        );
+    </div>
 
 
-        guestPopup.classList.add(
-            "active"
-        );
+    <div class="details-grid">
 
-        guestPopup.setAttribute(
-            "aria-hidden",
-            "false"
-        );
+        <div class="detail-card reveal">
 
+            <div class="detail-icon">
+                ♡
+            </div>
 
-        document.body.classList.add(
-            "popup-open"
-        );
+            <p>
+                DATE
+            </p>
 
+            <h3>
+                September 26, 2026
+            </h3>
 
-        if (guestPopupClose) {
+            <span>
+                Saturday
+            </span>
 
-            setTimeout(
-                function () {
+        </div>
 
-                    guestPopupClose.focus();
 
-                },
-                50
-            );
+        <div class="detail-card reveal">
 
-        }
+            <div class="detail-icon">
+                ◷
+            </div>
 
-    }
+            <p>
+                TIME
+            </p>
 
+            <h3>
+                4:00 PM
+            </h3>
 
-    /* =====================================================
-       CLOSE GUEST POPUP
-    ===================================================== */
+            <span>
+                Please arrive on time
+            </span>
 
-    function closeGuestPopup() {
+        </div>
 
-        if (!guestPopup) {
-            return;
-        }
 
+        <div class="detail-card reveal">
 
-        guestPopup.classList.remove(
-            "active"
-        );
+            <div class="detail-icon">
+                ⌖
+            </div>
 
-        guestPopup.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+            <p>
+                VENUE
+            </p>
 
+            <h3>
+                ID and Che's Resort
+            </h3>
 
-        document.body.classList.remove(
-            "popup-open"
-        );
+            <span>
+                Pagayon Comp., Rodriguez, Rizal
+            </span>
 
-    }
+        </div>
 
+    </div>
 
-    /* =====================================================
-       SPECIAL CARD CLICK
-    ===================================================== */
 
-    const traditionCards =
-        document.querySelectorAll(
-            ".tradition-card"
-        );
+    <a
+        href="https://maps.app.goo.gl/PLighQxEoFiQfxq18"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="map-button"
+    >
+        VIEW LOCATION
+    </a>
 
+</section>
 
-    traditionCards.forEach(
-        function (card) {
 
-            card.addEventListener(
-                "click",
-                function () {
 
-                    const section =
-                        card.dataset.section;
+<!-- =====================================================
+     DRESS CODE
+===================================================== -->
 
-                    openGuestPopup(
-                        section
-                    );
+<section class="dress-code">
 
-                }
-            );
+    <div class="dress-background"></div>
 
 
-            card.addEventListener(
-                "keydown",
-                function (event) {
+    <div class="dress-content reveal">
 
-                    if (
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
+        <p class="section-label">
+            DRESS CODE
+        </p>
 
-                        event.preventDefault();
+        <h2>
+            Pretty in
+            <span>
+                Pink
+            </span>
+        </h2>
 
-                        const section =
-                            card.dataset.section;
+        <p>
+            Come dressed in
+            <strong class="dress-emphasis">formal</strong>
+            or
+            <strong class="dress-emphasis">semi-formal</strong>
+            attire in your favorite shade of
+            <strong class="dress-emphasis">pink</strong>.
+            Your cooperation in following the dress code will help create a
+            beautiful and elegant atmosphere for the celebration.
+        </p>
 
-                        openGuestPopup(
-                            section
-                        );
 
-                    }
+        <div class="pink-palette">
 
-                }
-            );
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
 
-        }
-    );
+        </div>
 
 
-    /* =====================================================
-       CLOSE BUTTON
-    ===================================================== */
+        <strong>
+            WEAR YOUR FAVORITE PINK
+        </strong>
 
-    if (guestPopupClose) {
+    </div>
 
-        guestPopupClose.addEventListener(
-            "click",
-            closeGuestPopup
-        );
+</section>
 
-    }
 
 
-    /* =====================================================
-       CLICK OUTSIDE POPUP
-    ===================================================== */
+<!-- =====================================================
+     18 SPECIALS
+===================================================== -->
 
-    if (guestPopupOverlay) {
+<section
+    id="traditions"
+    class="traditions section"
+>
 
-        guestPopupOverlay.addEventListener(
-            "click",
-            closeGuestPopup
-        );
+    <div class="reveal">
 
-    }
+        <p class="section-label">
+            A CELEBRATION OF LOVE
+        </p>
 
+        <h2>
+            18
+            <span>
+                Specials
+            </span>
+        </h2>
 
-    /* =====================================================
-       ESC KEY
-    ===================================================== */
+    </div>
 
-    document.addEventListener(
-        "keydown",
-        function (event) {
 
-            if (
-                event.key === "Escape" &&
-                guestPopup &&
-                guestPopup.classList.contains("active")
-            ) {
+    <div class="traditions-grid">
 
-                closeGuestPopup();
 
-            }
+        <!-- 18 GIFTS -->
 
-        }
-    );
+        <article
+            class="tradition-card reveal"
+            data-section="gifts"
+            tabindex="0"
+            role="button"
+            aria-label="View guests for 18 Gifts"
+        >
 
+            <span>
+                01
+            </span>
 
-    /* =====================================================
-       NAVIGATION
-    ===================================================== */
+            <div>
 
-    const navLinks =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
+                <h3>
+                    18 Gifts
+                </h3>
 
+                <p>
+                    Meaningful gifts from people who
+                    are special to Russien.
+                </p>
 
-    navLinks.forEach(
-        function (link) {
+            </div>
 
-            link.addEventListener(
-                "click",
-                function () {
+        </article>
 
-                    const target =
-                        document.querySelector(
-                            link.getAttribute("href")
-                        );
 
 
-                    if (target) {
+        <!-- 18 CANDLES -->
 
-                        setTimeout(
-                            function () {
+        <article
+            class="tradition-card reveal"
+            data-section="candles"
+            tabindex="0"
+            role="button"
+            aria-label="View guests for 18 Candles"
+        >
 
-                                window.scrollTo({
-                                    top:
-                                        target.offsetTop -
-                                        70,
-                                    behavior:
-                                        "smooth"
-                                });
+            <span>
+                02
+            </span>
 
-                            },
-                            10
-                        );
+            <div>
 
-                    }
+                <h3>
+                    18 Candles
+                </h3>
 
-                }
-            );
+                <p>
+                    Wishes and messages shared
+                    with the debutant.
+                </p>
 
-        }
-    );
+            </div>
 
+        </article>
 
-    /* =====================================================
-       HERO PARALLAX
-    ===================================================== */
 
-    const heroBackground =
-        document.querySelector(
-            ".hero-background"
-        );
 
+        <!-- 18 ROSES -->
 
-    if (
-        heroBackground &&
-        !window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-    ) {
+        <article
+            class="tradition-card reveal"
+            data-section="dance"
+            tabindex="0"
+            role="button"
+            aria-label="View guests for 18 Roses"
+        >
 
-        window.addEventListener(
-            "scroll",
-            function () {
+            <span>
+                03
+            </span>
 
-                const scrollY =
-                    window.scrollY;
+            <div>
 
+                <h3>
+                    18 Roses
+                </h3>
 
-                if (
-                    scrollY <
-                    window.innerHeight
-                ) {
+                <p>
+                    A special dance shared with the
+                    people who make this celebration meaningful.
+                </p>
 
-                    heroBackground.style.transform =
-                        `scale(1.12) translateY(${scrollY * 0.12}px)`;
+            </div>
 
-                }
+        </article>
 
-            },
-            {
-                passive: true
-            }
-        );
 
-    }
 
-});
+        <!-- 18 BLUE BILLS -->
+
+        <article
+            class="tradition-card reveal"
+            data-section="blue-bills"
+            tabindex="0"
+            role="button"
+            aria-label="View guests for 18 Blue Bills"
+        >
+
+            <span>
+                04
+            </span>
+
+            <div>
+
+                <h3>
+                    18 Blue Bills
+                </h3>
+
+                <p>
+                    A special contribution from
+                    loved ones.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- 18 SHOTS -->
+
+        <article
+            class="tradition-card reveal"
+            data-section="shots"
+            tabindex="0"
+            role="button"
+            aria-label="View guests for 18 Shots"
+        >
+
+            <span>
+                05
+            </span>
+
+            <div>
+
+                <h3>
+                    18 Shots
+                </h3>
+
+                <p>
+                    A toast to eighteen unforgettable
+                    years.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEATING ARRANGEMENT
+===================================================== -->
+
+<section
+    id="seating"
+    class="seating-section section"
+>
+
+    <div class="seating-heading reveal">
+
+        <p class="section-label">
+            YOUR SEAT AWAITS
+        </p>
+
+        <h2>
+            Sitting
+            <span>
+                Arrangement
+            </span>
+        </h2>
+
+        <p>
+            Please find your assigned seat below.
+        </p>
+
+    </div>
+
+
+    <div class="seating-grid">
+
+
+        <!-- VIP 1 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                VIP 1
+            </div>
+
+            <ol>
+
+                <li>ortega, joan</li>
+                <li>ortega, rachelle</li>
+                <li>naraga, katrina</li>
+                <li>hershey</li>
+                <li>celestial, anna marie</li>
+                <li>yayay</li>
+                <li>tita neng</li>
+                <li>Cathrine</li>
+                <li>Tita tess</li>
+                <li>Shamine</li>
+                <li>nica</li>
+                <li>Peng</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- VIP 2 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                VIP 2
+            </div>
+
+            <ol>
+
+                <li>Lalet</li>
+                <li>Zu</li>
+                <li>Djanna naraga</li>
+                <li>Aj</li>
+                <li>jolo</li>
+                <li>raymond</li>
+                <li>asawa ni mel an</li>
+                <li>tito bongkoy</li>
+                <li>tita juivie</li>
+                <li>mel an</li>
+                <li>junjun (anak niya)</li>
+                <li>Tito Sonny</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 1 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 1
+            </div>
+
+            <ol>
+
+                <li>basillio, janine</li>
+                <li>dayandante, haven</li>
+                <li>santiago, joanna</li>
+                <li>alejo, azti</li>
+                <li>manuel, abigail</li>
+                <li>sode, vienna</li>
+                <li>duran, princess</li>
+                <li>lopez, mihara</li>
+                <li>almoguerra, ariane</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 2 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 2
+            </div>
+
+            <ol>
+
+                <li>lucy</li>
+                <li>negro</li>
+                <li>tito noy</li>
+                <li>MALOU</li>
+                <li>INAY</li>
+                <li>BAKLA NA KASAMA NIYA</li>
+                <li>NANAY</li>
+                <li>Faith</li>
+                <li>Nico</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 3 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 3
+            </div>
+
+            <ol>
+
+                <li>baldonado, marku cholo</li>
+                <li>baldonado, hanna</li>
+                <li>baldonado, alex</li>
+                <li>miyakawa, jasmin</li>
+                <li>sison, rosalie</li>
+                <li>capiral, gabriella</li>
+                <li>joshua</li>
+                <li>cantre, althea</li>
+                <li>villanueva, rene</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 4 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 4
+            </div>
+
+            <ol>
+
+                <li>magon, kean</li>
+                <li>bautista, mary</li>
+                <li>jallorina, cathy</li>
+                <li>rubel, blair</li>
+                <li>jamela, renalyn</li>
+                <li>zamundip, zatheena</li>
+                <li>lumanog, aurie</li>
+                <li>tapar, syria</li>
+                <li>revoldela, marley</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 5 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 5
+            </div>
+
+            <ol>
+
+                <li>de dios, samantha</li>
+                <li>facuib, viah</li>
+                <li>lucim, kyle</li>
+                <li>makiramdam, maila</li>
+                <li>nitoy</li>
+                <li>castro, andrei</li>
+                <li>selto</li>
+                <li>diah</li>
+                <li>capao, angelo</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 6 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 6
+            </div>
+
+            <ol>
+
+                <li>guererro, nathalie</li>
+                <li>umerez, sophia</li>
+                <li>umali, angela</li>
+                <li>pepay</li>
+                <li>manuel, princess</li>
+                <li>garan, kaira</li>
+                <li>matthew</li>
+                <li>ate lucy</li>
+                <li>ate gliezel</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 7 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 7
+            </div>
+
+            <ol>
+
+                <li>Christian Serote</li>
+                <li>Cleary Obias</li>
+                <li>Roderick Jimenez</li>
+                <li>Gloria Serote</li>
+                <li>Ezrha Louis Serote</li>
+                <li>Janine kyle Diaz</li>
+                <li>Reina aira Tanaka</li>
+                <li>PRINCESS BACARON</li>
+                <li>JASON</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 8 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 8
+            </div>
+
+            <ol>
+
+                <li>Xandrei Reyes</li>
+                <li>Jonash</li>
+                <li>Germ</li>
+                <li>Shane Macabodbod</li>
+                <li>Princess Velasco</li>
+                <li>PHEA RAPIZ</li>
+                <li>TJ Delacruz</li>
+                <li>Zack Delacruz</li>
+                <li>MIA</li>
+                <li>CHAI</li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- TABLE 9 -->
+
+        <div class="seating-table reveal">
+
+            <div class="table-number">
+                TABLE 9
+            </div>
+
+            <ol>
+
+                <li>Eric</li>
+                <li>Geraldine</li>
+                <li>Chloe</li>
+                <li>Aira</li>
+                <li>nini</li>
+                <li>patricia</li>
+                <li>Sharmaine</li>
+                <li>Stephen</li>
+                <li>porlante</li>
+
+            </ol>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CLOSING
+===================================================== -->
+
+<section class="closing section">
+
+    <div class="closing-content reveal">
+
+        <p class="section-label">
+            SEE YOU THERE
+        </p>
+
+        <h2>
+            Let's make
+            <span>
+                memories
+            </span>
+        </h2>
+
+        <p>
+            Your presence will make this celebration even more special. If you wish, you may bring a small gift and a handwritten letter—your wishes, advice, and memories will be treasured forever.
+        </p>
+
+        <div class="closing-ornament">
+            ✦
+        </div>
+
+
+        <div class="closing-name">
+
+            <small>
+                WITH LOVE,
+            </small>
+
+            <strong>
+                Russien
+            </strong>
+
+            <span>
+                XVIII
+            </span>
+
+        </div>
+
+
+        <p class="closing-date">
+            SEPTEMBER 26, 2026
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        RUSSIEN @18
+    </p>
+
+    <p>
+        A NIGHT TO REMEMBER
+    </p>
+
+</footer>
+
+</main>
+
+
+
+<!-- =====================================================
+     GUEST POPUP
+===================================================== -->
+
+<div
+    id="guestPopup"
+    class="guest-popup"
+    aria-hidden="true"
+>
+
+    <div
+        class="guest-popup-overlay"
+        id="guestPopupOverlay"
+    ></div>
+
+
+    <div
+        class="guest-popup-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="guestPopupTitle"
+    >
+
+        <button
+            id="guestPopupClose"
+            class="guest-popup-close"
+            type="button"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <p class="guest-popup-label">
+            SPECIAL GUESTS
+        </p>
+
+
+        <h3 id="guestPopupTitle">
+            18 Gifts
+        </h3>
+
+
+        <div class="guest-divider">
+
+            <span></span>
+
+            ✦
+
+            <span></span>
+
+        </div>
+
+
+        <ol id="guestList">
+        </ol>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="backgroundMusic"
+    preload="auto"
+    loop
+>
+
+    <source
+        src="music/enchanted.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
