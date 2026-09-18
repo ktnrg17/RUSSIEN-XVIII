@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             revealOnScroll();
 
-        }, 500);
+        }, 200);
 
     }
 
