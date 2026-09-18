@@ -123,8 +123,8 @@ a {
         );
 
     transition:
-        opacity .1s ease,
-        visibility .1s ease;
+        opacity .5s ease,
+        visibility .5s ease;
 }
 
 .opening-screen.hidden {
@@ -134,24 +134,28 @@ a {
 }
 
 
-/* SHORT PINK GLOW */
+/* FULL PINK GLOW */
 
 .opening-screen.pink-transition {
 
+    background:
+        #e37ba8;
+
     box-shadow:
         inset 0 0 100px
-        rgba(227,123,168,.95),
+        rgba(227,123,168,1),
 
         0 0 100px
-        rgba(227,123,168,.9);
+        rgba(227,123,168,1);
 
     filter:
         brightness(1.08);
 
     transition:
-        box-shadow .1s ease,
-        filter .1s ease,
-        opacity .1s ease;
+        background .5s ease,
+        box-shadow .5s ease,
+        filter .5s ease,
+        opacity .5s ease;
 }
 
 .opening-content {
@@ -978,7 +982,7 @@ a {
 .extra-photos-grid {
 
     width:
-        min(700px, 100%);
+        min(1100px, 100%);
 
     margin: 0 auto;
 
@@ -988,14 +992,14 @@ a {
 
     align-items: center;
 
-    gap: 15px;
+    gap: 30px;
 }
 
 .extra-photo {
 
-    width: 100%;
+    position: relative;
 
-    aspect-ratio: 1 / 1;
+    width: 100%;
 
     overflow: hidden;
 
@@ -1004,11 +1008,13 @@ a {
 
 .extra-photo img {
 
+    display: block;
+
     width: 100%;
 
-    height: 100%;
+    height: auto;
 
-    object-fit: cover;
+    object-fit: contain;
 
     transition:
         transform 1s var(--transition);
@@ -1017,7 +1023,7 @@ a {
 .extra-photo:hover img {
 
     transform:
-        scale(1.05);
+        scale(1.02);
 }
 
 
@@ -1376,7 +1382,7 @@ a {
     display: grid;
 
     grid-template-columns:
-        80px 1fr;
+        1fr;
 
     align-items: center;
 
@@ -1396,15 +1402,6 @@ a {
 
     transform:
         translateX(15px);
-}
-
-.tradition-card > span {
-
-    font-family: var(--serif);
-
-    color: var(--pink-dark);
-
-    font-size: 1.2rem;
 }
 
 .tradition-card h3 {
@@ -1929,8 +1926,12 @@ footer p {
 
     .extra-photos-grid {
 
+        width: 100%;
+
         grid-template-columns:
             1fr;
+
+        gap: 20px;
     }
 }
 
@@ -2063,10 +2064,7 @@ footer p {
 
         width: 100%;
 
-        grid-template-columns:
-            1fr;
-
-        gap: 12px;
+        gap: 20px;
     }
 
 
@@ -2158,7 +2156,7 @@ footer p {
     .tradition-card {
 
         grid-template-columns:
-            55px 1fr;
+            1fr;
     }
 
     .tradition-card h3 {
