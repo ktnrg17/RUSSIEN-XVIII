@@ -161,13 +161,15 @@ a {
 
     color: var(--purple-dark);
 
+    margin-bottom: 0;
+
     animation:
         fadeDown 1.2s ease both;
 }
 
 .invited-title {
 
-    margin-top: 5px;
+    margin-top: 0;
 
     font-family: var(--script);
 
@@ -332,8 +334,21 @@ a {
         clamp(2rem, 5vw, 4rem);
 }
 
-.letter small {
-    letter-spacing: .4em;
+
+/* CHANGED: straight line instead of XVIII */
+
+.letter-line {
+
+    display: block;
+
+    width: 70px;
+
+    height: 1px;
+
+    background:
+        var(--purple-dark);
+
+    margin-top: 5px;
 }
 
 
@@ -498,38 +513,6 @@ a {
         pulseText 2s infinite;
 }
 
-.opening-name {
-
-    position: absolute;
-
-    right: 4%;
-    bottom: 5%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-end;
-
-    color: var(--purple-dark);
-}
-
-.opening-name span {
-
-    font-size: .6rem;
-
-    letter-spacing: .3em;
-}
-
-.opening-name strong {
-
-    font-family: var(--serif);
-
-    font-size: 2rem;
-
-    font-weight: 400;
-}
-
 
 /* =====================================================
    MAIN INVITATION
@@ -597,7 +580,6 @@ a {
     gap:
         clamp(15px, 3vw, 40px);
 
-    /* CHANGED: center links after removing R18 */
     margin-left: auto;
 }
 
@@ -814,11 +796,11 @@ a {
 
 .intro h2,
 .details-heading h2,
-.gallery-heading h2,
 .traditions h2,
 .closing h2,
 .countdown-section h2,
-.dress-content h2 {
+.dress-content h2,
+.seating-heading h2 {
 
     margin-top: 15px;
 
@@ -834,11 +816,11 @@ a {
 
 .intro h2 span,
 .details-heading h2 span,
-.gallery-heading h2 span,
 .traditions h2 span,
 .closing h2 span,
 .countdown-section h2 span,
-.dress-content h2 span {
+.dress-content h2 span,
+.seating-heading h2 span {
 
     display: block;
 
@@ -1260,11 +1242,27 @@ a {
 }
 
 
-/* CHANGED: requested words are bold and black */
+/* CHANGED:
+   formal, semi-formal and pink use the
+   same script font style as PRETTY IN PINK */
+
 .dress-content .dress-emphasis {
+
     color: #000000;
-    font-weight: 700;
+
+    font-family: var(--script);
+
+    font-size: 1.35em;
+
+    font-weight: 400;
+
+    letter-spacing: 0;
 }
+
+
+/* =====================================================
+   PINK PALETTE
+===================================================== */
 
 .pink-palette {
 
@@ -1310,89 +1308,11 @@ a {
     background: #eee2ef;
 }
 
-.dress-content strong {
+.dress-content > strong {
 
     letter-spacing: .5em;
 
     font-size: .7rem;
-}
-
-
-/* =====================================================
-   GALLERY
-===================================================== */
-
-.gallery-section {
-
-    background:
-        linear-gradient(
-            180deg,
-            #fffdfb,
-            #fdf3f7
-        );
-}
-
-.gallery-heading {
-
-    max-width: 650px;
-
-    margin-bottom: 70px;
-}
-
-.gallery-heading > p:last-child {
-
-    margin-top: 25px;
-
-    color: var(--text-light);
-
-    line-height: 1.8;
-}
-
-.gallery-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    grid-auto-rows: 350px;
-
-    gap: 15px;
-}
-
-.gallery-item {
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.gallery-item.large {
-
-    grid-row:
-        span 2;
-}
-
-.gallery-item.wide {
-
-    grid-column:
-        span 2;
-}
-
-.gallery-item img {
-
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform 1s var(--transition);
-}
-
-.gallery-item:hover img {
-
-    transform:
-        scale(1.06);
 }
 
 
@@ -1479,6 +1399,123 @@ a {
         rgba(168,93,120,.55);
 
     outline-offset: 5px;
+}
+
+
+/* =====================================================
+   SEATING ARRANGEMENT
+===================================================== */
+
+.seating-section {
+
+    background:
+        var(--pearl);
+
+    text-align: center;
+}
+
+.seating-heading {
+
+    max-width: 750px;
+
+    margin: 0 auto;
+}
+
+.seating-heading > p:last-child {
+
+    margin-top: 25px;
+
+    color: var(--text-light);
+
+    line-height: 1.8;
+}
+
+.seating-grid {
+
+    width:
+        min(1100px, 100%);
+
+    margin:
+        70px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.seating-table {
+
+    padding:
+        30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pink-light),
+            var(--purple-light)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    text-align: left;
+}
+
+.table-number {
+
+    margin-bottom: 20px;
+
+    padding-bottom: 12px;
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    color:
+        var(--pink-dark);
+
+    font-family:
+        var(--serif);
+
+    font-size:
+        1.6rem;
+
+    letter-spacing:
+        .08em;
+}
+
+.seating-table ol {
+
+    margin: 0;
+
+    padding-left: 25px;
+}
+
+.seating-table li {
+
+    padding: 5px 0;
+
+    color:
+        var(--text);
+
+    font-size:
+        .85rem;
+
+    line-height:
+        1.4;
+}
+
+.seating-table li::marker {
+
+    color:
+        var(--pink-dark);
+
+    font-family:
+        var(--serif);
 }
 
 
@@ -1649,9 +1686,6 @@ footer p {
 /* =====================================================
    LIGHTS
 ===================================================== */
-
-/* CHANGED: floating circles are now shine/star shapes.
-   Same 8px size and same white glow. */
 
 .floating-light {
 
@@ -1828,8 +1862,9 @@ footer p {
         padding: 20px;
     }
 
-    /* CHANGED:
-       Keep all 3 event details on one row on mobile/tablet */
+
+    /* EVENT DETAILS - THREE IN ONE PAGE */
+
     .details-grid {
 
         grid-template-columns:
@@ -1868,22 +1903,17 @@ footer p {
         font-size: .7rem;
     }
 
-    .gallery-grid {
+
+    /* SEATING */
+
+    .seating-grid {
 
         grid-template-columns:
             repeat(2, 1fr);
-
-        grid-auto-rows:
-            280px;
     }
 
-    .gallery-item.large {
-        grid-row: span 1;
-    }
 
-    .gallery-item.wide {
-        grid-column: span 2;
-    }
+    /* THREE PHOTOS */
 
     .extra-photos-grid {
         grid-template-columns:
@@ -1916,15 +1946,6 @@ footer p {
 
         width:
             min(420px, 90vw);
-    }
-
-    .opening-name {
-
-        position: static;
-
-        margin-top: 20px;
-
-        align-items: center;
     }
 
     .hero h1 {
@@ -2117,24 +2138,6 @@ footer p {
     }
 
 
-    /* GALLERY */
-
-    .gallery-grid {
-
-        grid-template-columns:
-            1fr;
-
-        grid-auto-rows:
-            400px;
-    }
-
-    .gallery-item.wide {
-
-        grid-column:
-            span 1;
-    }
-
-
     /* SPECIALS */
 
     .tradition-card {
@@ -2147,6 +2150,54 @@ footer p {
 
         font-size:
             1.7rem;
+    }
+
+
+    /* SEATING */
+
+    .seating-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            10px;
+
+        margin-top:
+            40px;
+    }
+
+    .seating-table {
+
+        padding:
+            18px 12px;
+    }
+
+    .table-number {
+
+        font-size:
+            1rem;
+
+        margin-bottom:
+            14px;
+    }
+
+    .seating-table ol {
+
+        padding-left:
+            20px;
+    }
+
+    .seating-table li {
+
+        font-size:
+            .68rem;
+
+        padding:
+            4px 0;
+
+        line-height:
+            1.3;
     }
 
 
