@@ -176,6 +176,13 @@ a {
 
 .small-title {
 
+    position: relative;
+
+    left: 25px;
+
+    transform:
+        translateY(-25px);
+
     letter-spacing: .45em;
 
     font-size: clamp(
@@ -1503,8 +1510,7 @@ a {
     padding-bottom: 12px;
 
     border-bottom:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     color:
         var(--pink-dark);
