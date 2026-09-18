@@ -590,25 +590,15 @@ a {
         blur(10px);
 }
 
-.nav-logo {
-
-    font-family: var(--serif);
-
-    font-size: 1.4rem;
-
-    letter-spacing: .08em;
-}
-
-.nav-logo span {
-    color: var(--pink-dark);
-}
-
 .nav-links {
 
     display: flex;
 
     gap:
         clamp(15px, 3vw, 40px);
+
+    /* CHANGED: center links after removing R18 */
+    margin-left: auto;
 }
 
 .nav-links a {
@@ -1269,6 +1259,13 @@ a {
     line-height: 1.8;
 }
 
+
+/* CHANGED: requested words are bold and black */
+.dress-content .dress-emphasis {
+    color: #000000;
+    font-weight: 700;
+}
+
 .pink-palette {
 
     display: flex;
@@ -1653,6 +1650,9 @@ footer p {
    LIGHTS
 ===================================================== */
 
+/* CHANGED: floating circles are now shine/star shapes.
+   Same 8px size and same white glow. */
+
 .floating-light {
 
     position: absolute;
@@ -1660,9 +1660,7 @@ footer p {
     width: 8px;
     height: 8px;
 
-    border-radius: 50%;
-
-    background: white;
+    background: transparent;
 
     box-shadow:
         0 0 20px 5px
@@ -1672,6 +1670,33 @@ footer p {
         floatLight 5s infinite ease-in-out;
 
     z-index: 1;
+}
+
+.floating-light::before,
+.floating-light::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 2px;
+    height: 100%;
+
+    background: white;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+}
+
+.floating-light::after {
+
+    width: 100%;
+    height: 2px;
 }
 
 .light-one {
@@ -1803,22 +1828,44 @@ footer p {
         padding: 20px;
     }
 
+    /* CHANGED:
+       Keep all 3 event details on one row on mobile/tablet */
     .details-grid {
 
         grid-template-columns:
-            1fr;
+            repeat(3, 1fr);
+
+        margin-top: 45px;
     }
 
     .detail-card {
 
-        border-right: none;
+        padding:
+            30px 10px;
+
+        border-right:
+            1px solid var(--border);
 
         border-bottom:
-            1px solid var(--border);
+            none;
     }
 
     .detail-card:last-child {
-        border-bottom: none;
+        border-right: none;
+    }
+
+    .detail-icon {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    .detail-card h3 {
+        font-size: 1.45rem;
+        line-height: 1.1;
+    }
+
+    .detail-card span {
+        font-size: .7rem;
     }
 
     .gallery-grid {
@@ -1984,6 +2031,89 @@ footer p {
             repeat(3, 1fr);
 
         gap: 8px;
+    }
+
+
+    /* EVENT DETAILS - THREE IN ONE PAGE */
+
+    .details-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        margin-top: 40px;
+    }
+
+    .detail-card {
+
+        padding:
+            25px 5px;
+
+        border-right:
+            1px solid var(--border);
+
+        border-bottom:
+            none;
+    }
+
+    .detail-card:last-child {
+        border-right: none;
+    }
+
+    .detail-icon {
+
+        font-size:
+            1.2rem;
+
+        margin-bottom:
+            10px;
+    }
+
+    .detail-card p {
+
+        font-size:
+            .48rem;
+
+        letter-spacing:
+            .16em;
+    }
+
+    .detail-card h3 {
+
+        font-size:
+            1.05rem;
+
+        line-height:
+            1.15;
+
+        margin-top:
+            9px;
+    }
+
+    .detail-card span {
+
+        display: block;
+
+        font-size:
+            .62rem;
+
+        line-height:
+            1.35;
+
+        margin-top:
+            5px;
+    }
+
+    .map-button {
+
+        margin-top:
+            30px;
+
+        padding:
+            13px 20px;
+
+        font-size:
+            .58rem;
     }
 
 
