@@ -2494,38 +2494,20 @@ a:focus-visible {
 }
 
 .guest-popup-box ol {
-
     margin: 0;
-
-    padding:
-        0 10px 0 38px;
-
+    padding: 0;
     columns: 2;
-
-    column-gap:
-        40px;
+    column-gap: 40px;
+    list-style: none;
 }
 
 .guest-popup-box li {
-
-    padding:
-        7px 0;
-
-    color:
-        #5f4a55;
-
-    font-family:
-        'DM Sans',
-        sans-serif;
-
-    font-size:
-        .9rem;
-
-    line-height:
-        1.35;
-
-    break-inside:
-        avoid;
+    padding: 7px 0;
+    color: #5f4a55;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .9rem;
+    line-height: 1.35;
+    break-inside: avoid;
 }
 
 .guest-popup-box li::marker {
