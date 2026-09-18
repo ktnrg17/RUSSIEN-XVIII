@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
-
     const openingScreen =
         document.getElementById("openingScreen");
 
@@ -31,17 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const guestList =
         document.getElementById("guestList");
 
-
-    /* =====================================================
-       STATE
-    ===================================================== */
-
     let invitationOpened = false;
-
-
-    /* =====================================================
-       OPEN INVITATION
-    ===================================================== */
 
     function openInvitation() {
 
@@ -50,11 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         invitationOpened = true;
-
-
-        /* =================================================
-           START MUSIC IMMEDIATELY FROM ENVELOPE CLICK
-        ================================================= */
 
         if (backgroundMusic) {
 
@@ -81,12 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         }
 
-
-        /*
-         * Pink glow transition.
-         * No paper-rising animation.
-         */
-
         if (envelopeButton) {
             envelopeButton.classList.add("clicked");
         }
@@ -94,12 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (openingScreen) {
             openingScreen.classList.add("pink-transition");
         }
-
-
-        /*
-         * Show the invitation after
-         * the 0.5-second pink glow.
-         */
 
         setTimeout(function () {
 
@@ -111,13 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 mainInvitation.classList.add("visible");
             }
 
-
-            /* Unlock scrolling */
-
             document.body.classList.remove("locked");
-
-
-            /* Always start at first page */
 
             window.scrollTo({
                 top: 0,
@@ -125,19 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 behavior: "instant"
             });
 
-
-            /* Start reveal animations */
-
             revealOnScroll();
 
         }, 500);
 
     }
-
-
-    /* =====================================================
-       ENVELOPE CLICK
-    ===================================================== */
 
     if (envelopeButton) {
 
@@ -154,16 +109,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    /* =====================================================
-       COUNTDOWN
-    ===================================================== */
-
     const targetDate =
         new Date(
             "September 26, 2026 16:00:00"
         ).getTime();
-
 
     function updateCountdown() {
 
@@ -172,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const distance =
             targetDate - now;
-
 
         const daysElement =
             document.getElementById("days");
@@ -186,7 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const secondsElement =
             document.getElementById("seconds");
 
-
         if (
             !daysElement ||
             !hoursElement ||
@@ -195,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
             return;
         }
-
 
         if (distance <= 0) {
 
@@ -206,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             return;
         }
-
 
         const days =
             Math.floor(
@@ -235,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 1000
             );
 
-
         daysElement.textContent =
             String(days).padStart(2, "0");
 
@@ -250,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     updateCountdown();
 
     setInterval(
@@ -258,16 +201,10 @@ document.addEventListener("DOMContentLoaded", function () {
         1000
     );
 
-
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
-
     function revealOnScroll() {
 
         const revealElements =
             document.querySelectorAll(".reveal");
-
 
         if (
             "IntersectionObserver"
@@ -304,7 +241,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 );
 
-
             revealElements.forEach(
                 function (element) {
 
@@ -331,151 +267,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     revealOnScroll();
-
-
-    /* =====================================================
-       GUEST LISTS
-    ===================================================== */
 
     const guestLists = {
 
         gifts: [
-
-            "KAIRA",
-            "ANGELA",
-            "STEPHANIE",
-            "ZATHEENA",
-            "JOANNA",
-            "AILEEN",
-            "PRINCESS DURAN",
-            "TITA JUVIE",
-            "RACHELLE ANNE",
-            "KAT",
-            "KEAN",
-            "SYRIA",
-            "AZTI",
-            "AIRA",
-            "EZRA/ASEC",
-            "CLEARY",
-            "SHANE MACABODBOD",
-            "CHLOE",
-            "GERALDINE",
-            "NICO",
-            "MARLEY",
-            "PRINCESS BACARON"
-
+            "KAIRA","ANGELA","STEPHANIE","ZATHEENA","JOANNA","AILEEN",
+            "PRINCESS DURAN","TITA JUVIE","RACHELLE ANNE","KAT","KEAN",
+            "SYRIA","AZTI","AIRA","EZRA/ASEC","CLEARY","SHANE MACABODBOD",
+            "CHLOE","GERALDINE","NICO","MARLEY","PRINCESS BACARON"
         ],
-
 
         candles: [
-
-            "MARY",
-            "BLAIRE",
-            "SYRIA",
-            "PRINCESS DURAN",
-            "HANNA",
-            "MAILA",
-            "KEAN",
-            "NATHALIE",
-            "JAM",
-            "AURIE",
-            "NICOLE",
-            "HERSHEY",
-            "JOANNA",
-            "ANGELA",
-            "NICA",
-            "CATHERINE NITOLLAMA",
-            "ERIC",
-            "KATRINA",
-            "JANINE"
-
+            "MARY","BLAIRE","SYRIA","PRINCESS DURAN","HANNA","MAILA","KEAN",
+            "NATHALIE","JAM","AURIE","NICOLE","HERSHEY","JOANNA","ANGELA",
+            "NICA","CATHERINE NITOLLAMA","ERIC","KATRINA","JANINE"
         ],
-
 
         dance: [
-
-            "ZU",
-            "CYRUS",
-            "MATTHEW",
-            "PRINCE",
-            "ALEX",
-            "RAYMOND",
-            "TITO NOY",
-            "TITO BONGKOY",
-            "TITO SONNY",
-            "ANDREI",
-            "SAM",
-            "KYLE",
-            "NITOY",
-            "CHRISTIAN",
-            "CAPAO",
-            "JOLO",
-            "AJ",
-            "TJ",
-            "JONASH",
-            "CHOLO"
-
+            "ZU","CYRUS","MATTHEW","PRINCE","ALEX","RAYMOND","TITO NOY",
+            "TITO BONGKOY","TITO SONNY","ANDREI","SAM","KYLE","NITOY",
+            "CHRISTIAN","CAPAO","JOLO","AJ","TJ","JONASH","CHOLO"
         ],
-
 
         "blue-bills": [
-
-            "TITA TESS",
-            "TE BENG",
-            "NANAY",
-            "INAY",
-            "PHEA",
-            "XANDREI",
-            "CHEBE",
-            "GERM",
-            "CHAI",
-            "TITO NOY",
-            "KUYA NOY",
-            "ATE LALET",
-            "NICA",
-            "KAGAWAD RODERICK",
-            "HENRY/PRINCESS",
-            "MIA",
-            "CATHERINE NITOLLAMA",
-            "MADE",
-            "FAITH",
-            "AIRA"
-
+            "TITA TESS","TE BENG","NANAY","INAY","PHEA","XANDREI","CHEBE",
+            "GERM","CHAI","TITO NOY","KUYA NOY","ATE LALET","NICA",
+            "KAGAWAD RODERICK","HENRY/PRINCESS","MIA","CATHERINE NITOLLAMA",
+            "MADE","FAITH","AIRA"
         ],
 
-
         shots: [
-
-            "VIENNA",
-            "ABI",
-            "JANINE",
-            "HAVEN",
-            "AZTI",
-            "JOANNA",
-            "DIAH",
-            "MARLEY",
-            "GAB",
-            "SAMANTHA",
-            "CATHY",
-            "MAILA",
-            "LUCY",
-            "ANGELA",
-            "STEPHANIE",
-            "ALTHEA",
-            "SYRIA",
-            "NICOLE",
-            "ALEX"
-
+            "VIENNA","ABI","JANINE","HAVEN","AZTI","JOANNA","DIAH","MARLEY",
+            "GAB","SAMANTHA","CATHY","MAILA","LUCY","ANGELA","STEPHANIE",
+            "ALTHEA","SYRIA","NICOLE","ALEX"
         ]
-
     };
-
-
-    /* =====================================================
-       POPUP TITLES
-    ===================================================== */
 
     const guestSectionTitles = {
 
@@ -496,11 +323,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     };
 
-
-    /* =====================================================
-       OPEN GUEST POPUP
-    ===================================================== */
-
     function openGuestPopup(section) {
 
         if (
@@ -511,22 +333,17 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         const guests =
             guestLists[section];
-
 
         if (!guests) {
             return;
         }
 
-
         guestPopupTitle.textContent =
             guestSectionTitles[section];
 
-
         guestList.innerHTML = "";
-
 
         guests.forEach(
             function (guest) {
@@ -542,7 +359,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-
         guestPopup.classList.add(
             "active"
         );
@@ -552,11 +368,9 @@ document.addEventListener("DOMContentLoaded", function () {
             "false"
         );
 
-
         document.body.classList.add(
             "popup-open"
         );
-
 
         if (guestPopupClose) {
 
@@ -573,17 +387,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    /* =====================================================
-       CLOSE GUEST POPUP
-    ===================================================== */
-
     function closeGuestPopup() {
 
         if (!guestPopup) {
             return;
         }
-
 
         guestPopup.classList.remove(
             "active"
@@ -594,23 +402,16 @@ document.addEventListener("DOMContentLoaded", function () {
             "true"
         );
 
-
         document.body.classList.remove(
             "popup-open"
         );
 
     }
 
-
-    /* =====================================================
-       SPECIAL CARD CLICK
-    ===================================================== */
-
     const traditionCards =
         document.querySelectorAll(
             ".tradition-card"
         );
-
 
     traditionCards.forEach(
         function (card) {
@@ -628,7 +429,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
             );
-
 
             card.addEventListener(
                 "keydown",
@@ -656,11 +456,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
-
-    /* =====================================================
-       CLOSE BUTTON
-    ===================================================== */
-
     if (guestPopupClose) {
 
         guestPopupClose.addEventListener(
@@ -670,11 +465,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    /* =====================================================
-       CLICK OUTSIDE POPUP
-    ===================================================== */
-
     if (guestPopupOverlay) {
 
         guestPopupOverlay.addEventListener(
@@ -683,11 +473,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
-
-    /* =====================================================
-       ESC KEY
-    ===================================================== */
 
     document.addEventListener(
         "keydown",
@@ -706,16 +491,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
-
-    /* =====================================================
-       NAVIGATION
-    ===================================================== */
-
     const navLinks =
         document.querySelectorAll(
             ".nav-links a"
         );
-
 
     navLinks.forEach(
         function (link) {
@@ -728,7 +507,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         document.querySelector(
                             link.getAttribute("href")
                         );
-
 
                     if (target) {
 
@@ -755,16 +533,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
-
-    /* =====================================================
-       HERO PARALLAX
-    ===================================================== */
-
     const heroBackground =
         document.querySelector(
             ".hero-background"
         );
-
 
     if (
         heroBackground &&
@@ -779,7 +551,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const scrollY =
                     window.scrollY;
-
 
                 if (
                     scrollY <
