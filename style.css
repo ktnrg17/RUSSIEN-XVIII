@@ -2493,30 +2493,49 @@ a:focus-visible {
         rgba(168,93,120,.35);
 }
 
+
+/* =====================================================
+   GUEST NAMES — NO NUMBERING
+===================================================== */
+
 .guest-popup-box ol {
-    margin: 0;
-    padding: 0;
-    columns: 2;
-    column-gap: 40px;
-    list-style: none;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    columns:
+        2;
+
+    column-gap:
+        40px;
+
+    list-style:
+        none;
 }
 
 .guest-popup-box li {
-    padding: 7px 0;
-    color: #5f4a55;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .9rem;
-    line-height: 1.35;
-    break-inside: avoid;
-}
 
-.guest-popup-box li::marker {
+    padding:
+        7px 0;
 
     color:
-        #a85d78;
+        #5f4a55;
 
-    font-weight:
-        600;
+    font-family:
+        'DM Sans',
+        sans-serif;
+
+    font-size:
+        .9rem;
+
+    line-height:
+        1.35;
+
+    break-inside:
+        avoid;
 }
 
 
@@ -2543,10 +2562,14 @@ a:focus-visible {
 
     .guest-popup-box ol {
 
-        columns: 1;
+        columns:
+            1;
 
         padding-left:
-            34px;
+            0;
+
+        list-style:
+            none;
     }
 
     .guest-popup-box li {
