@@ -994,7 +994,6 @@ a {
     align-items: stretch;
 
     gap: 30px;
-
 }
 
 .extra-photo {
@@ -2040,12 +2039,12 @@ footer p {
     }
 
 
-    /* FEATURE */
+    /* FEATURE PHOTO */
 
     .feature-photo {
 
         padding:
-            0 15px 70px;
+            0 15px 15px;
     }
 
     .feature-image img {
@@ -2060,13 +2059,23 @@ footer p {
     }
 
 
-    /* THREE PHOTOS */
+    /* THREE PHOTOS - MOBILE */
+
+    .extra-photos-section {
+
+        padding-top: 0;
+
+        padding-bottom: 40px;
+    }
 
     .extra-photos-grid {
 
         width: 100%;
 
-        gap: 20px;
+        grid-template-columns:
+            1fr;
+
+        gap: 10px;
     }
 
 
@@ -2495,49 +2504,32 @@ a:focus-visible {
         rgba(168,93,120,.35);
 }
 
-
-/* =====================================================
-   GUEST NAMES — NO NUMBERING
-===================================================== */
-
 .guest-popup-box ol {
 
-    margin:
-        0;
+    margin: 0;
 
-    padding:
-        0;
+    padding: 0;
 
-    columns:
-        2;
+    columns: 2;
 
-    column-gap:
-        40px;
+    column-gap: 40px;
 
-    list-style:
-        none;
+    list-style: none;
 }
 
 .guest-popup-box li {
 
-    padding:
-        7px 0;
+    padding: 7px 0;
 
-    color:
-        #5f4a55;
+    color: #5f4a55;
 
-    font-family:
-        'DM Sans',
-        sans-serif;
+    font-family: 'DM Sans', sans-serif;
 
-    font-size:
-        .9rem;
+    font-size: .9rem;
 
-    line-height:
-        1.35;
+    line-height: 1.35;
 
-    break-inside:
-        avoid;
+    break-inside: avoid;
 }
 
 
@@ -2564,14 +2556,12 @@ a:focus-visible {
 
     .guest-popup-box ol {
 
-        columns:
-            1;
+        columns: 1;
 
         padding-left:
             0;
 
-        list-style:
-            none;
+        list-style: none;
     }
 
     .guest-popup-box li {
