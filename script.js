@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         invitationOpened = true;
 
-
         console.log("Envelope clicked!");
 
 
@@ -461,7 +460,6 @@ document.addEventListener("DOMContentLoaded", function () {
         candles:
             "18 Candles",
 
-        /* CHANGED: 18 Dance → 18 Roses */
         dance:
             "18 Roses",
 
