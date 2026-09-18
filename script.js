@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /*
-         * Immediately show the invitation
-         * after the short pink glow.
+         * Show the invitation after the
+         * 1-second pink glow transition.
          */
 
         setTimeout(function () {
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             revealOnScroll();
 
-        }, 100);
+        }, 1000);
 
     }
 
@@ -733,6 +733,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
 
                 }
+
             );
 
         }
