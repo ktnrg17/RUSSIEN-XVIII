@@ -180,8 +180,9 @@ a {
 
     left: 90px;
 
-    transform:
-        translateY(-200px);
+    top: -45px;
+
+    transform: none;
 
     letter-spacing: .45em;
 
@@ -193,7 +194,7 @@ a {
 
     color: var(--purple-dark);
 
-    margin-bottom: 0;
+    margin-bottom: -45px;
 
     animation:
         fadeUp 1.2s ease both;
@@ -1865,7 +1866,7 @@ footer p {
 
 
 /* =====================================================
-   TABLET
+   TABLET / LAPTOP
 ===================================================== */
 
 @media (max-width: 800px) {
@@ -1876,6 +1877,18 @@ footer p {
 
     .navbar {
         padding: 20px;
+    }
+
+
+    /* OPENING TEXT */
+
+    .small-title {
+
+        left: 55px;
+
+        top: -35px;
+
+        margin-bottom: -35px;
     }
 
 
@@ -1952,6 +1965,22 @@ footer p {
     .opening-content {
         padding:
             30px 10px;
+    }
+
+
+    /* OPENING TEXT */
+
+    .small-title {
+
+        left: 25px;
+
+        top: -25px;
+
+        margin-bottom: -25px;
+
+        font-size: .6rem;
+
+        letter-spacing: .35em;
     }
 
     .opening-subtitle {
