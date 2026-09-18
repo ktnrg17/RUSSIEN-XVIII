@@ -178,10 +178,10 @@ a {
 
     position: relative;
 
-    left: 15px;
+    left: -15px;
 
     transform:
-        translateY(-85px);
+        translateY(-100px);
 
     letter-spacing: .45em;
 
